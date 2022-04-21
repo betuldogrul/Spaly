@@ -2,10 +2,10 @@ package Spaly;
 import java.util.Currency;
 
 import javax.imageio.ImageIO;
-
+// a method taking its information from the database of items
 public class Item {
     private String name;
-    private int price;
+    private double price;
     private ImageIO image;
     private boolean isTheProductInGoal;
     private String website;
@@ -24,11 +24,6 @@ public class Item {
         this.isTheProductInGoal = trueOrFalse;
     }
 
-    public boolean isInTheGoal()
-    {
-        return this.isTheProductInGoal;
-    }
-
     public boolean canBuy()
     {
         if(currentSaving >= price)
@@ -37,6 +32,44 @@ public class Item {
         }
         return false;
     }
-
     
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public double getPrice()
+    {
+        return this.price;
+    }
+
+    public ImageIO getImage()
+    {
+        return this.image;
+    }
+
+    public boolean isInTheGoal()
+    {
+        return this.isTheProductInGoal;
+    }
+    
+    public String getWebsite()
+    {
+        return this.website;
+    }
+
+    public double getSaver()
+    {
+        return this.currentSaving;
+    }
+
+    public void setPrice(double newPrice)
+    {
+        if(price > newPrice)
+        {
+            System.out.println("Your product on sale.");
+        }
+        this.price = newPrice;
+        
+    }
 }
