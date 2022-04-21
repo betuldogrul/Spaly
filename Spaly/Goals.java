@@ -27,12 +27,12 @@ public class Goals {
         }
     }
 
-    public void moneyGoes(double money)
+    public void moneyGoes(Item item, double money)
     {
-
+        
     }
 
-    public void moneyGoesAsPercent(double money, int percent)
+    public void moneyGoesAsPercent(Item item, double money, int percent)
     {
 
     }
