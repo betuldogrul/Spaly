@@ -1,8 +1,10 @@
+package Spaly;
+
 public class CreditCard 
 {
-    int number;
-    long limit;
-    long totalMoney;
+    private int number;
+    private long limit;
+    private long totalMoney;
 
 
     public long addMoney(int amount)
@@ -17,6 +19,6 @@ public class CreditCard
         return 0;
     }
 
-    
+
     //A method to interact with the database
 }
