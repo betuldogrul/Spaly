@@ -1,12 +1,22 @@
 package Spaly;
+
+import java.util.ArrayList;
+
 /**
  * CardStatement
  */
 public class CardStatement 
 {
-    public void addCreditCard()
+    private ArrayList<CreditCard> cards;
+
+    public CardStatement()
     {
-        //TODO
+        cards = new ArrayList<>();
+    }
+
+    public void addCreditCard(CreditCard c)
+    {
+        cards.add(c);
     }
     
 }

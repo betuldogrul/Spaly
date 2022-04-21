@@ -2,23 +2,28 @@ package Spaly;
 
 public class CreditCard 
 {
-    private int number;
-    private long limit;
-    private long totalMoney;
+    private double number;
+    private double upperLimit;
+    private double totalMoney;
 
-
-    public long addMoney(int amount)
+    public CreditCard(double number, double upperLimit, double totalMoney)
     {
-        //TODO
-        return 0;
+        this.number = number;
+        this.upperLimit = upperLimit;
+        this.totalMoney = totalMoney;
     }
 
-    public long removeMoney(int amount)
+    public double addMoneyToCard(int amount)
     {
-        //TODO
-        return 0;
+        totalMoney = totalMoney + amount;
+        return totalMoney;
     }
 
+    public double removeMoneyFromCard(int amount)
+    {
+        totalMoney = totalMoney - amount;
+        return totalMoney;
+    }
 
     //A method to interact with the database
 }
