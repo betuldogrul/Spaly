@@ -22,6 +22,11 @@ public class targetedItem extends Item {
         return false;
     }
 
+    public void setIsTheProductInGoal(boolean trueOrFalse)
+    {
+        this.isTheProductInGoal = trueOrFalse;
+    }
+
     public double getSaver()
     {
         return this.currentSaving;

@@ -7,20 +7,32 @@ public class ShoppingList {
     Goals goal;
 
     public ShoppingList() {
-        items = new ArrayList<ArrayList<Item>>();// using sql it will be created
+        items = new ArrayList<ArrayList<Item>>();// using sql it will be created arraylist of items of arraylist 
+        //inside arraylist will keep for same product in different website
+        //outside will keep different products
     }
 
     public void addToGoal(Item item) {
         if (goal.getItemsArrayList().size() != 3) {
-            Item tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
-            goal.getItemsArrayList().add((targetedItem) tItem);
-            item.setIsTheProductInGoal(true);
+            targetedItem tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
+            goal.getItemsArrayList().add(tItem);
             System.out.println("Product succesfully added:");
         } else
             System.out.println("User reached maximum goal number!");
     }
 
-    public void search(String name) {
+    public ArrayList<Item> search(String name) {
         // it will take from SQL products and when user search for an item it will bring the desired arrayList
+        if(name == items.get(0).get(0).getName())//searched after searching from our arraylist with an for loop we will 
+        //return this arraylist and show the user different website for the same products.
+        {
+            return items.get(0);
+        }
+        else
+        {
+            System.out.println("Spaly doesn't have that product yet. Please wait later versions.");
+            return null;//if there is no product
+        }
+        
     }
 }

@@ -17,14 +17,7 @@ public  class Item {
         this.image = image;
         this.website = website;
     }
-    public Item()
-    {
-
-    }
-    public void setIsTheProductInGoal(boolean trueOrFalse)
-    {
-        this.isTheProductInGoal = trueOrFalse;
-    }
+   
 
     public String getName()
     {

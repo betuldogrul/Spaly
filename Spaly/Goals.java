@@ -1,7 +1,10 @@
 package Spaly;
 
 import Spaly.Item;
-
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 public class Goals {
     private ArrayList<targetedItem> goalsItems;//aggragation
@@ -36,16 +39,43 @@ public class Goals {
 
     public void moneyGoesAsPercent(targetedItem item, double money, int percent)
     {
+        //this method will take money that user enter manually and add into the account and it should be connected with saving class 
+        //since when we put this money into my item it should show in also saving that i have this much money on my items.
         item.setCurrentMoney(item.getCurrentSaving() + money * percent);
     }
 
     public void purchase(targetedItem item)
     {
-        if(item.canBuy())
-        remove(item);
-        System.out.println("Congratulations! User accomplished a goal.");
-        System.out.println("Lets set new goals!");
+        if(item.canBuy())//if the user has enough money 
+        {
+            Desktop d = Desktop.getDesktop();
+            try {//if user want to buy the product than it will lead user for this website.
+                d.browse(new URI(item.getWebsite()));
+            } catch (IOException e) {
+                System.out.println("Exception IO");
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                System.out.println("Exception URI");
+                e.printStackTrace();
+            }
+        }
+        else//user doesnt have enough money this part may lead user to put money to that item. not sure yet.
+        {
+            System.out.println("User doesn't have enough money!");
+        } 
+        //when user want to purchase a product it will lead to the website of the product it will cut the money
+        // from the account and it will remove the item from the goals and it will say user to set new goals since user will buy the product from her bank account it will not spend money in
+        // here when s/he purchase it will come from the card info
+        if(true || false)// this needs to take informtion from spending if the person bought the product it 
+        //will come transitions and if the transations happened for that product it should remove the product from the goals.
+        {
+            remove(item);
+            System.out.println("Congratulations! User accomplished a goal.");
+            System.out.println("Lets set new goals!");
+       
+        }
         //saving class will come here
+        //transitions class also releted
         //decrease total money also
     }
 
@@ -53,5 +83,5 @@ public class Goals {
     {
         return  goalsItems;
     }
-    
+
 }
