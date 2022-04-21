@@ -1,3 +1,6 @@
+package Spaly;
+import java.util.Currency;
+
 import javax.imageio.ImageIO;
 
 public class Item {
@@ -6,6 +9,7 @@ public class Item {
     private ImageIO image;
     private boolean isTheProductInGoal;
     private String website;
+    private double currentSaving;
     public Item(String name, int price, ImageIO image, boolean isTheProductInGoal, String website)
     {
         this.name = name;
@@ -13,6 +17,7 @@ public class Item {
         this.image = image;
         this.isTheProductInGoal = isTheProductInGoal;
         this.website = website;
+        this.currentSaving = 0;
     }
     public void setIsTheProductInGoal(boolean trueOrFalse)
     {
@@ -22,6 +27,15 @@ public class Item {
     public boolean isInTheGoal()
     {
         return this.isTheProductInGoal;
+    }
+
+    public boolean canBuy()
+    {
+        if(currentSaving >= price)
+        {
+            return true;
+        }
+        return false;
     }
 
     
