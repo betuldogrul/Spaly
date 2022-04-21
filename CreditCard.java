@@ -17,5 +17,6 @@ public class CreditCard
         return 0;
     }
 
+    
     //A method to interact with the database
 }
