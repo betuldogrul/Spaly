@@ -3,36 +3,29 @@ import java.util.Currency;
 
 import javax.imageio.ImageIO;
 // a method taking its information from the database of items
-public class Item {
+public  class Item {
     private String name;
-    private double price;
+    protected double price;
     private ImageIO image;
-    private boolean isTheProductInGoal;
     private String website;
-    private double currentSaving;
-    public Item(String name, int price, ImageIO image, boolean isTheProductInGoal, String website)
+    private boolean isTheProductInGoal;
+    
+    public Item(String name, double price, ImageIO image, String website)
     {
         this.name = name;
         this.price = price;
         this.image = image;
-        this.isTheProductInGoal = isTheProductInGoal;
         this.website = website;
-        this.currentSaving = 0;
+    }
+    public Item()
+    {
+
     }
     public void setIsTheProductInGoal(boolean trueOrFalse)
     {
         this.isTheProductInGoal = trueOrFalse;
     }
 
-    public boolean canBuy()
-    {
-        if(currentSaving >= price)
-        {
-            return true;
-        }
-        return false;
-    }
-    
     public String getName()
     {
         return this.name;
@@ -58,18 +51,12 @@ public class Item {
         return this.website;
     }
 
-    public double getSaver()
-    {
-        return this.currentSaving;
-    }
-
     public void setPrice(double newPrice)
     {
         if(price > newPrice)
         {
             System.out.println("Your product on sale.");
         }
-        this.price = newPrice;
-        
+        this.price = newPrice;  
     }
 }

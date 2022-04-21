@@ -4,13 +4,13 @@ import Spaly.Item;
 
 import java.util.ArrayList;
 public class Goals {
-    private ArrayList<Item> goalsItems;//aggragation
+    private ArrayList<targetedItem> goalsItems;//aggragation
     public Goals()
     {
         this.goalsItems = new ArrayList<>();
     }
 
-    public void remove(Item item)
+    public void remove(targetedItem item)
     {
         if(item.isInTheGoal())
         {
@@ -27,17 +27,19 @@ public class Goals {
         }
     }
 
-    public void moneyGoes(Item item, double money)
+    public void moneyGoes(targetedItem item, double money)
     {
-        
+        //this method will take money that user enter manually and add into the account and it should be connected with saving class 
+        //since when we put this money into my item it should show in also saving that i have this much money on my items.
+        item.setCurrentMoney(item.getCurrentSaving() + money);
     }
 
-    public void moneyGoesAsPercent(Item item, double money, int percent)
+    public void moneyGoesAsPercent(targetedItem item, double money, int percent)
     {
-
+        item.setCurrentMoney(item.getCurrentSaving() + money * percent);
     }
 
-    public void purchase(Item item)
+    public void purchase(targetedItem item)
     {
         if(item.canBuy())
         remove(item);
@@ -46,8 +48,10 @@ public class Goals {
         //saving class will come here
         //decrease total money also
     }
-    public ArrayList<Item> getItemsArrayList()
+
+    public ArrayList<targetedItem> getItemsArrayList()
     {
         return  goalsItems;
     }
+    
 }
