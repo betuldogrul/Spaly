@@ -22,17 +22,16 @@ public class ShoppingList {
     }
 
     public ArrayList<Item> search(String name) {
-        // it will take from SQL products and when user search for an item it will bring the desired arrayList
-        if(name == items.get(0).get(0).getName())//searched after searching from our arraylist with an for loop we will 
-        //return this arraylist and show the user different website for the same products.
+        for(int i = 0; i < items.size(); i++)
         {
-            return items.get(0);
+            // it will take from SQL products and when user search for an item it will bring the desired arrayList
+            if(name == items.get(i).get(i).getName())//searched after searching from our arraylist with an for loop we will 
+            //return this arraylist and show the user different website for the same products.
+            {
+               return items.get(i);
+            }
         }
-        else
-        {
             System.out.println("Spaly doesn't have that product yet. Please wait later versions.");
             return null;//if there is no product
-        }
-        
     }
 }
