@@ -6,5 +6,5 @@ public class Item {
     private ImageIO image;
     private boolean isTheProductInGoal;
     private String website;
-    
+    public Item(String name, int )
 }
