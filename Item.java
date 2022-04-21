@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 
 public class Item {
@@ -23,4 +25,6 @@ public class Item {
     {
         return this.isTheProductInGoal;
     }
+
+    
 }

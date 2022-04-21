@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Goals {
-    private ArrayList<Item> goalsitems;//aggragation
+    private ArrayList<Item> goalsItems;//aggragation
     public Goals()
     {
-        this.goalsitems = new ArrayList<>();
+        this.goalsItems = new ArrayList<>();
     }
 
    
@@ -13,12 +13,12 @@ public class Goals {
     {
         if(item.isInTheGoal())
         {
-            for(int i = 0; i < goalsitems.size(); i++)
+            for(int i = 0; i < goalsItems.size(); i++)
             {
-                if(item == goalsitems.get(i))
+                if(item == goalsItems.get(i))
                 {
-                    goalsitems.get(i).setIsTheProductInGoal(false);
-                    goalsitems.remove(i);
+                    goalsItems.get(i).setIsTheProductInGoal(false);
+                    goalsItems.remove(i);
                     System.out.println("Product successfully removed.");
                 }
             }
@@ -27,6 +27,6 @@ public class Goals {
 
     public ArrayList<Item> getItemsArrayList()
     {
-        return  goalsitems;
+        return  goalsItems;
     }
 }
