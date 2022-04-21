@@ -1,3 +1,4 @@
+package Spaly;
 import java.util.ArrayList;
 
 public class ShoppingList {
@@ -5,7 +6,7 @@ public class ShoppingList {
     Goals goal;
     public ShoppingList()
     {
-        
+
     }
     public void addToGoal(Item item)
     {
