@@ -2,7 +2,7 @@ package Spaly;
 import java.util.Currency;
 
 import javax.imageio.ImageIO;
-
+// a method taking its information from the database of items
 public class Item {
     private String name;
     private int price;
