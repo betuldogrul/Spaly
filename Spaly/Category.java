@@ -30,22 +30,19 @@ public class Category extends Categories
         return this.card;
     }
 
+    public double getPErcentageOfTheCategory()
+    {
+        return percentageOfTheCategory;
+    }
+
     public void addSpending(int amount)
     {
         currentSpending = currentSpending + amount;
     }
 
-    public void pieceCalculator() // calculates and stores the percentages of each category
+    public double pieceCalculator() // calculates and stores the percentages of each category
     {
-        int sum = 0;
-        for(int i = 0; i < super.categories.size(); i++)
-        {
-            sum =  sum + super.categories.get[i];
-        }
-
-        for(int j = 0; j < super.categories.size(); j++)
-        {
-            super.percentageOfCategories.add[j] = (super.categories.get[j] * 100) / sum;
-        }
+        percentageOfTheCategory = currentSpending * 100 / super.getTotalMoneySpent();
+        return percentageOfTheCategory;
     }
 }

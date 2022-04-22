@@ -1,5 +1,5 @@
 package Spaly;
 
 public interface Percentage {
-    public void pieceCalculator();
+    public double pieceCalculator();
 }
