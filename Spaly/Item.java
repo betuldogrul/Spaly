@@ -17,8 +17,7 @@ public  class Item {
         this.image = image;
         this.website = website;
     }
-   
-
+    
     public String getName()
     {
         return this.name;
