@@ -5,7 +5,7 @@ public class Category
     private String name; 
     private double currentSpending;
     private CreditCard card;
-
+    private double totalExpenditures;
     private Category(String name, double currentSpendings, CreditCard card)
     {
         this.name = name;
@@ -31,5 +31,8 @@ public class Category
     public void addSpending(int amount)
     {
         currentSpending = currentSpending + amount;
+    }
+    public double categoryToTotal(){
+        return currentSpending/totalExpenditures;
     }
 }
