@@ -2,7 +2,7 @@ package Spaly;
 
 import java.util.ArrayList;
 
-public class Categories //the class to hold the arraylist of the categories in the same credit card status 
+public class Categories implements Percentage//the class to hold the arraylist of the categories in the same credit card status 
 {
     private ArrayList<Category> categories;
     private double totalMoneySpent;
@@ -22,9 +22,10 @@ public class Categories //the class to hold the arraylist of the categories in t
     {
         categories.add(cat);
     }
+    
     private double sum=0;
     private ArrayList pieces=new ArrayList<>();
-    public void pieceCalculator() {
+    public double  pieceCalculator() {
         for(int i=0;i<categories.size();i++){
             sum+=categories.get(i).getCurrentSpending();
         }
