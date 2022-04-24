@@ -2,7 +2,7 @@ package Spaly;
 
 import javax.imageio.ImageIO;
 
-public class targetedItem extends Item {
+public class targetedItem extends Item implements Percentage {
 
     private double currentSaving;
     private boolean isTheProductInGoal;
@@ -13,7 +13,7 @@ public class targetedItem extends Item {
         this.currentSaving = 0;
         //TODO Auto-generated constructor stub
     }
-    
+
     public boolean canBuy()
     {
         if(currentSaving >= price)
@@ -38,8 +38,14 @@ public class targetedItem extends Item {
         this.currentSaving = currentSaving;
     }
 
-    public double getCurrentSaving()
+    public double getCurrentMoney()
     {
         return currentSaving;
+    }
+
+    @Override
+    public double pieceCalculator() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

@@ -34,14 +34,26 @@ public class Goals {
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
-        item.setCurrentMoney(item.getCurrentSaving() + money);
+        item.setCurrentMoney(item.getCurrentMoney() + money);
     }
 
     public void moneyGoesAsPercent(targetedItem item, double money, int percent)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
-        item.setCurrentMoney(item.getCurrentSaving() + money * percent);
+        item.setCurrentMoney(item.getCurrentMoney() + money * percent);
+    }
+
+    public void useMoneyFromProduct(targetedItem item, double money)
+    {
+        //when user needs to spend money from their desired product
+        //this method should be connected with spends and savings//update them
+        if(item.getCurrentMoney() >= money)
+        item.setCurrentMoney(item.getCurrentMoney() - money);
+        else
+        {
+            System.out.println("This product doesnt have this much money please lower the money.");
+        }
     }
 
     public void purchase(targetedItem item)
