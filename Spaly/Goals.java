@@ -60,17 +60,18 @@ public class Goals {
     {
         if(item.canBuy())//if the user has enough money 
         {
-            Desktop d = Desktop.getDesktop();
-            try {//if user want to buy the product than it will lead user for this website.
-                d.browse(new URI(item.getWebsite()));
-            } catch (IOException e) {
-                System.out.println("Exception IO");
+            try {
+   
+                URI uri= new URI(item.getWebsite());
+                
+                java.awt.Desktop.getDesktop().browse(uri);
+                 System.out.println("Web page opened in browser");
+              
+               } catch (Exception e) {
+                
                 e.printStackTrace();
-            } catch (URISyntaxException e) {
-                System.out.println("Exception URI");
-                e.printStackTrace();
-            }
-        }
+               }
+              }
         else//user doesnt have enough money this part may lead user to put money to that item. not sure yet.
         {
             System.out.println("User doesn't have enough money!");
