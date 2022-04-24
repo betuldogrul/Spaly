@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * CardStatement
  */
-public class CardStatement 
+public class CardStatement // a class to hold all credit cards 
 {
     private ArrayList<CreditCard> cards;
 
@@ -18,4 +18,6 @@ public class CardStatement
     {
         cards.add(c);
     }
+
+    // add a method to hold the total spendings karttan bağmsiz bir şekilde 
 }
