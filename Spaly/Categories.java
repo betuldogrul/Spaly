@@ -2,15 +2,17 @@ package Spaly;
 
 import java.util.ArrayList;
 
-public class Categories extends AllCategories //the class to hold the arraylist of the categories in the same credit card status 
+public class Categories //the class to hold the arraylist of the categories in the same credit card status 
 {
     private ArrayList<Category> categories;
     private double totalMoneySpent;
+    private CreditCard card;
 
-    public Categories()
+    public Categories(CreditCard card)
     {
         categories  = new ArrayList<Category>();
         totalMoneySpent = 0;
+        this.card = card;
     }
 
     public double getTotalMoneySpent()

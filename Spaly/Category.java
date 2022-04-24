@@ -1,6 +1,6 @@
 package Spaly;
 
-public class Category extends Categories
+public class Category extends Categories // only one card, only one category
 {
     private String name; // the name of the category 
     private double currentSpending; // the total spending so far 
@@ -9,7 +9,7 @@ public class Category extends Categories
 
     public Category(String name, double currentSpendings, CreditCard card)
     {
-        super();
+        super(card);
         this.name = name;
         this.currentSpending = currentSpendings;
         this.card = card;
@@ -30,7 +30,7 @@ public class Category extends Categories
         return this.card;
     }
 
-    public double getPErcentageOfTheCategory()
+    public double getPercentageOfTheCategory()
     {
         return percentageOfTheCategory;
     }

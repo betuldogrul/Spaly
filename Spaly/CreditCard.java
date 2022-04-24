@@ -1,6 +1,6 @@
 package Spaly;
 
-public class CreditCard 
+public class CreditCard extends CardStatement
 {
     private double cardNumber;
     private double upperLimit;
@@ -28,13 +28,13 @@ public class CreditCard
         return this.totalSpentMoney;
     }
 
-    public double addMoneyToCard(int amount)
+    public double addMoneyToCard(double amount)
     {
         totalSpentMoney = totalSpentMoney + amount;
         return totalSpentMoney;
     }
 
-    public double removeMoneyFromCard(int amount)
+    public double removeMoneyFromCard(double amount)
     {
         totalSpentMoney = totalSpentMoney - amount;
         return totalSpentMoney;
