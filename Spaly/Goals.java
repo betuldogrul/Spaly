@@ -1,10 +1,9 @@
 package Spaly;
 
-import Spaly.Item;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 public class Goals {
     private ArrayList<targetedItem> goalsItems;//aggragation
@@ -64,8 +63,8 @@ public class Goals {
    
                 URI uri= new URI(item.getWebsite());
                 
-                java.awt.Desktop.getDesktop().browse(uri);
-                 System.out.println("Web page opened in browser");
+                java.awt.Desktop.getDesktop().browse(uri);//directing to the website of the targetedItem
+                System.out.println("Web page opened in browser");
               
                } catch (Exception e) {
                 

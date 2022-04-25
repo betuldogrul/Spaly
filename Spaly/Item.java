@@ -2,15 +2,16 @@ package Spaly;
 import java.util.Currency;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 // a method taking its information from the database of items
 public  class Item {
     private String name;
     protected double price;
-    private ImageIO image;
+    private ImageIcon image;
     private String website;
     private boolean isTheProductInGoal;
     
-    public Item(String name, double price, ImageIO image, String website)
+    public Item(String name, double price, ImageIcon image, String website)
     {
         this.name = name;
         this.price = price;
@@ -28,7 +29,7 @@ public  class Item {
         return this.price;
     }
 
-    public ImageIO getImage()
+    public ImageIcon getImage()
     {
         return this.image;
     }
