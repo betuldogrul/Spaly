@@ -46,7 +46,6 @@ public class targetedItem extends Item implements Percentage {
 
     @Override
     public double pieceCalculator() {
-        // TODO Auto-generated method stub
-        return 0;
+        return currentSaving / this.price;
     }
 }
