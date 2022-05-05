@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-public class Goals {
+public class Goals{
     private ArrayList<targetedItem> goalsItems;//aggragation
     public Goals()
     {

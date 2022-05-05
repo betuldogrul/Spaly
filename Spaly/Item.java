@@ -52,4 +52,8 @@ public  class Item {
         }
         this.price = newPrice;  
     }
+    public String toString()
+    {
+        return name;
+    }
 }
