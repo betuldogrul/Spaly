@@ -1,15 +1,35 @@
 package Spaly;
 
+import java.sql.Connection;
 import java.util.ArrayList;
+import javax.xml.crypto.Data;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class ShoppingList {
     private ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
     Goals goal;//aggragation
+    String sql = "SELECT * FROM `item`";
+    databaseC c = new databaseC();
 
     public ShoppingList() {
         AllItems = new ArrayList<ArrayList<Item>>();// using sql it will be created arraylist of items of arraylist 
         //inside arraylist will keep for same product in different website
         //outside will keep different products
+    }
+    
+
+    
+    try {
+        PreparedStatement statement = c.connect().prepareStatement(sql);
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        c.disconnect();
     }
 
     public ArrayList<Item> addToGoal(Item item) {
@@ -20,8 +40,6 @@ public class ShoppingList {
             System.out.println("Product succesfully added:");
         } else
             System.out.println("User reached maximum goal number!");
-    
-
         //////    public ArrayList<Item> search(String name) {
         for(int i = 0; i < AllItems.size(); i++)
         {
@@ -36,3 +54,5 @@ public class ShoppingList {
             return null;//if there is no product
     }
 }
+
+

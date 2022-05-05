@@ -1,5 +1,10 @@
 package Spaly;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;

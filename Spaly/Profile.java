@@ -5,6 +5,10 @@ public class Profile
     private String userName;
     private String password;
 
+    public Profile()
+    {
+        
+    }
     public Profile(String userName, String password)
     {
         this.userName = userName;
