@@ -7,11 +7,11 @@ import javax.swing.ImageIcon;
 public  class Item {
     private String name;
     protected double price;
-    private ImageIcon image;
+    private String image;
     private String website;
     private boolean isTheProductInGoal;
     
-    public Item(String name, double price, ImageIcon image, String website)
+    public Item(String name, double price, String image, String website)
     {
         this.name = name;
         this.price = price;
@@ -29,7 +29,7 @@ public  class Item {
         return this.price;
     }
 
-    public ImageIcon getImage()
+    public String getImage()
     {
         return this.image;
     }

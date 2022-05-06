@@ -4,6 +4,21 @@
  */
 package Spaly;
 
+/* BufferedImage originalImage = ImageIO.read(something); // read in original image
+
+// create new empty image of desired size
+BufferedImage newImage = new BufferedImage(desiredWidth, desiredHeight, BufferedImage.TYPE_INT_ARGB);
+Graphics g = newImage.getGraphics();  // get its graphics object
+
+// draw old image into new image
+g.drawImage(originalImage, 0, 0, desiredWidth, desiredHeight, null);
+g.dispose();  // get rid of Graphics object
+
+// create ImageIcon and put in JLabel to display
+Icon newIcon = new ImageIcon(newImage);
+myJLabel.setIcon(newIcon); */
+
+
 /**
  *
  * @author melis

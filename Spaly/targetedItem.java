@@ -8,7 +8,7 @@ public class targetedItem extends Item implements Percentage {
     private double currentSaving;
     private boolean isTheProductInGoal;
    
-    public targetedItem(String name, double d, ImageIcon imageIcon, boolean isTheProductInGoal, String website) {
+    public targetedItem(String name, double d, String imageIcon, boolean isTheProductInGoal, String website) {
         super(name, d, imageIcon, website);
         this.isTheProductInGoal = isTheProductInGoal;
         this.currentSaving = 0;
