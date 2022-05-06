@@ -14,35 +14,40 @@ public class ShoppingList {
     Goals goal;//aggragation
 
     public ShoppingList() {
-        AllItems = new ArrayList<ArrayList<Item>>();// using sql it will be created arraylist of items of arraylist 
+        AllItems = createAllItems();// using sql it will be created arraylist of items of arraylist 
         //inside arraylist will keep for same product in different website
         //outside will keep different products
     }
 
-    public  ArrayList<ArrayList<Item>> createAllItems(String name, double price, String image, String website)//this means inside arraylist same item for different prices outside different items
+    public  ArrayList<ArrayList<Item>> createAllItems()//this means inside arraylist same item for different prices outside different items
     { 
         Item item = null;
+
         final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
         final String username = "root";
         final String password = "74252002";
+        Connection con = null;
+        PreparedStatement p = null;
+        ResultSet rs = null;
         ArrayList<ArrayList<Item>> allItemss = new ArrayList<ArrayList<Item>>();
         ArrayList<Item> allItem = new ArrayList<Item>();
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
             String sql = "SELECT * FROM shoping";
-            PreparedStatement pre = conn.prepareStatement(sql);
-            pre.setString(2, name);
-            pre.setDouble(1, price);
-            pre.setString(3, website);
-            pre.setString(4, image);
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
 
-            ResultSet result = pre.executeQuery();
-            if(result.next())
-            {
-                item = new Item(result.getString("name"), result.getDouble("price"), result.getString("image"), result.getString("website"));
+            while (rs.next()) {
+ 
+                String name = rs.getString("name");
+                Double price = rs.getDouble("price");
+                String website = rs.getString("website");
+                String image = rs.getString("image");
+                item = new Item(name, price, image, website);
                 allItem.add(item);
+                item = null;
             }
-            pre.close();
+            p.close();
             conn.close();
         }
         catch(Exception e)
