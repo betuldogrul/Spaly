@@ -1,4 +1,4 @@
-
+package Spaly;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ShoppingList {
-    private ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
+    private static ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
     Goals goal;//aggragation
 
     public ShoppingList() {
@@ -82,6 +82,7 @@ public class ShoppingList {
     }
     public void addToGoal(Item item) {
         //this item will come in goal
+        
         if (goal.getItemsArrayList().size() <= 3) {
             targetedItem tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
             goal.getItemsArrayList().add(tItem);
