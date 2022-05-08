@@ -176,7 +176,7 @@ public class BudgetPlanningJFrame extends JFrame {
 
         jLabel12.setText("Budget Planning Way");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Weekly", "Monthly"}));
 
         jLabel13.setText("You can set the way");
 
