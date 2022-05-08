@@ -82,6 +82,7 @@ public class ShoppingList {
     }
     public void addToGoal(Item item) {
         //this item will come in goal
+        
         if (goal.getItemsArrayList().size() <= 3) {
             targetedItem tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
             goal.getItemsArrayList().add(tItem);

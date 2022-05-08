@@ -14,13 +14,31 @@ public class ShoppingList {
     Goals goal;//aggragation
 
     public ShoppingList() {
-        AllItems = createAllItems();// using sql it will be created arraylist of items of arraylist 
+        AllItems = differKind(createAllItems());// using sql it will be created arraylist of items of arraylist 
         //inside arraylist will keep for same product in different website
         //outside will keep different products
     }
-    public static ArrayList<ArrayList<Item>> differKind()
+    public static ArrayList<ArrayList<Item>> differKind(ArrayList<Item> k)
     {
-
+        ArrayList<ArrayList<Item>> all = new ArrayList<ArrayList<Item>>();
+        k = createAllItems();
+        ArrayList<Item> same = new ArrayList<Item>();
+        same.add(k.get(0));
+        for(int i = 1; i <k.size(); i++)
+        {
+            if(k.get(i - 1).getName().equals(k.get(i).getName()))
+            {
+                same.add(k.get(i));
+            }
+            else
+            {
+                all.add(same);
+                ArrayList<Item> samee = new ArrayList<Item>();
+                same = samee;
+            }
+        }
+        all.add(same);
+        return all;
     }
     public  static ArrayList<Item> createAllItems()//this means inside arraylist same item for different prices outside different items
     {

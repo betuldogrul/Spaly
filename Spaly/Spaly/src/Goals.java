@@ -1,5 +1,4 @@
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,9 +11,11 @@ import java.net.URI;
 import java.util.ArrayList;
 public class Goals{
     private ArrayList<targetedItem> goalsItems;//aggragation
-    public Goals()
+    private User profile;
+    public Goals(User user)
     {
         this.goalsItems = new ArrayList<>();
+        this.profile = profile;
     }
 
     public void remove(targetedItem item)
