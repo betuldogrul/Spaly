@@ -26,7 +26,8 @@ public class Profile{
         }
         return null;
     }
-    public static void registerUser(String name, String surname, String userName, String userPassword, String mail)
+
+    public static void registerUser(String name, String surname, String userName, String userPassword, String mail, int income)
     {
         try {
             
@@ -42,13 +43,14 @@ public class Profile{
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "INSERT INTO users (userName, userSurname, userUserName, userPassword, userMail) VALUES (?, ?, ?, ?, ?)";//taking item to database
+            String sql = "INSERT INTO users (userName, userSurname, userUserName, userPassword, userMail, income) VALUES (?, ?, ?, ?, ?, ?)";//taking item to database
             p = conn.prepareStatement(sql);
             p.setString(1, name);
             p.setString(2, surname);
             p.setString(3, userName);
             p.setString(4, userPassword);
             p.setString(5, mail);
+            p.setInt(6, income);
             p.executeUpdate();
             conn.close();
         }
@@ -57,6 +59,7 @@ public class Profile{
             System.out.println(e);
         }
     }
+
     public static ArrayList<User> getAllUsers()
     {
         ArrayList<User> k = new ArrayList<User>();
@@ -79,6 +82,7 @@ public class Profile{
             rs = p.executeQuery();
 
             while (rs.next()) {
+                int income = rs.getInt("income");
                 String userUserName = rs.getString("userUserName");
                 String userPassword = rs.getString("userPassword");
                 int userID = rs.getInt("userID");
@@ -86,7 +90,8 @@ public class Profile{
                 String userSurname = rs.getString("userSurname");
                 String email = rs.getString("userMail");
                 String userPage = rs.getString("userPage");
-                User user = new User(userID, userName, userSurname, userUserName, userPassword, email);
+                User user = new User(userID,income ,userName, userSurname, userUserName, userPassword, email);
+                user.setPic(userPage);
                 k.add(user);
             }
             p.close();
