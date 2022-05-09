@@ -113,9 +113,11 @@ public class MoneyBox{
     public void updateMoneyBox(User u){
 
         Calendar currentDate = Calendar.getInstance();
+        Calendar today;
 
-        if(budgetPlanningWayChanged()){
+        if(budgetPlanningWayChanged){
             setNumberOfDays();
+            budgetPlanningWayChanged = false;
         }
 
         if(currentDate.after(endDate)){
@@ -124,12 +126,14 @@ public class MoneyBox{
             setEndDate();
         }
 
-        if(){
-
+        if(u.getToday().before(currentDate)){//If the day is passed
+            setTotalSaving();
+            setMonthlySaving();
+            dailySaving = 0;
         }
     }
 
-    private void changeStartDate(Date startDate){
+    private void changeStartDate(Date startDate){//Changes startDate in sql
         Connection conn = null;
         Statement stmt = null;
         try {
