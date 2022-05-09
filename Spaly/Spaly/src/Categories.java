@@ -24,5 +24,11 @@ public class Categories //the class to hold the arraylist of the categories in t
     {
         categories.add(cat);
     }
-
+    public double totalLimitCalculator(){
+        double totalLimit=0;
+        for(int i=0;i<categories.size();i++){
+            totalLimit+=categories.get(i).getLimitofCategory();
+        }
+        return totalLimit;
+    }
 }
