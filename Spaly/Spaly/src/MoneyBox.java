@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -7,17 +8,16 @@ public class MoneyBox{
     //VARIABLES
     public Calendar endDate;
     private int numberOfDays; //Update when there is a change in budget planing way (in setBudgetPlanningWay method update this also)
-    public int maxIncomeOfStartDate; //Update according to budget planning way
     public int dailySpendingLimit; //Update according to budget planning way
     public int dailySaving; //Update daily bases
     public int monthlySaving; //Update monthly bases
     public int totalSaving; //Update daily bases
-    public ArrayList<Integer> dailyIncomes; //Update daily bases
+    private User u;
 
 
     //CONSTRUCTORS
-    public MoneyBox(){
-
+    public MoneyBox(User u){
+        this.u = u;
     }
 
     //METHODS
@@ -29,10 +29,6 @@ public class MoneyBox{
 
     public int getNumberOfDays(){
         return numberOfDays;
-    }
-
-    public int getMaxIncome(){
-        return maxIncomeOfStartDate;
     }
 
     public int getDailySpendingLimit(){
@@ -51,9 +47,6 @@ public class MoneyBox{
         return totalSaving;
     }
 
-    public ArrayList<Integer> getDailyIncomes(){
-        return dailyIncomes;
-    }
 
     //Setters
     private void setEndDate(){
@@ -99,20 +92,8 @@ public class MoneyBox{
         }
     }
 
-    public void setDailyIncomes(){
-        dailyIncomes = new ArrayList<Integer>(); //In order to start daily income array list in daily bases
-    }
-
-    private void setMaxIncome(){
-        for(int i = 0; i < dailyIncomes.length; i++){
-            if(maxIncomeOfStartDate < dailyIncomes.get(i)){
-                maxIncomeOfStartDate = dailyIncomes.get(i);
-            }
-        }
-    }
-
     private void setDailySpendingLimit(){
-        dailySpendingLimit = maxIncomeOfStartDate/numberOfDays;
+        dailySpendingLimit = u.getIncome()/numberOfDays;
     }
 
     private void setDailySaving(){
@@ -120,7 +101,7 @@ public class MoneyBox{
     }
 
     private void setMonthlySaving(){
-        monthlySaving = (dailySpendingLimit * 30) - getMonthlySaving();
+        monthlySaving = (dailySpendingLimit * 30) - getMonthlySpendings();
     }
 
     private void setTotalSaving(){
@@ -128,12 +109,46 @@ public class MoneyBox{
     }
 
     //Other Methods
-    public void addDailyIncome(int income){
-        dailyIncomes.add(income);
+
+    public void updateMoneyBox(User u){
+
+        Calendar currentDate = Calendar.getInstance();
+
+        if(budgetPlanningWayChanged()){
+            setNumberOfDays();
+        }
+
+        if(currentDate.after(endDate)){
+            setDailySpendingLimit();
+            changeStartDate((Date) endDate.getTime());
+            setEndDate();
+        }
+
+        if(){
+
+        }
     }
 
-    public void startNewDay(){
-        
+    private void changeStartDate(Date startDate){
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+           try {
+              Class.forName("com.mysql.jdbc.Driver");
+           } catch (Exception e) {
+              System.out.println(e);
+           }
+           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
+           System.out.println("Connection is created successfully:");
+           stmt = (Statement) conn.createStatement();
+           String query1 = "update moneyBox set startDate='" + startDate + "' where userID =" + u.getId();
+           ((java.sql.Statement) stmt).executeUpdate(query1);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    
     }
     
 }
