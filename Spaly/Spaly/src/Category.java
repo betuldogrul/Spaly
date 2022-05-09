@@ -54,4 +54,8 @@ public class Category extends Categories // only one card, only one category
         percentageOfTheCategory = currentSpending * 100 / super.getTotalMoneySpent();
         return percentageOfTheCategory;
     }
+    public double percentageOfCategorySpendingToLimit()
+    {
+        return getCurrentSpending()/getLimitofCategory();
+    }
 }

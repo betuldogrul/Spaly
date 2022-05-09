@@ -12,7 +12,7 @@ public class Analyze {
     public double getItemPrice(){return itemPrice;}
     public double getSavings(){return savings;}
     public double totalExpenditures(){
-        //get values from Excel
+        //get values from Database
         return totalExpenditures;
     }
     public double ratioOfSpendingToTotalLimit(){
@@ -43,7 +43,7 @@ public class Analyze {
     }
     public void drawPieChartofMonthlySpendingAccordingtoCategories(){
         try{
-            String query= "select spending,category from x where ";
+            String query= "select sum(spending),category from x where ";
             JDBCCategoryDataset dataset=new JDBCCategoryDataset();
             JFreeChart chart=ChartFactory.createPieChart("Monthly Category Analyses",dataset,false, true, false);
             BarRenderer renderer=null;
@@ -59,7 +59,7 @@ public class Analyze {
     }
     public void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
         try{
-            String query= "select spending,category from x where ";
+            String query= "select sum(spending),category from x where ";
             JDBCCategoryDataset dataset=new JDBCCategoryDataset();
             JFreeChart chart=ChartFactory.createPieChart("Monthly All Bank Cards Category Analyses",dataset,false, true, false);
             BarRenderer renderer=null;
