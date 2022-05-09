@@ -1,16 +1,16 @@
-
-
 public class CreditCard extends CardStatement
 {
     private double cardNumber;
     private double upperLimit;
     private double totalSpentMoney;
+    private String cardBank;
 
-    public CreditCard(double number, double upperLimit, double totalMoney)
+    public CreditCard(double number, double upperLimit, double totalMoney, String cardBank)
     {
         this.cardNumber = number;
         this.upperLimit = upperLimit;
         this.totalSpentMoney = totalMoney;
+        this.cardBank = cardBank;
     }
 
     public double getCardNumber()
@@ -26,6 +26,11 @@ public class CreditCard extends CardStatement
     public double getTotalSpentMoney()
     {
         return this.totalSpentMoney;
+    }
+
+    public String getCardBank() 
+    {
+        return this.cardBank;
     }
 
     public double addMoneyToCard(double amount)
