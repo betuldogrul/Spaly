@@ -7,9 +7,11 @@ public class targetedItem extends Item implements Percentage {
 
     private double currentSaving;
     private boolean isTheProductInGoal;
+    private Item item;
    
-    public targetedItem(String name, double d, String imageIcon, boolean isTheProductInGoal, String website) {
-        super(name, d, imageIcon, website);
+    public targetedItem(Item item , boolean isTheProductInGoal) {
+        super(item.getId(), item.getName(), item.getPrice(), item.getImage(), item.getWebsite());
+        this.item = item;
         this.isTheProductInGoal = isTheProductInGoal;
         this.currentSaving = 0;
         //TODO Auto-generated constructor stub

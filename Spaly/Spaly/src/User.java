@@ -3,13 +3,25 @@ public class User {
     private String e_mail;
     private String userName;
     private String password;
+    private String pic;
 
     public User(String name, String password, String email)
     {
         this.e_mail = email;
         this.userName = name;
         this.password = password;
+        pic = null;
         userId++;
+    }
+    
+    public void setPic(String pic)
+    {
+        this.pic = pic;
+    }
+
+    public String getPic()
+    {
+        return this.pic;
     }
 
     public void changePasword(String password)

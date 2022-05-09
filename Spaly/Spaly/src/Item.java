@@ -10,15 +10,20 @@ public  class Item {
     private String image;
     private String website;
     private boolean isTheProductInGoal;
+    private int id;
     
-    public Item(String name, double price, String image, String website)
+    public Item(int id, String name, double price, String image, String website)
     {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.image = image;
         this.website = website;
     }
-    
+    public int getId()
+    {
+        return this.id;
+    }
     public String getName()
     {
         return this.name;

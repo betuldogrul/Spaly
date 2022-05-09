@@ -63,12 +63,12 @@ public class ShoppingList {
             rs = p.executeQuery();
 
             while (rs.next()) {
- 
+                int id = rs.getInt("ItemId");
                 String name = rs.getString("ItemName");
                 Double price = rs.getDouble("price");
                 String website = rs.getString("website");
                 String image = rs.getString("image");
-                item = new Item(name, price, image, website);
+                item = new Item(id, name, price, image, website);
                 allItem.add(item);
             }
             p.close();
@@ -80,7 +80,37 @@ public class ShoppingList {
         }
         return allItem;
     }
+
     public void addToGoal(Item item) {
+        String 
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "INSERT INTO 'goal' ('UserName";
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+ 
+            }
+            p.close();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
         //this item will come in goal
         if (goal.getItemsArrayList().size() <= 3) {
             targetedItem tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
