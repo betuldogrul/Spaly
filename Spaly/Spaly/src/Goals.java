@@ -1,6 +1,7 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -39,6 +40,25 @@ public class Goals{
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
+        Connection conn = null;
+        Statement stmt = null;
+        double add = item.getCurrentMoney() + money;
+        try {
+           try {
+              Class.forName("com.mysql.jdbc.Driver");
+           } catch (Exception e) {
+              System.out.println(e);
+           }
+           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
+           System.out.println("Connection is created successfully:");
+           stmt = (Statement) conn.createStatement();
+           String query1 = "update goals set itemMoney='" + add + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
+           ((java.sql.Statement) stmt).executeUpdate(query1);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
         item.setCurrentMoney(item.getCurrentMoney() + money);
     }
 
@@ -46,6 +66,26 @@ public class Goals{
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
+        Connection conn = null;
+        Statement stmt = null;
+        double add = item.getCurrentMoney() + money *(percent/ 100);
+        try {
+           try {
+              Class.forName("com.mysql.jdbc.Driver");
+           } catch (Exception e) {
+              System.out.println(e);
+           }
+           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
+           System.out.println("Connection is created successfully:");
+           stmt = (Statement) conn.createStatement();
+           String query1 = "update goals set itemMoney='" + add + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
+           ((java.sql.Statement) stmt).executeUpdate(query1);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        item.setCurrentMoney(item.getCurrentMoney() + money);
         item.setCurrentMoney(item.getCurrentMoney() + money * percent);
     }
 
@@ -54,24 +94,72 @@ public class Goals{
         //when user needs to spend money from their desired product
         //this method should be connected with spends and savings//update them
         if(item.getCurrentMoney() >= money)
-        item.setCurrentMoney(item.getCurrentMoney() - money);
+        {
+            item.setCurrentMoney(item.getCurrentMoney() - money);
+            Connection conn = null;
+            Statement stmt = null;
+            double remove = item.getCurrentMoney() - money;
+        try {
+           try {
+              Class.forName("com.mysql.jdbc.Driver");
+           } catch (Exception e) {
+              System.out.println(e);
+           }
+           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
+           System.out.println("Connection is created successfully:");
+           stmt = (Statement) conn.createStatement();
+           String query1 = "update goals set itemMoney='" + remove + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
+           ((java.sql.Statement) stmt).executeUpdate(query1);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        item.setCurrentMoney(item.getCurrentMoney() + money);
+            
+        }
+        
         else
         {
             System.out.println("This product doesnt have this much money please lower the money.");
         }
     }
-
+    public void purchaseAddTransitions(targetedItem item)
+    {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            try {
+               Class.forName("com.mysql.jdbc.Driver");
+            } catch (Exception e) {
+               System.out.println(e);
+            }
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
+            System.out.println("Connection is created successfully:");
+            stmt = (Statement) conn.createStatement();
+            String query1 = "delete from  goals " +
+            "where id=" + profile.getId() + "and itemID =" + item.getId();
+            stmt.executeUpdate(query1);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
     public void purchase(targetedItem item)
     {
         if(item.canBuy())//if the user has enough money 
         {
+            purchaseAddTransitions(item);//add transitions and remove from goals
+            remove(item);
+            System.out.println("Congratulations! User accomplished a goal.");
+            System.out.println("Lets set new goals!");
+
             try {
    
                 URI uri= new URI(item.getWebsite());
-                
                 java.awt.Desktop.getDesktop().browse(uri);//directing to the website of the targetedItem
                 System.out.println("Web page opened in browser");
-              
                } catch (Exception e) {
                 
                 e.printStackTrace();
@@ -84,22 +172,47 @@ public class Goals{
         //when user want to purchase a product it will lead to the website of the product it will cut the money
         // from the account and it will remove the item from the goals and it will say user to set new goals since user will buy the product from her bank account it will not spend money in
         // here when s/he purchase it will come from the card info
-        if(true || false)// this needs to take informtion from spending if the person bought the product it 
-        //will come transitions and if the transations happened for that product it should remove the product from the goals.
-        {
-            remove(item);
-            System.out.println("Congratulations! User accomplished a goal.");
-            System.out.println("Lets set new goals!");
-       
-        }
-        //saving class will come here
-        //transitions class also releted
-        //decrease total money also
     }
 
-    public ArrayList<targetedItem> getItemsArrayList()
+    public ArrayList<targetedItem> getItemsArrayList()//look lter
     {
-        return  goalsItems;
+        Item item = null;
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        ArrayList<Item> allItem = new ArrayList<Item>();
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM goals where userID=" + profile.getId();
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("ItemId");
+                String name = rs.getString("ItemName");
+                Double price = rs.getDouble("price");
+                String website = rs.getString("website");
+                String image = rs.getString("image");
+                item = new Item(id, name, price, image, website);
+                allItem.add(item);
+            }
+            p.close();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return allItem;
     }
 
 }

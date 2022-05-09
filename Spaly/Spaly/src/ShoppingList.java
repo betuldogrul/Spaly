@@ -136,5 +136,3 @@ public class ShoppingList {
             return null;//if there is no product
     }
 }
-
-
