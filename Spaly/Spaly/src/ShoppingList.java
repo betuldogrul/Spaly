@@ -2,6 +2,8 @@
 
 import java.sql.Connection;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 import javax.xml.crypto.Data;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +13,9 @@ import java.sql.Statement;
 
 public class ShoppingList {
     private ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
-    Goals goal;//aggragation
+    private User user;
+    Goals goal = new Goals(user);//aggragation
+
 
     public ShoppingList() {
         AllItems = differKind(createAllItems());// using sql it will be created arraylist of items of arraylist 
@@ -81,39 +85,37 @@ public class ShoppingList {
         return allItem;
     }
 
-    public void addToGoal(Item item) {
-        String 
-        try {
-            
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
-        final String username = "root";
-        final String password = "74252002";
-        PreparedStatement p = null;
-        ResultSet rs = null;
-        try{
-            Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "INSERT INTO 'goal' ('UserName";
-            p = conn.prepareStatement(sql);
-            rs = p.executeQuery();
-
-            while (rs.next()) {
- 
-            }
-            p.close();
-            conn.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+    public void addToGoal(Item item, User user) {
+      
         //this item will come in goal
         if (goal.getItemsArrayList().size() <= 3) {
-            targetedItem tItem = new targetedItem(item.getName(), item.getPrice(), item.getImage(), true, item.getWebsite());
+            try {
+            
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+            final String username = "root";
+            final String password = "74252002";
+            PreparedStatement p = null;
+            ResultSet rs = null;
+            try{
+                Connection conn = DriverManager.getConnection(DbUrl, username, password);
+                String sql = "INSERT INTO goals VALUES (?, ?, ?)";//taking item to database
+                p = conn.prepareStatement(sql);
+                p.setInt(1, user.getId());
+                p.setInt(2, item.getId());
+                p.setFloat(3,   0);
+                p.executeUpdate();
+                conn.close();
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+            targetedItem tItem = new targetedItem(item, true);
             goal.getItemsArrayList().add(tItem);
             System.out.println("Product succesfully added:");
         } else

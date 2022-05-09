@@ -4,16 +4,39 @@ public class User {
     private String userName;
     private String password;
     private String pic;
+    private String userSurname;
+    private String userUserName;
 
-    public User(String name, String password, String email)
+
+    public User(int id, String userName, String userSurname, String userUserName, String password, String userMail)
     {
-        this.e_mail = email;
-        this.userName = name;
+        this.userId = id;
+        this.e_mail = userMail;
+        this.userUserName = userUserName;
+        this.userSurname = userSurname;
+        this.userName = userName;
         this.password = password;
-        pic = null;
-        userId++;
+        this.pic = "";
     }
     
+    public String getSurname()
+    {
+        return this.userSurname;
+    }
+
+    public void setSurname(String surname)
+    {
+        this.userSurname = surname;
+    }
+
+    public void setUserUserName(String userName)
+    {
+        this.userUserName = userName;
+    }
+    public String getUserUserName()
+    {
+        return userUserName;
+    }
     public void setPic(String pic)
     {
         this.pic = pic;

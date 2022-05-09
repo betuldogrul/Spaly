@@ -34,7 +34,7 @@ public class Goals{
             }
         }
     }
-
+    
     public void moneyGoes(targetedItem item, double money)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
