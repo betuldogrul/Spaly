@@ -6,13 +6,15 @@ public class Category extends Categories // only one card, only one category
     private double currentSpending; // the total spending so far 
     private CreditCard card;
     private double percentageOfTheCategory;
+    private double limit;
 
-    public Category(String name, double currentSpendings, CreditCard card)
+    public Category(String name, double currentSpendings, double limit, CreditCard card)
     {
         super(card);
         this.name = name;
         this.currentSpending = currentSpendings;
         this.card = card;
+        this.limit=limit;
     }
 
     public String getName()
@@ -34,7 +36,14 @@ public class Category extends Categories // only one card, only one category
     {
         return percentageOfTheCategory;
     }
-
+    public double getLimitofCategory()
+    {
+        return limit;
+    }
+    public void setLimit(double newLimit)
+    {
+        this.limit=newLimit;
+    }
     public void addSpending(int amount)
     {
         currentSpending = currentSpending + amount;

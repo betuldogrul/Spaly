@@ -5,6 +5,8 @@ public class Analyze {
     private double itemPrice;
     private double totalExpenditures;
     private double savings;
+    private Category category;
+    private Categories categories;
     public double getTotalExpenditures(){return totalExpenditures;}
     public double getIncome(){return income;}
     public double getItemPrice(){return itemPrice;}
@@ -12,6 +14,9 @@ public class Analyze {
     public double totalExpenditures(){
         //get values from Excel
         return totalExpenditures;
+    }
+    public double ratioOfSpendingToTotalLimit(){
+        return totalExpenditures/categories.totalLimitCalculator()*100;
     }
     //Calculates the ratio of incomes to expenditures 
     public double ratioOfMoney(){
