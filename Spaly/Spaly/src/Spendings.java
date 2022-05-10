@@ -1,21 +1,15 @@
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-/**
- * CardStatement
- */
-public class CardStatement // a class to hold all credit cards 
-{
-    private ArrayList<CreditCard> cards;
+public class Spendings { // this calss is to hold the every spending in a month within an ararylist 
 
-    public CardStatement()
-    {
-        cards = new ArrayList<>();
+    private ArrayList<Spending> spendings;
+
+    public Spendings() { // consctructor , adds every data to the arraylist
+        spendings = new ArrayList<Spending>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
@@ -33,13 +27,17 @@ public class CardStatement // a class to hold all credit cards
             rs = p.executeQuery();
 
             while (rs.next()) {
-                int creditcard_id = rs.getInt("creditcard_id");
-                String card_number = rs.getString("card_number");
-                String card_bank = rs.getString("card_bank");
-                int card_limit = rs.getInt("card_limit");
-                int user_id = rs.getInt("user_id");
-                CreditCard card = new CreditCard(creditcard_id, card_number, card_limit, )
-                cards.add();
+                int day = rs.getInt("day");
+                int month = rs.getInt("month");
+                int year = rs.getInt("year");
+                int hour = rs.getInt("hour");
+                int minute = rs.getInt("minute");
+                double expenditure = rs.getInt("spending");
+                String company = rs.getString("company");
+                String category = rs.getString("category");
+                int card_id = rs.getInt("creditcard_id");
+                Spending spending =  new Spending(day, month, year, hour, minute, expenditure, company, category, card_id);
+                spendings.add(spending);
             }
             p.close();
             conn.close();
@@ -47,11 +45,5 @@ public class CardStatement // a class to hold all credit cards
             System.out.println(e);
         }
     }
-
-    public void addCreditCard(CreditCard c)
-    {
-        cards.add(c);
-    }
-
-    // add a method to hold the total spendings karttan bağmsiz bir şekilde 
+    
 }
