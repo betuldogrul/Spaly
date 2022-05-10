@@ -5,15 +5,16 @@ public class CreditCard extends CardStatement
     private double upperLimit;
     private double totalSpentMoney;
     private String cardBank;
-    private User user;
+    private int user;
 
-    public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, User user)
+    public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
     {
         this.creditcard_id = creditcard_id;
         this.cardNumber = number;
         this.upperLimit = upperLimit;
         this.totalSpentMoney = totalMoney;
         this.cardBank = cardBank;
+        this.user = userID;
     }
 
     public double getCardNumber()

@@ -34,12 +34,13 @@ public class CardStatement // a class to hold all credit cards
 
             while (rs.next()) {
                 int creditcard_id = rs.getInt("creditcard_id");
-                String card_number = rs.getString("card_number");
+                Double card_number = rs.getDouble("card_number");
                 String card_bank = rs.getString("card_bank");
                 int card_limit = rs.getInt("card_limit");
                 int user_id = rs.getInt("user_id");
-                CreditCard card = new CreditCard(creditcard_id, card_number, card_limit, )
-                cards.add();
+                //public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
+                CreditCard card = new CreditCard(creditcard_id, card_number, card_limit,0, card_bank, user_id);
+                cards.add(card);
             }
             p.close();
             conn.close();
