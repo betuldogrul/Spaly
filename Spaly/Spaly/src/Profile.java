@@ -4,7 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Profile{
+    static User user;
 
     public static User isUserVaid(String userName, String passw)//checing user whether login right or wrong and return the user
     {
@@ -13,6 +16,7 @@ public class Profile{
         {
             if(y.get(i).getPassword().equals(passw) && y.get(i).getUserUserName().equals(userName))
             {
+                user = y.get(i);
                 return y.get(i);
             }
         }
@@ -20,11 +24,16 @@ public class Profile{
         {
             if(!y.get(i).getPassword().equals(passw) && y.get(i).getUserUserName().equals(userName))
             {
+                JOptionPane.showMessageDialog(null,"Wrong password", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("Wrong password");
                 return null;
             }
         }
         return null;
+    }
+    public static User  getUser()
+    {
+        return user;
     }
 
     public static void registerUser(String name, String surname, String userName, String userPassword, String mail, int income)

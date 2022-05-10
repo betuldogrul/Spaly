@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ShoppingList {
-    private ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
+    private static ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
     private User user;
     Goals goal = new Goals(user);//aggragation
 
@@ -122,7 +122,7 @@ public class ShoppingList {
             System.out.println("User reached maximum goal number!");
     }
 
-    public ArrayList<Item> search(String name) {
+    public static ArrayList<Item> search(String name) {
         for(int i = 0; i < AllItems.size(); i++)
         {
             // it will take from SQL products and when user search for an item it will bring the desired arrayList

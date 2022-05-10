@@ -176,7 +176,8 @@ public class Goals{
 
     public ArrayList<targetedItem> getItemsArrayList()//look lter
     {
-        Item item = null;
+        ArrayList<Item> k= ShoppingList.createAllItems();
+        ArrayList<targetedItem> y = new ArrayList<targetedItem>();
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
@@ -189,7 +190,6 @@ public class Goals{
         final String password = "74252002";
         PreparedStatement p = null;
         ResultSet rs = null;
-        ArrayList<Item> allItem = new ArrayList<Item>();
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
             String sql = "SELECT * FROM goals where userID=" + profile.getId();
@@ -198,12 +198,17 @@ public class Goals{
 
             while (rs.next()) {
                 int id = rs.getInt("ItemId");
-                String name = rs.getString("ItemName");
-                Double price = rs.getDouble("price");
-                String website = rs.getString("website");
-                String image = rs.getString("image");
-                item = new Item(id, name, price, image, website);
-                allItem.add(item);
+                double total = rs.getDouble("itemMoney");
+                for(int i = 0; i < k.size(); i++)
+                {
+                    if(k.get(i).getId() == id)
+                    {
+                        Item item = k.get(i);
+                        targetedItem target = new targetedItem(item,true);
+                        y.add(target);
+                    }
+                }
+                
             }
             p.close();
             conn.close();
@@ -212,7 +217,7 @@ public class Goals{
         {
             System.out.println(e);
         }
-        return allItem;
+        return y;
     }
 
 }

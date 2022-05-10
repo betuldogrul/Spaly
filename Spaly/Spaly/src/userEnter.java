@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -67,6 +69,12 @@ public class userEnter extends javax.swing.JFrame {
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+                if(Profile.isUserVaid(userName.getText(), userPassword.getText()) != null)
+                {
+                    NewJFrame frame = new NewJFrame();
+                    frame.show();
+                    dispose();
+                }
             }
         });
 
