@@ -1,5 +1,7 @@
 
 
+import java.util.Currency;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -9,11 +11,10 @@ public class targetedItem extends Item implements Percentage {
     private boolean isTheProductInGoal;
     private Item item;
    
-    public targetedItem(Item item , boolean isTheProductInGoal) {
+    public targetedItem(Item item, double currentSaving) {
         super(item.getId(), item.getName(), item.getPrice(), item.getImage(), item.getWebsite());
         this.item = item;
-        this.isTheProductInGoal = isTheProductInGoal;
-        this.currentSaving = 0;
+        this.currentSaving = currentSaving;
         //TODO Auto-generated constructor stub
     }
 
@@ -25,12 +26,34 @@ public class targetedItem extends Item implements Percentage {
         }
         return false;
     }
+    public int getID()
+    {
+        return item.getId();
+    }
+    public String getImage()
+    {
+        return item.getImage();
+    }
 
-    public void setIsTheProductInGoal(boolean trueOrFalse)
+    public double getPrice()
+    {
+        return item.getPrice();
+    }
+
+    public String getName()
+    {
+        return item.getName();
+    }
+
+    public String getWebsite()
+    {
+        return item.getWebsite();
+    }
+    /* public void setIsTheProductInGoal(boolean trueOrFalse)
     {
         this.isTheProductInGoal = trueOrFalse;
     }
-
+ */
     public double getSaver()
     {
         return this.currentSaving;

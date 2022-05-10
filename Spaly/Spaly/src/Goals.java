@@ -10,24 +10,48 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 public class Goals{
-    private ArrayList<targetedItem> goalsItems;//aggragation
+    private static ArrayList<targetedItem> goalsItems;//aggragation
     private User profile;
-    public Goals(User user)
+    public Goals()
     {
-        this.goalsItems = new ArrayList<>();
-        this.profile = profile;
+        goalsItems = getItemsArrayList();
     }
 
-    public void remove(targetedItem item)
+    public static void remove(targetedItem item)
     {
         if(item.isInTheGoal())
         {
+            try {
+            
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+            final String username = "root";
+            final String password = "74252002";
+            PreparedStatement p = null;
+            ResultSet rs = null;
+            try{
+                Connection conn = DriverManager.getConnection(DbUrl, username, password);
+                String sql = "DELETE FROM goals WHERE userID = " + Profile.getUser().getId() + " and where itemID="+ item.getId();
+                p = conn.prepareStatement(sql);
+                p.executeUpdate();
+                p.close();
+                conn.close();
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
             for(int i = 0; i < goalsItems.size(); i++)
             {
                 if(item == goalsItems.get(i))
                 {
-                    goalsItems.get(i).setIsTheProductInGoal(false);
                     goalsItems.remove(i);
                     //if() user clicked to remove button
                     //System.out.println("Product successfully removed.");
@@ -36,13 +60,22 @@ public class Goals{
         }
     }
     
-    public void moneyGoes(targetedItem item, double money)
+    public static void moneyGoes(targetedItem item, double money)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
+        double add = item.getCurrentMoney() + money;
+        if(add > item.price)
+        {
+            double substract = add - item.price;
+            add = item.price;
+            JOptionPane.showMessageDialog(null,"Limit exceeded! This money cannot be added: "+ substract, "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Money added.", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+        }
         Connection conn = null;
         Statement stmt = null;
-        double add = item.getCurrentMoney() + money;
         try {
            try {
               Class.forName("com.mysql.jdbc.Driver");
@@ -52,7 +85,7 @@ public class Goals{
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update goals set itemMoney='" + add + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
+           String query1 = "update goals set itemMoney='" + add + "' where userID =" + Profile.getUser().getId()+ " and itemID="+ item.getID();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -60,36 +93,52 @@ public class Goals{
             System.out.println(e);
         }
         item.setCurrentMoney(item.getCurrentMoney() + money);
+        
     }
 
-    public void moneyGoesAsPercent(targetedItem item, double money, int percent)
+    public static void moneyGoesAsPercent(targetedItem item, double money, int percent)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
         Connection conn = null;
         Statement stmt = null;
+        String DATABASE_URL = "jdbc:mysql://localhost/hr";
         double add = item.getCurrentMoney() + money *(percent/ 100);
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
-           try {
-              Class.forName("com.mysql.jdbc.Driver");
-           } catch (Exception e) {
-              System.out.println(e);
-           }
-           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
-           System.out.println("Connection is created successfully:");
-           stmt = (Statement) conn.createStatement();
-           String query1 = "update goals set itemMoney='" + add + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
-           ((java.sql.Statement) stmt).executeUpdate(query1);
+               Class.forName("com.mysql.jdbc.Driver");
+               connection = DriverManager.getConnection(DATABASE_URL, "root", "74252002");
+               PreparedStatement ps = conn.prepareStatement(
+                "UPDATE goals SET itemMoney = ? WHERE userID = ? AND itemID = ?");
+          
+              // set the preparedstatement parameters
+              ps.setDouble(1,add);
+              ps.setInt(2,Profile.getUser().getId());
+              ps.setInt(3,item.getID());
+          
+              // call executeUpdate to execute our sql update statement
+              ps.executeUpdate();
+              ps.close();
+                               
+        } catch (SQLException sqlEx) {
+               sqlEx.printStackTrace();
+               System.exit(1);
+        } catch (ClassNotFoundException clsNotFoundEx) {
+               clsNotFoundEx.printStackTrace();
+               System.exit(1);
+        } finally {
+               try {
+                      preparedStatement.close();
+                      connection.close();
+               } catch (Exception e) {
+                      System.exit(1);
+               }
         }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        item.setCurrentMoney(item.getCurrentMoney() + money);
         item.setCurrentMoney(item.getCurrentMoney() + money * percent);
     }
 
-    public void useMoneyFromProduct(targetedItem item, double money)
+    public static void useMoneyFromProduct(targetedItem item, double money)
     {
         //when user needs to spend money from their desired product
         //this method should be connected with spends and savings//update them
@@ -99,22 +148,6 @@ public class Goals{
             Connection conn = null;
             Statement stmt = null;
             double remove = item.getCurrentMoney() - money;
-        try {
-           try {
-              Class.forName("com.mysql.jdbc.Driver");
-           } catch (Exception e) {
-              System.out.println(e);
-           }
-           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
-           System.out.println("Connection is created successfully:");
-           stmt = (Statement) conn.createStatement();
-           String query1 = "update goals set itemMoney='" + remove + "' where itemID =" + item.getId() + "and userID = " + profile.getId();
-           ((java.sql.Statement) stmt).executeUpdate(query1);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
         item.setCurrentMoney(item.getCurrentMoney() + money);
             
         }
@@ -124,7 +157,7 @@ public class Goals{
             System.out.println("This product doesnt have this much money please lower the money.");
         }
     }
-    public void purchaseAddTransitions(targetedItem item)
+    public static void purchaseAddTransitions(targetedItem item)
     {
         Connection conn = null;
         Statement stmt = null;
@@ -138,7 +171,7 @@ public class Goals{
             System.out.println("Connection is created successfully:");
             stmt = (Statement) conn.createStatement();
             String query1 = "delete from  goals " +
-            "where id=" + profile.getId() + "and itemID =" + item.getId();
+            "where id=" + Profile.getUser().getId() + "and itemID =" + item.getId();
             stmt.executeUpdate(query1);
         }
         catch(Exception e)
@@ -146,7 +179,7 @@ public class Goals{
             System.out.println(e);
         }
     }
-    public void purchase(targetedItem item)
+    public static void purchase(targetedItem item)
     {
         if(item.canBuy())//if the user has enough money 
         {
@@ -167,14 +200,15 @@ public class Goals{
               }
         else//user doesnt have enough money this part may lead user to put money to that item. not sure yet.
         {
-            System.out.println("User doesn't have enough money!");
+            JOptionPane.showMessageDialog(null,"User doesn't have enough money!", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+
         } 
         //when user want to purchase a product it will lead to the website of the product it will cut the money
         // from the account and it will remove the item from the goals and it will say user to set new goals since user will buy the product from her bank account it will not spend money in
         // here when s/he purchase it will come from the card info
     }
 
-    public ArrayList<targetedItem> getItemsArrayList()//look lter
+    public static ArrayList<targetedItem> getItemsArrayList()//look lter
     {
         ArrayList<Item> k= ShoppingList.createAllItems();
         ArrayList<targetedItem> y = new ArrayList<targetedItem>();
@@ -192,7 +226,7 @@ public class Goals{
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM goals where userID=" + profile.getId();
+            String sql = "SELECT * FROM goals where userID=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -204,7 +238,7 @@ public class Goals{
                     if(k.get(i).getId() == id)
                     {
                         Item item = k.get(i);
-                        targetedItem target = new targetedItem(item,true);
+                        targetedItem target = new targetedItem(item, total);
                         y.add(target);
                     }
                 }

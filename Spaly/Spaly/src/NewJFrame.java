@@ -1,8 +1,9 @@
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 
 /**
  *
@@ -79,6 +80,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        ArrayList<targetedItem> target = Goals.getItemsArrayList();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -150,11 +152,13 @@ public class NewJFrame extends javax.swing.JFrame {
         progress2.setBackground(java.awt.Color.blue);
         progress2.setForeground(java.awt.Color.cyan);
 
-        jLabel4.setText("price:");
+        jLabel4.setText("Price:");
 
         TItem1Price.setText("null");
 
-        ItemName2.setText("there is no item.");
+        ItemName2.setText("there is no item");
+
+      
 
         jLabel7.setText("price:");
 
@@ -167,9 +171,25 @@ public class NewJFrame extends javax.swing.JFrame {
         ıtemPriceT3.setText("null");
 
         website1.setLabel("Website");
+        if(target != null)
+        {
+            TItem1Price.setText(""+ target.get(0).getPrice());
+            itemName1.setText(target.get(0).getName());
+            if(target.size() > 1)
+            {
+                TItemPrice2.setText("" + target.get(1).getPrice());
+                ItemName2.setText(target.get(1).getName());
+                if(target.size() > 2)
+                {
+                    ıtemPriceT3.setText("" + target.get(2).getPrice());
+                    ItemName3.setText(target.get(2).getName());
+                }
+            }
+        }
         website1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website1ActionPerformed(evt);
+                Goals.purchase(target.get(0));
             }
         });
 
@@ -177,6 +197,7 @@ public class NewJFrame extends javax.swing.JFrame {
         website2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website2ActionPerformed(evt);
+                Goals.purchase(target.get(0));
             }
         });
 
@@ -184,6 +205,7 @@ public class NewJFrame extends javax.swing.JFrame {
         website3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website3ActionPerformed(evt);
+                Goals.purchase(target.get(0));
             }
         });
 
@@ -228,10 +250,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        addmoney1.setText("Add money");
+        addmoney1.setText("Add money1");
         addmoney1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney1ActionPerformed(evt);
+                Double amount = Double.parseDouble(amount1.getText());
+                Goals.moneyGoes(target.get(0), amount);
+                amount1.setText("amount");
             }
         });
 
@@ -239,6 +264,9 @@ public class NewJFrame extends javax.swing.JFrame {
         addmoney3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney3ActionPerformed(evt);
+                Double amount = Double.parseDouble(amount3.getText());
+                Goals.moneyGoes(target.get(2), amount);
+                amount3.setText("amount");
             }
         });
 
@@ -246,6 +274,9 @@ public class NewJFrame extends javax.swing.JFrame {
         addmoney2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney2ActionPerformed(evt);
+                Double amount = Double.parseDouble(amount2.getText());
+                Goals.moneyGoes(target.get(1), amount);
+                amount2.setText("amount");
             }
         });
 
@@ -253,7 +284,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-                ShoppingList.search(jTextField1.getText());
+                
             }
         });
 
@@ -263,6 +294,25 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
 
         jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
+
+        goal1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
+
+        goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
+
+        goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
+        
+        if(target != null)
+        {
+            goal1.setIcon(new javax.swing.ImageIcon(target.get(0).getImage())); // NOI18N
+            if(target.size() > 1)
+            {
+                goal2.setIcon(new javax.swing.ImageIcon(target.get(1).getImage())); // NOI18N
+                if(target.size() > 2)
+                {
+                    goal3.setIcon(new javax.swing.ImageIcon(target.get(2).getImage())); // NOI18N
+                }
+            }
+        }
 
         jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -295,6 +345,10 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -373,18 +427,17 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1287, 1287, 1287))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(354, 354, 354))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1287, 1287, 1287))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(397, 397, 397))))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -473,24 +526,25 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addComponent(goal3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(removethirdgoal)))
                             .addComponent(removesecondGoal))
-                        .addGap(0, 545, Short.MAX_VALUE))
+                        .addGap(0, 563, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(115, 115, 115)
                                 .addComponent(jLabel6)
-                                .addGap(28, 28, 28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 986, Short.MAX_VALUE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jButton3))))
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jButton3))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -541,8 +595,9 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                         
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-       jFrame2 jf2 = new jFrame2(); // TODO add your handling code here:
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {   
+        ShoppingList.search(jTextField1.getText());
+       jFrame2 jf2 = new jFrame2(); 
        jf2.show();
        dispose();
     }                                        
