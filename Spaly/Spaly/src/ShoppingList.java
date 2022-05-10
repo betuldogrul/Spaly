@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class ShoppingList {
     private static ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
     private User user;
-    Goals goal = new Goals(user);//aggragation
+    private Goals goal = new Goals();
 
 
     public ShoppingList() {
@@ -85,7 +85,7 @@ public class ShoppingList {
         return allItem;
     }
 
-    public void addToGoal(Item item, User user) {
+    public void addToGoal(Item item) {
       
         //this item will come in goal
         if (goal.getItemsArrayList().size() <= 3) {
@@ -115,7 +115,7 @@ public class ShoppingList {
             {
                 System.out.println(e);
             }
-            targetedItem tItem = new targetedItem(item, true);
+            targetedItem tItem = new targetedItem(item, 0);
             goal.getItemsArrayList().add(tItem);
             System.out.println("Product succesfully added:");
         } else

@@ -1,4 +1,4 @@
-
+import java.sql.*;
 
 public class Category extends Categories // only one card, only one category
 {
@@ -15,6 +15,26 @@ public class Category extends Categories // only one card, only one category
         this.currentSpending = currentSpendings;
         this.card = card;
         this.limit=limit;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "INSERT INTO category VALUES(" + card.getCreditCardId() + ", " + name + "," + currentSpendings + "," + limit;
+            p = conn.prepareStatement(sql);
+            p.executeUpdate();
+            conn.close();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public String getName()
