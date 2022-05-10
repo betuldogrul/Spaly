@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -80,7 +78,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        ArrayList<targetedItem> target = Goals.getItemsArrayList();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -152,13 +149,11 @@ public class NewJFrame extends javax.swing.JFrame {
         progress2.setBackground(java.awt.Color.blue);
         progress2.setForeground(java.awt.Color.cyan);
 
-        jLabel4.setText("Price:");
+        jLabel4.setText("price:");
 
         TItem1Price.setText("null");
 
-        ItemName2.setText("there is no item");
-
-      
+        ItemName2.setText("there is no item.");
 
         jLabel7.setText("price:");
 
@@ -171,25 +166,9 @@ public class NewJFrame extends javax.swing.JFrame {
         ıtemPriceT3.setText("null");
 
         website1.setLabel("Website");
-        if(target != null)
-        {
-            TItem1Price.setText(""+ target.get(0).getPrice());
-            itemName1.setText(target.get(0).getName());
-            if(target.size() > 1)
-            {
-                TItemPrice2.setText("" + target.get(1).getPrice());
-                ItemName2.setText(target.get(1).getName());
-                if(target.size() > 2)
-                {
-                    ıtemPriceT3.setText("" + target.get(2).getPrice());
-                    ItemName3.setText(target.get(2).getName());
-                }
-            }
-        }
         website1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website1ActionPerformed(evt);
-                Goals.purchase(target.get(0));
             }
         });
 
@@ -197,7 +176,6 @@ public class NewJFrame extends javax.swing.JFrame {
         website2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website2ActionPerformed(evt);
-                Goals.purchase(target.get(0));
             }
         });
 
@@ -205,11 +183,15 @@ public class NewJFrame extends javax.swing.JFrame {
         website3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website3ActionPerformed(evt);
-                Goals.purchase(target.get(0));
             }
         });
 
         removeFirstGoal.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564505_close_delete_exit_remove_icon.png")); // NOI18N
+        removeFirstGoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeFirstGoalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -223,8 +205,18 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         removethirdgoal.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564505_close_delete_exit_remove_icon.png")); // NOI18N
+        removethirdgoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removethirdgoalActionPerformed(evt);
+            }
+        });
 
         removesecondGoal.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564505_close_delete_exit_remove_icon.png")); // NOI18N
+        removesecondGoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removesecondGoalActionPerformed(evt);
+            }
+        });
 
         amount1.setText("amount");
         amount1.setActionCommand("<Not Set>");
@@ -250,13 +242,10 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        addmoney1.setText("Add money1");
+        addmoney1.setText("Add money");
         addmoney1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney1ActionPerformed(evt);
-                Double amount = Double.parseDouble(amount1.getText());
-                Goals.moneyGoes(target.get(0), amount);
-                amount1.setText("amount");
             }
         });
 
@@ -264,9 +253,6 @@ public class NewJFrame extends javax.swing.JFrame {
         addmoney3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney3ActionPerformed(evt);
-                Double amount = Double.parseDouble(amount3.getText());
-                Goals.moneyGoes(target.get(2), amount);
-                amount3.setText("amount");
             }
         });
 
@@ -274,9 +260,6 @@ public class NewJFrame extends javax.swing.JFrame {
         addmoney2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney2ActionPerformed(evt);
-                Double amount = Double.parseDouble(amount2.getText());
-                Goals.moneyGoes(target.get(1), amount);
-                amount2.setText("amount");
             }
         });
 
@@ -284,7 +267,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-                
             }
         });
 
@@ -300,19 +282,6 @@ public class NewJFrame extends javax.swing.JFrame {
         goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
 
         goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
-        
-        if(target != null)
-        {
-            goal1.setIcon(new javax.swing.ImageIcon(target.get(0).getImage())); // NOI18N
-            if(target.size() > 1)
-            {
-                goal2.setIcon(new javax.swing.ImageIcon(target.get(1).getImage())); // NOI18N
-                if(target.size() > 2)
-                {
-                    goal3.setIcon(new javax.swing.ImageIcon(target.get(2).getImage())); // NOI18N
-                }
-            }
-        }
 
         jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -595,9 +564,8 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                         
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {   
-        ShoppingList.search(jTextField1.getText());
-       jFrame2 jf2 = new jFrame2(); 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+       Jframe2 jf2 = new Jframe2(); // TODO add your handling code here:
        jf2.show();
        dispose();
     }                                        
@@ -609,6 +577,18 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
+
+    private void removeFirstGoalActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    private void removesecondGoalActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
+    private void removethirdgoalActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
 
     /**
      * @param args the command line arguments
