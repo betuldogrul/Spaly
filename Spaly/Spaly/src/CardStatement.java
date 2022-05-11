@@ -123,16 +123,16 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT SUM(spending) FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + 
+            String sql = "SELECT * FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + 
                                 Profile.getUser().getId() + ") AND day = " + c.get(Calendar.DATE);
+
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
             while(rs.next())
             {
-                dailySpending = rs.getInt("SUM(spending");
+                dailySpending = dailySpending + rs.getInt("spending");
             }
-
             p.close();
             conn.close();
         } catch (Exception e) {
