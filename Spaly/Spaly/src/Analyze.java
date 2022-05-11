@@ -143,4 +143,24 @@ public class Analyze {
         return k;
     }
     //Draws the chart of Monthly Spending of the User from All Bank Card Info
+    public static double  getMonthSpend(int k) 
+    {
+        ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
+        
+        double sum = 0;
+        for(int i = 0 ; i < cards.size(); i++)
+        {
+            ArrayList<Double> s = differ(getValuesFromDatabase(5, cards.get(i))).get(k);
+            for(int y = 0; y < s.size(); y++ )
+            {
+                sum = sum + s.get(y);
+            }
+            
+        }
+        return sum;
+    }	
+     
+    public static void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
+       
+    }
 }
