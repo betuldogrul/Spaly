@@ -244,7 +244,9 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        MenuJFrame menu = new MenuJFrame();
+        menu.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -254,20 +256,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    /*private void integrationOfCategoryValues(){
-        try{
-            String query= "select sum(transportation),sum(food),sum(clothes),sum(other) from x where ";
-            pst=con.prepareStatement(query);
-            rs=pst.executeQuery();
-            if(rs.next()){
-                
-            int p1,p2,p3,p4;
-            p1=Integer.parseInt(rs.getString("transportation"));
-            p2=Integer.parseInt(rs.getString("food"));
-            p3=Integer.parseInt(rs.getString("clothes"));
-            p4=Integer.parseInt(rs.getString("other"));
-        }
-    }*/
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -322,6 +311,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel limit2;
     private javax.swing.JLabel limit3;
     private javax.swing.JLabel limit4;
-    // End of variables declaration                   
+    // End of variables declaration 
+                      
 }
 
