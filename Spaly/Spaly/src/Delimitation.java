@@ -2,9 +2,10 @@
 
 public class Delimitation 
 {
-    private String warning;
-    private double limit;
-    private String budgetPlanning;
+    private static String warning;
+    private static double limit;
+    private static String budgetPlanning;
+    public static boolean budgetPlanningWayChanged = false;
 
     public Delimitation()
     {   
@@ -13,9 +14,9 @@ public class Delimitation
         budgetPlanning = "Daily";
     }    
 
-    public String getBudgetPlanningWay()
+    public static String getBudgetPlanningWay()
     {
-        return this.budgetPlanning;
+        return budgetPlanning;
     }
 
     public double getLimit()

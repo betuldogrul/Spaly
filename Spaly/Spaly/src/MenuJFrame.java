@@ -1,5 +1,7 @@
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JFrame;
 
 /**
@@ -85,9 +87,19 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton6.setText("ANALYSES");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton7.setText("MONEYBOX");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -184,7 +196,21 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
         jf.show();
         
         dispose();
-    }                                        
+    }      
+
+    private void jButton6ActionPerformed(ActionEvent evt) {
+        AnalysesJFrame jf = new AnalysesJFrame()
+        jf.show();
+
+        dispose();
+    }
+    
+    private void jButton7ActionPerformed(ActionEvent evt) {
+        MoneyBoxFrame mb = new MoneyBoxFrame();
+        mb.show();
+
+        dispose();
+    }
 
 
     // Variables declaration - do not modify                     
