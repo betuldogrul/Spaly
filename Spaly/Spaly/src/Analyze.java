@@ -130,22 +130,24 @@ public class Analyze {
         return k;
     }
     //Draws the chart of Monthly Spending of the User from All Bank Card Info
-    public static void drawPieChartofMonthlySpendingAccordingtoCategories(Stage primaryStage){
-       		 
+    public static double  getMonthSpend(int k) 
+    {
+        ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
+        
+        double sum = 0;
+        for(int i = 0 ; i < cards.size(); i++)
+        {
+            ArrayList<Double> s = differ(getValuesFromDatabase(5, cards.get(i))).get(k);
+            for(int y = 0; y < s.size(); y++ )
+            {
+                sum = sum + s.get(y);
+            }
+            
+        }
+        return sum;
+    }	
+     
     public static void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
-        try{
-            String query= "select sum(spending),category from x where ";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset();
-            JFreeChart chart=ChartFactory.createPieChart("Monthly All Bank Cards Category Analyses",dataset,false, true, false);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            renderer=new BarRenderer();
-            ChartFrame frame= new ChartFrame("Monthly All Spending-Categories Chart",chart);
-            frame.setVisible(true);
-            frame.setSize(400,650);
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
+       
     }
 }
