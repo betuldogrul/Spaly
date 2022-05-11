@@ -3,6 +3,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * CardStatement
@@ -68,12 +70,75 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         } catch (Exception e) {
             System.out.println(e);
         }
+        getMonthlySpending();
         return cards;
     }
 
-    public double getTotalSpending()
+    public static double getMonthlySpending()
     {
-        return this.totalSpending;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT SUM(spending) FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + Profile.getUser().getId() + ")";
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while(rs.next())
+            {
+                totalSpending = rs.getInt("SUM(spending");
+            }
+
+            p.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return totalSpending;
+    }
+
+    public double getDailySpending(Date day)
+    {
+        Calendar c = Calendar.getInstance();
+        c.setTime(day);
+
+        double dailySpending = 0;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT SUM(spending) FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + 
+                                Profile.getUser().getId() + ") AND day = " + c.get(Calendar.DATE);
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while(rs.next())
+            {
+                dailySpending = rs.getInt("SUM(spending");
+            }
+
+            p.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return dailySpending;
     }
 
     public static ArrayList<CreditCard> getCards()
