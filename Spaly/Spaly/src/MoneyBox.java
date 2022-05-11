@@ -7,7 +7,7 @@ public class MoneyBox{
 
     //VARIABLES
     public Calendar endDate;
-    private int numberOfDays; //Update when there is a change in budget planing way (in setBudgetPlanningWay method update this also)
+    private int numberOfDays; //Update when there is a change in budget planing way
     public int dailySpendingLimit; //Update according to budget planning way
     public int dailySaving; //Update daily bases
     public int monthlySaving; //Update monthly bases
@@ -16,8 +16,7 @@ public class MoneyBox{
 
 
     //CONSTRUCTORS
-    public MoneyBox(User u){
-        this.u = u;
+    public MoneyBox(){
     }
 
     //METHODS
@@ -93,7 +92,7 @@ public class MoneyBox{
     }
 
     private void setDailySpendingLimit(){
-        dailySpendingLimit = u.getIncome()/numberOfDays;
+        dailySpendingLimit = User.getUserIncome()/numberOfDays;
     }
 
     private void setDailySaving(){
@@ -110,7 +109,7 @@ public class MoneyBox{
 
     //Other Methods
 
-    public void updateMoneyBox(User u){
+    public void updateMoneyBox(){
 
         Calendar currentDate = Calendar.getInstance();
         Calendar today;
@@ -126,7 +125,7 @@ public class MoneyBox{
             setEndDate();
         }
 
-        if(u.getToday().before(currentDate)){//If the day is passed
+        if(getToday().before(currentDate)){//If the day is passed
             setTotalSaving();
             setMonthlySaving();
             dailySaving = 0;
