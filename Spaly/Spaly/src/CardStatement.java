@@ -105,7 +105,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         return totalSpending;
     }
 
-    public double getDailySpending(Date day)
+    public static double getDailySpending(Date day)
     {
         Calendar c = Calendar.getInstance();
         c.setTime(day);

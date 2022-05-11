@@ -357,6 +357,7 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         limitation.setBudgetPlanningWay((String)jComboBox1.getSelectedItem());
+        Delimitation.budgetPlanningWayChanged = true;
     } 
 
     /**
