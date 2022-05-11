@@ -87,7 +87,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         jProgressBar4.setMaximum(170);
         jProgressBar4.setValue(50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tekin\\Downloads\\WhatsApp Image 2022-05-09 at 22.38.53.jpeg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\tekin\\Downloads\\WhatsApp Image 2022-05-09 at 21.05.49.jpeg")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
