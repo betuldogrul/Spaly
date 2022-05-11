@@ -129,7 +129,7 @@ public class Profile{
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "DELETE FROM users WHERE userID = " + user.getId();
+            String sql = "DELETE FROM users WHERE userID=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             p.executeUpdate();
             p.close();

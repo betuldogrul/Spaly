@@ -1,4 +1,7 @@
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -145,6 +148,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         progress1.setBackground(java.awt.Color.blue);
         progress1.setForeground(java.awt.Color.cyan);
+        progress1.setStringPainted(true);
+        progress2.setStringPainted(true);
+        progress3.setStringPainted(true);
+        if(target != null)
+        {
+            progress1.setValue((int)target.get(0).getCurrentMoney());
+        }
+        if(target.size() > 1)
+        progress2.setValue((int)target.get(1).getCurrentMoney());
+        if(target.size() >2)
+        progress3.setValue((int)target.get(2).getCurrentMoney());
 
         progress3.setBackground(java.awt.Color.blue);
         progress3.setForeground(java.awt.Color.cyan);
@@ -208,8 +222,43 @@ public class NewJFrame extends javax.swing.JFrame {
                 Goals.purchase(target.get(0));
             }
         });
-
+        if(target != null)
+        {
+            removeFirstGoal.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    removeFirstGoal(evt);
+                        Goals.remove(target.get(0).getID());
+                        itemName1.setText("there is no item.");
+                        TItem1Price.setText("null");
+                        progress1.setValue(0);
+                        goal1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
+                }
+            });
+        removesecondGoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeSecondGoal(evt);
+                Goals.remove(target.get(1).getID());
+                ItemName2.setText("there is no item.");
+                TItemPrice2.setText("null");
+                progress2.setValue(0);
+                goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
+            }
+        });
+        removethirdgoal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeThirdGoal(evt);
+                Goals.remove(target.get(2).getID());
+                ItemName3.setText("there is no item.");
+                ıtemPriceT3.setText("null");
+                progress3.setValue(0);
+                goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
+            }
+        });
+        }
         removeFirstGoal.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564505_close_delete_exit_remove_icon.png")); // NOI18N
+        
+
+            
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -257,6 +306,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 Double amount = Double.parseDouble(amount1.getText());
                 Goals.moneyGoes(target.get(0), amount);
                 amount1.setText("amount");
+                progress1.setValue((int)target.get(0).getCurrentMoney());
             }
         });
 
@@ -267,24 +317,30 @@ public class NewJFrame extends javax.swing.JFrame {
                 Double amount = Double.parseDouble(amount3.getText());
                 Goals.moneyGoes(target.get(2), amount);
                 amount3.setText("amount");
+                progress3.setValue((int)target.get(2).getCurrentMoney());
             }
         });
-
         addmoney2.setText("Add money");
-        addmoney2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addmoney2ActionPerformed(evt);
-                Double amount = Double.parseDouble(amount2.getText());
-                Goals.moneyGoes(target.get(1), amount);
-                amount2.setText("amount");
-            }
-        });
+        if(target!= null)
+        {
+            addmoney2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    addmoney2ActionPerformed(evt);
+                    Double amount = Double.parseDouble(amount2.getText());
+                    Goals.moneyGoes(target.get(1), amount);
+                    amount2.setText("amount");
+                    progress2.setValue((int)target.get(1).getCurrentMoney());
+                }
+            });
+        }
+       
+       
 
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\8324275_ui_essential_app_magnifier_search_icon.png")); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-                
+
             }
         });
 
@@ -551,6 +607,15 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    protected void removeThirdGoal(ActionEvent evt) {
+    }
+
+    protected void removeSecondGoal(ActionEvent evt) {
+    }
+
+    protected void removeFirstGoal(ActionEvent evt) {
+    }
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
@@ -596,10 +661,15 @@ public class NewJFrame extends javax.swing.JFrame {
     }                                         
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {   
-        ShoppingList.search(jTextField1.getText());
-       jFrame2 jf2 = new jFrame2(); 
-       jf2.show();
-       dispose();
+        ShoppingList y = new ShoppingList();
+       ShoppingList.createAllItems();
+       ArrayList<Item> k = ShoppingList.search(jTextField1.getText());
+       if(k != null)
+       {
+        jFrame2 jf2 = new jFrame2(); 
+        jf2.show();
+        dispose();
+       }
     }                                        
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                                      

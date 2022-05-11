@@ -77,7 +77,6 @@ public class userEnter extends javax.swing.JFrame {
                 }
             }
         });
-
         jButton5.setText("SIGN UP");
 
         jButton6.setText("FORGOT PASSWORD");

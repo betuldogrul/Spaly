@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 public class ShoppingList {
     private static ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
-    private User user;
+    private static ArrayList<Item> searched;
     private Goals goal = new Goals();
 
 
@@ -85,10 +85,10 @@ public class ShoppingList {
         return allItem;
     }
 
-    public void addToGoal(Item item) {
+    public static void addToGoal(Item item) {
       
         //this item will come in goal
-        if (goal.getItemsArrayList().size() <= 3) {
+        if (createAllItems().size() <= 3) {
             try {
             
                 Class.forName("com.mysql.jdbc.Driver");
@@ -105,9 +105,9 @@ public class ShoppingList {
                 Connection conn = DriverManager.getConnection(DbUrl, username, password);
                 String sql = "INSERT INTO goals VALUES (?, ?, ?)";//taking item to database
                 p = conn.prepareStatement(sql);
-                p.setInt(1, user.getId());
+                p.setInt(1, 1);
                 p.setInt(2, item.getId());
-                p.setFloat(3,   0);
+                p.setFloat(3,0);
                 p.executeUpdate();
                 conn.close();
             }
@@ -116,20 +116,26 @@ public class ShoppingList {
                 System.out.println(e);
             }
             targetedItem tItem = new targetedItem(item, 0);
-            goal.getItemsArrayList().add(tItem);
+            createAllItems().add(tItem);
             System.out.println("Product succesfully added:");
-        } else
-            System.out.println("User reached maximum goal number!");
+        }       
     }
 
+        
+    public static ArrayList<Item> getSearched()
+    {
+        return searched;
+    }
     public static ArrayList<Item> search(String name) {
+        ArrayList<ArrayList<Item>> AllItems = differKind(createAllItems());
         for(int i = 0; i < AllItems.size(); i++)
         {
             // it will take from SQL products and when user search for an item it will bring the desired arrayList
-            if(name == AllItems.get(i).get(i).getName())//searched after searching from our arraylist with an for loop we will 
+            if(name.equals(AllItems.get(i).get(i).getName()))//searched after searching from our arraylist with an for loop we will 
             //return this arraylist and show the user different website for the same products.
             {
-               return AllItems.get(i);
+                searched = AllItems.get(i);
+                return AllItems.get(i);
             }
         }
             System.out.println("Spaly doesn't have that product yet. Please wait later versions.");

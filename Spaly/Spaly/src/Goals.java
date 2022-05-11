@@ -17,13 +17,11 @@ public class Goals{
     private User profile;
     public Goals()
     {
-        goalsItems = getItemsArrayList();
+
     }
 
-    public static void remove(targetedItem item)
+    public static void remove(int ID)
     {
-        if(item.isInTheGoal())
-        {
             try {
             
                 Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +36,7 @@ public class Goals{
             ResultSet rs = null;
             try{
                 Connection conn = DriverManager.getConnection(DbUrl, username, password);
-                String sql = "DELETE FROM goals WHERE userID = " + Profile.getUser().getId() + " and where itemID="+ item.getId();
+                String sql = "DELETE FROM goals WHERE userID=" + Profile.getUser().getId() + " and itemID="+ ID;
                 p = conn.prepareStatement(sql);
                 p.executeUpdate();
                 p.close();
@@ -50,15 +48,13 @@ public class Goals{
             }
             for(int i = 0; i < goalsItems.size(); i++)
             {
-                if(item == goalsItems.get(i))
+                if(ID == goalsItems.get(i).getID())
                 {
                     goalsItems.remove(i);
-                    //if() user clicked to remove button
-                    //System.out.println("Product successfully removed.");
                 }
             }
-        }
     }
+
     
     public static void moneyGoes(targetedItem item, double money)
     {
@@ -148,8 +144,7 @@ public class Goals{
             Connection conn = null;
             Statement stmt = null;
             double remove = item.getCurrentMoney() - money;
-        item.setCurrentMoney(item.getCurrentMoney() + money);
-            
+            item.setCurrentMoney(item.getCurrentMoney() + money);   
         }
         
         else
@@ -184,7 +179,7 @@ public class Goals{
         if(item.canBuy())//if the user has enough money 
         {
             purchaseAddTransitions(item);//add transitions and remove from goals
-            remove(item);
+            remove(item.getID());
             System.out.println("Congratulations! User accomplished a goal.");
             System.out.println("Lets set new goals!");
 
@@ -226,12 +221,12 @@ public class Goals{
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM goals where userID=" + Profile.getUser().getId();
+            String sql = "SELECT * FROM goals";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("ItemId");
+                int id = rs.getInt("ItemID");
                 double total = rs.getDouble("itemMoney");
                 for(int i = 0; i < k.size(); i++)
                 {
@@ -241,9 +236,9 @@ public class Goals{
                         targetedItem target = new targetedItem(item, total);
                         y.add(target);
                     }
-                }
-                
+                }   
             }
+            goalsItems = y;
             p.close();
             conn.close();
         }
