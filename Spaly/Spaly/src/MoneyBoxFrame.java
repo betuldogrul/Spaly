@@ -187,11 +187,16 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\homeicon.jpeg")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel8.setText("DAILYSAVING");
+        jLabel8.setText(String.valueOf(MoneyBox.getDailySaving()));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -213,7 +218,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel9.setText("MONTHLY");
+        jLabel9.setText(String.valueOf(MoneyBox.getMonthlySaving()));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -235,7 +240,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel10.setText("TOTAL");
+        jLabel10.setText(String.valueOf(MoneyBox.getTotalSaving()));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -257,7 +262,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel11.setText("GOALMON");
+        jLabel11.setText("label11");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -289,7 +294,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel12.setText("TARGET");
+        jLabel12.setText("label12");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -405,7 +410,13 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                        
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        MenuJFrame menu = new MenuJFrame();
+        menu.setVisible(true);
+        dispose();
+    }
 
     /**
      * @param args the command line arguments
