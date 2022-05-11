@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 public class ShoppingList {
     private static ArrayList<ArrayList<Item>> AllItems;// this arraylist will be created by using sql
-    private static ArrayList<Item> searched;
+    static ArrayList<Item> searched;
     private Goals goal = new Goals();
 
 
@@ -39,6 +39,7 @@ public class ShoppingList {
                 all.add(same);
                 ArrayList<Item> samee = new ArrayList<Item>();
                 same = samee;
+                same.add(k.get(i));
             }
         }
         all.add(same);
@@ -84,11 +85,15 @@ public class ShoppingList {
         }
         return allItem;
     }
-
+    public static void giveWebsiteInfo(Item item)
+    {
+        JOptionPane.showMessageDialog(null,item.getWebsite(), "Website: " , JOptionPane.INFORMATION_MESSAGE);
+            
+    }
     public static void addToGoal(Item item) {
       
         //this item will come in goal
-        if (createAllItems().size() <= 3) {
+        if (Goals.getItemsArrayList().size() <= 3) {
             try {
             
                 Class.forName("com.mysql.jdbc.Driver");
@@ -105,7 +110,7 @@ public class ShoppingList {
                 Connection conn = DriverManager.getConnection(DbUrl, username, password);
                 String sql = "INSERT INTO goals VALUES (?, ?, ?)";//taking item to database
                 p = conn.prepareStatement(sql);
-                p.setInt(1, 1);
+                p.setInt(1, Profile.getUser().getId());
                 p.setInt(2, item.getId());
                 p.setFloat(3,0);
                 p.executeUpdate();
@@ -138,6 +143,7 @@ public class ShoppingList {
                 return AllItems.get(i);
             }
         }
+            searched = null;
             System.out.println("Spaly doesn't have that product yet. Please wait later versions.");
             return null;//if there is no product
     }

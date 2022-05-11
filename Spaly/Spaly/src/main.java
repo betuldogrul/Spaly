@@ -10,10 +10,13 @@ public class main {
         ShoppingList y = new ShoppingList();
         ArrayList<Item> allItem = ShoppingList.createAllItems();
         ArrayList<Item> k = ShoppingList.search("GoPro - HERO9 Black 5K and 20 MP Streaming Action Camera - Black");
-        if(k == null)
+        for(int i = 0; i <k.size(); i++)
         {
-            System.out.println("null");
+            System.out.println(k.get(i).getPrice());
+            
         }
+        Item item = new Item(2, "klc", 10, "kemkd", "1516");
+        ShoppingList.addToGoal(item);
        
        // Profile.registerUser("fatma", "String surname", "fatma12", "String userPassword", "String mail", 10);
         

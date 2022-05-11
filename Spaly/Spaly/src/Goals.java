@@ -195,7 +195,8 @@ public class Goals{
               }
         else//user doesnt have enough money this part may lead user to put money to that item. not sure yet.
         {
-            JOptionPane.showMessageDialog(null,"User doesn't have enough money!", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,item.getWebsite(), "Website: " , JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("Wrong password");
 
         } 
         //when user want to purchase a product it will lead to the website of the product it will cut the money
