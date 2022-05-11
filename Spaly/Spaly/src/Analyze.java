@@ -30,6 +30,7 @@ public class Analyze {
     public double remaining(){
         return itemPrice-savings;
     }
+    //Draws the chart of Daily Spending of the User According to categories of his/her spending
     public void drawBarChartofDailySpendingAccordingtoCategories(int userID){
         try{
             String query= "select spending,category from x where ";
@@ -46,6 +47,7 @@ public class Analyze {
             JOptionPane.showMessageDialog(null,e);
         }
     }
+    //Draws the chart of Monthly Spending of the User According to categories of his/her spending
     public void drawPieChartofMonthlySpendingAccordingtoCategories(int userID){
         try{
             String query= "select sum(spending),category from x where ";
@@ -62,6 +64,7 @@ public class Analyze {
             JOptionPane.showMessageDialog(null,e);
         }
     }
+    //Draws the chart of Monthly Spending of the User from All Bank Card Info
     public void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(int userID){
         try{
             String query= "select sum(spending),category from x where ";
