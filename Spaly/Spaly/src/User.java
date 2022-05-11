@@ -13,7 +13,7 @@ public class User {
     private String pic;
     private String userSurname;
     private String userUserName;
-    private int income;
+    private static int income;
 
 
     public User(int id, int income, String userName, String userSurname, String userUserName, String password, String userMail)
@@ -128,9 +128,9 @@ public class User {
         this.pic = pic;
     }
 
-    public int getUserIncome()
+    public static int getUserIncome()
     {
-        return this.income;
+        return income;
     }
     public String getPic()
     {
