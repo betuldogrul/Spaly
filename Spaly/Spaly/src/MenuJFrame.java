@@ -179,7 +179,7 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     }                                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        CardStatementJFrame jf = new CardStatementJFrame();
+        CardStatementJFrame jf = new CardStatementJFrame(u);
         jf.show();
         
         dispose();
