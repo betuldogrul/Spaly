@@ -5,11 +5,9 @@ public class Delimitation
     private String warning;
     private double limit;
     private String budgetPlanning;
-    private User u;
 
-    public Delimitation(User u)
+    public Delimitation()
     {   
-        this.u = u;
         warning = "You have exceeded your limit!";
         limit = 0;
         budgetPlanning = "Daily";

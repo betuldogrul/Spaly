@@ -43,17 +43,17 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
-        //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 21.05.49 (1).jpeg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        //jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.38.53.jpeg"))); // NOI18N
-        //jLabel16.setText("jLabel14");
+        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
+        jLabel16.setText("jLabel14");
 
-        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.39.40.jpeg"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -172,14 +172,14 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        BudgetPlanningJFrame jf = new BudgetPlanningJFrame(u);
+        BudgetPlanningJFrame jf = new BudgetPlanningJFrame();
         jf.show();
         
         dispose();
     }                                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        CardStatementJFrame jf = new CardStatementJFrame(u);
+        CardStatementJFrame jf = new CardStatementJFrame();
         jf.show();
         
         dispose();
@@ -199,7 +199,6 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private User u;
     // End of variables declaration                   
 }
 

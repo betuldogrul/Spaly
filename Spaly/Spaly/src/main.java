@@ -7,21 +7,30 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        ShoppingList y = new ShoppingList();
-        ArrayList<Item> allItem = ShoppingList.createAllItems();
-        ArrayList<Item> k = ShoppingList.search("GoPro - HERO9 Black 5K and 20 MP Streaming Action Camera - Black");
-        for(int i = 0; i <k.size(); i++)
-        {
-            System.out.println(k.get(i).getPrice());
-            
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(userEnter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(userEnter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(userEnter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(userEnter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        Item item = new Item(2, "klc", 10, "kemkd", "1516");
-        ShoppingList.addToGoal(item);
-       
-       // Profile.registerUser("fatma", "String surname", "fatma12", "String userPassword", "String mail", 10);
-        
-       // Profile.registerUser("fatma", "String surname", "fatma12", "String userPassword", "String mail", 10);
-       // Profile.removeUser(user);
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new userEnter().setVisible(true);
+            }
+        });
     }
     /* public static void registerUser(String name, String surname, String userName, String userPassword, String mail, int income)
     {
