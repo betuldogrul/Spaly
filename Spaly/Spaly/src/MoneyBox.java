@@ -7,7 +7,7 @@ public class MoneyBox{
 
     //VARIABLES
     public Calendar endDate;
-    private int numberOfDays; //Update when there is a change in budget planing way (in setBudgetPlanningWay method update this also)
+    private int numberOfDays; //Update when there is a change in budget planing way
     public int dailySpendingLimit; //Update according to budget planning way
     public int dailySaving; //Update daily bases
     public int monthlySaving; //Update monthly bases
