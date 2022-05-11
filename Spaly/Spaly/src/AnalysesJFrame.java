@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+
 import java.awt.Color;
 import javax.swing.JFrame;
-
+import org.jfree.ui.RefineryUtilities;
 /**
  *
  * @author tekin
@@ -103,8 +104,12 @@ public class AnalysesJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\tekin\\Downloads\\WhatsApp Image 2022-05-09 at 21.05.48.jpeg")); // NOI18N
-
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+                jButton4ActionPerformed(evt);
+            }
+        });
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jButton3.setText("MENU");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +142,22 @@ public class AnalysesJFrame extends javax.swing.JFrame {
 
         current4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         current4.setText("0$");
-
+        
+        javax.swing.GroupLayout pieChartLayout = new javax.swing.GroupLayout(pieChart);
+        pieChart.setLayout(pieChartLayout);
+        pieChartLayout.setHorizontalGroup(
+            pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        pieChartLayout.setVerticalGroup(
+            pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 363, Short.MAX_VALUE)
+        );
+        PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
+        demo.pack();
+        RefineryUtilities.centerFrameOnScreen(demo);
+        demo.setVisible(true);
+        pieChart.add(demo);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,24 +270,15 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
-
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        MenuJFrame menu = new MenuJFrame();
+        menu.setVisible(true);
+        dispose();
+    }
     /**
      * @param args the command line arguments
      */
-    /*private void integrationOfCategoryValues(){
-        try{
-            String query= "select sum(transportation),sum(food),sum(clothes),sum(other) from x where ";
-            pst=con.prepareStatement(query);
-            rs=pst.executeQuery();
-            if(rs.next()){
-                
-            int p1,p2,p3,p4;
-            p1=Integer.parseInt(rs.getString("transportation"));
-            p2=Integer.parseInt(rs.getString("food"));
-            p3=Integer.parseInt(rs.getString("clothes"));
-            p4=Integer.parseInt(rs.getString("other"));
-        }
-    }*/
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
