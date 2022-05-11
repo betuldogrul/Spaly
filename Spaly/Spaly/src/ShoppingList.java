@@ -87,13 +87,12 @@ public class ShoppingList {
     }
     public static void giveWebsiteInfo(Item item)
     {
-        JOptionPane.showMessageDialog(null,item.getWebsite(), "Website: " , JOptionPane.INFORMATION_MESSAGE);
-            
+        JOptionPane.showMessageDialog(null,item.getWebsite(), "Website: " , JOptionPane.INFORMATION_MESSAGE);   
     }
     public static void addToGoal(Item item) {
       
         //this item will come in goal
-        if (Goals.getItemsArrayList().size() <= 3) {
+        if (Goals.getItemsArrayList().size() <= 4) {
             try {
             
                 Class.forName("com.mysql.jdbc.Driver");
@@ -144,7 +143,7 @@ public class ShoppingList {
             }
         }
             searched = null;
-            System.out.println("Spaly doesn't have that product yet. Please wait later versions.");
+            JOptionPane.showMessageDialog(null,"Spaly doesn't have that product yet. Please wait later versions.", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
             return null;//if there is no product
     }
 }
