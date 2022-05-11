@@ -7,11 +7,11 @@ public class MoneyBox{
 
     //VARIABLES
     public Calendar endDate;
-    private int numberOfDays; //Update when there is a change in budget planing way
-    public int dailySpendingLimit; //Update according to budget planning way
-    public int dailySaving; //Update daily bases
-    public int monthlySaving; //Update monthly bases
-    public int totalSaving; //Update daily bases
+    private static int numberOfDays; //Update when there is a change in budget planing way
+    public static int dailySpendingLimit; //Update according to budget planning way
+    public static int dailySaving; //Update daily bases
+    public static int monthlySaving; //Update monthly bases
+    public static int totalSaving; //Update daily bases
     private User u;
 
 
@@ -26,23 +26,23 @@ public class MoneyBox{
         return endDate;
     }
 
-    public int getNumberOfDays(){
+    public static int getNumberOfDays(){
         return numberOfDays;
     }
 
-    public int getDailySpendingLimit(){
+    public static int getDailySpendingLimit(){
         return dailySpendingLimit;
     }
 
-    public int getDailySaving(){
+    public static int getDailySaving(){
         return dailySaving;
     }
 
-    public int getMonthlySaving(){
+    public static int getMonthlySaving(){
         return monthlySaving;
     }
 
-    public int getTotalSaving(){
+    public static int getTotalSaving(){
         return totalSaving;
     }
 
@@ -96,11 +96,11 @@ public class MoneyBox{
     }
 
     private void setDailySaving(){
-        dailySaving = dailySpendingLimit - getDailySpendings();//There is no variable as spendigs however we need that
+        dailySaving = dailySpendingLimit - getDailySpending();//There is no variable as spendigs however we need that
     }
 
     private void setMonthlySaving(){
-        monthlySaving = (dailySpendingLimit * 30) - getMonthlySpendings();
+        monthlySaving = (dailySpendingLimit * 30) - getMonthlySpending();
     }
 
     private void setTotalSaving(){

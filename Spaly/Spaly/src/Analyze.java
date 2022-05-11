@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.Year;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -119,6 +120,18 @@ public class Analyze {
                 String category = rs.getString("category");
                 spend = new Spend( day,  month,  year,  spending,  category);
                 k.add(spend);
+            }
+            for(int i = 1; i < 31; i++)
+            {
+                spend = new Spend(i, monthh, 2022, 0, "Transportation");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Food");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Clothing");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Other");
+                k.add(spend);
+
             }
             p.close();
             conn.close();
