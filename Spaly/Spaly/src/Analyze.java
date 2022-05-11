@@ -1,3 +1,9 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 public class Analyze {
@@ -32,37 +38,37 @@ public class Analyze {
     }
     //Draws the chart of Daily Spending of the User According to categories of his/her spending
     public void drawBarChartofDailySpendingAccordingtoCategories(int userID){
-        try{
-            String query= "select spending,category from x where ";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset();
-            JFreeChart chart=ChartFactory.createBarChart("Daily Analyze Chart","Categories","Spending",dataset,PlotOrientation.VERTICAL,false,true,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            renderer=new BarRenderer();
-            ChartFrame frame= new ChartFrame("Daily Spending-Categories Chart",chart);
-            frame.setVisible(true);
-            frame.setSize(400,650);
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
+     
     }
-    //Draws the chart of Monthly Spending of the User According to categories of his/her spending
-    public void drawPieChartofMonthlySpendingAccordingtoCategories(int userID){
+    public ArrayList<> drawPieMonth(int monthh){
+        ArrayList<> k ;
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        ResultSet rs = null;
+        PreparedStatement p = null;
         try{
-            String query= "select sum(spending),category from x where ";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset();
-            JFreeChart chart=ChartFactory.createPieChart("Monthly Category Analyses",dataset,false, true, false);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            renderer=new BarRenderer();
-            ChartFrame frame= new ChartFrame("Monthly Spending-Categories Chart",chart);
-            frame.setVisible(true);
-            frame.setSize(400,650);
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM cardstatement WHERE monthh=" + monthh
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+            }
+            p.close();
+            conn.close();
         }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        catch(Exception e)
+        {
+            System.out.println(e);
         }
+        k;
     }
     //Draws the chart of Monthly Spending of the User from All Bank Card Info
     public void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(int userID){

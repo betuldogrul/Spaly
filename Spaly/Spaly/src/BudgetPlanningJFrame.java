@@ -9,11 +9,10 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     /**
      * Creates new form BudgetPlanningJFrame
      */
-    public BudgetPlanningJFrame(User u) {
+    public BudgetPlanningJFrame() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        limitation = new Delimitation(u);
-        this.u = u;
+        limitation = new Delimitation();
     }
 
     /**
@@ -252,19 +251,19 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
             }
         });
 
-        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.39.40.jpeg"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 21.05.49 (1).jpeg"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
 
-        //jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.38.53.jpeg"))); // NOI18N
-        //jLabel16.setText("jLabel14");
+        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
+        jLabel16.setText("jLabel14");
 
-        //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 21.05.48.jpeg"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -388,7 +387,7 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BudgetPlanningJFrame(u).setVisible(true);
+                new BudgetPlanningJFrame().setVisible(true);
             }
         });
     }
@@ -421,6 +420,5 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private Delimitation limitation;
-    private static User u;
     // End of variables declaration                   
 }

@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
 
 /*
@@ -16,6 +18,7 @@ public class userEnter extends javax.swing.JFrame {
      */
     public userEnter() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
@@ -71,9 +74,12 @@ public class userEnter extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
                 if(Profile.isUserVaid(userName.getText(), userPassword.getText()) != null)
                 {
-                    NewJFrame frame = new NewJFrame();
-                    frame.show();
-                    dispose();
+                    /* NewJFrame k = new NewJFrame();
+                    k.show();
+                    dispose(); */
+                    BudgetPlanningJFrame k = new BudgetPlanningJFrame();
+                    k.show();
+                    dispose(); 
                 }
             }
         });

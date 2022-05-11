@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.*;;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,6 +16,7 @@ public class jFrame2 extends javax.swing.JFrame {
      */
     public jFrame2() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
