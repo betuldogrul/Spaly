@@ -172,9 +172,4 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             System.out.println(e);
         }
     }
-
-    public static CreditCard getCurrentCard(CreditCard c)
-    {
-        return c;
-    }
 }
