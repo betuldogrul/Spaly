@@ -7,6 +7,11 @@ public class Analyze {
     private double savings;
     private Category category;
     private Categories categories;
+    private Profile p;
+    private int userID;
+    public Analyze(Profile p){
+        userID=p.getUser().getId();
+    }
     public double getTotalExpenditures(){return totalExpenditures;}
     public double getIncome(){return income;}
     public double getItemPrice(){return itemPrice;}
@@ -25,7 +30,7 @@ public class Analyze {
     public double remaining(){
         return itemPrice-savings;
     }
-    public void drawBarChartofDailySpendingAccordingtoCategories(){
+    public void drawBarChartofDailySpendingAccordingtoCategories(int userID){
         try{
             String query= "select spending,category from x where ";
             JDBCCategoryDataset dataset=new JDBCCategoryDataset();
@@ -41,7 +46,7 @@ public class Analyze {
             JOptionPane.showMessageDialog(null,e);
         }
     }
-    public void drawPieChartofMonthlySpendingAccordingtoCategories(){
+    public void drawPieChartofMonthlySpendingAccordingtoCategories(int userID){
         try{
             String query= "select sum(spending),category from x where ";
             JDBCCategoryDataset dataset=new JDBCCategoryDataset();
@@ -57,7 +62,7 @@ public class Analyze {
             JOptionPane.showMessageDialog(null,e);
         }
     }
-    public void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
+    public void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(int userID){
         try{
             String query= "select sum(spending),category from x where ";
             JDBCCategoryDataset dataset=new JDBCCategoryDataset();
