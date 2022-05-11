@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.Year;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -120,6 +121,18 @@ public class Analyze {
                 spend = new Spend( day,  month,  year,  spending,  category);
                 k.add(spend);
             }
+            for(int i = 1; i < 31; i++)
+            {
+                spend = new Spend(i, monthh, 2022, 0, "Transportation");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Food");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Clothing");
+                k.add(spend);
+                spend = new Spend(i, monthh, 2022, 0, "Other");
+                k.add(spend);
+
+            }
             p.close();
             conn.close();
         }
@@ -130,22 +143,4 @@ public class Analyze {
         return k;
     }
     //Draws the chart of Monthly Spending of the User from All Bank Card Info
-    public static void drawPieChartofMonthlySpendingAccordingtoCategories(Stage primaryStage){
-       		 
-    public static void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
-        try{
-            String query= "select sum(spending),category from x where ";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset();
-            JFreeChart chart=ChartFactory.createPieChart("Monthly All Bank Cards Category Analyses",dataset,false, true, false);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            renderer=new BarRenderer();
-            ChartFrame frame= new ChartFrame("Monthly All Spending-Categories Chart",chart);
-            frame.setVisible(true);
-            frame.setSize(400,650);
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }
 }
