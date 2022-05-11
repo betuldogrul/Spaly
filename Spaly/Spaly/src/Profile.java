@@ -31,7 +31,7 @@ public class Profile{
         }
         return null;
     }
-    public static User  getUser()
+    public static User getUser()
     {
         return user;
     }
@@ -131,7 +131,7 @@ public class Profile{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
             String sql = "DELETE FROM users WHERE userID=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
-            p.executeUpdate();
+            rs = p.executeQuery();
             p.close();
             conn.close();
         }
@@ -139,5 +139,38 @@ public class Profile{
         {
             System.out.println(e);
         }
+    }
+
+    public static String getUserNameFromId(int id)
+    {
+        String userName = "";
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT first_name * FROM users WHERE userID= " + id;
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+                userName = rs.getString("first_name");
+            }
+            p.close();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return username;
     }
 }

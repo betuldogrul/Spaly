@@ -5,16 +5,30 @@ public class Delimitation
     private String warning;
     private double limit;
     private String budgetPlanning;
-    private Analyze value;
-    private Profile p;
-    public Delimitation(Profile p, Analyze value)
+    private User u;
+
+    public Delimitation(User u)
     {   
-        this.p=p;
-        this.value=value;
+        this.u = u;
         warning = "You have exceeded your limit!";
         limit = 0;
         budgetPlanning = "Daily";
     }    
+
+    public String getBudgetPlanningWay()
+    {
+        return this.budgetPlanning;
+    }
+
+    public double getLimit()
+    {
+        return this.limit;
+    }
+
+    public String getWarning()
+    {
+        return this.warning;
+    }
 
     public void setLimit(int limit)
     {
@@ -28,7 +42,7 @@ public class Delimitation
 
     public void setBudgetPlanningWay(String way)
     {
-        budgetPlanning = way;
+        /* budgetPlanning = way;
         if(way.equals("Daily"))
         {
             value.drawBarChartofDailySpendingAccordingtoCategories(p.getUser().getId());
@@ -37,6 +51,7 @@ public class Delimitation
         {
            value.drawPieChartofMonthlySpendingAccordingtoCategories(p.getUser().getId());
            value.drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(p.getUser().getId());
-        }
+        } */
+        budgetPlanning = way;
     }
 }

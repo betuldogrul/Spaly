@@ -71,6 +71,11 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         return this.totalSpending;
     }
 
+    public ArrayList<CreditCard> getCards()
+    {
+        return this.cards;
+    }
+
     public void addCreditCard(CreditCard c)
     {
         cards.add(c);

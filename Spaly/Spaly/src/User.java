@@ -33,7 +33,7 @@ public class User {
         return this.userSurname;
     }
 
-    public void setSurname( String surname)
+    public void setSurname(String surname)
     {
         Connection conn = null;
         Statement stmt = null;
