@@ -13,11 +13,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 public class Goals{
-    private static ArrayList<targetedItem> goalsItems;//aggragation
+    private static ArrayList<targetedItem> goalsItems = null;//aggragation
     private User profile;
     public Goals()
     {
-
     }
 
     public static void remove(int ID)
@@ -53,6 +52,8 @@ public class Goals{
                     goalsItems.remove(i);
                 }
             }
+            
+        JOptionPane.showMessageDialog(null,"Item successfully deleted from goals!" ,"Info Box" , JOptionPane.INFORMATION_MESSAGE); 
     }
 
     
@@ -148,31 +149,17 @@ public class Goals{
         }
         
         else
-        {
-            System.out.println("This product doesnt have this much money please lower the money.");
+        {  
+        JOptionPane.showMessageDialog(null,"Item doen't have enough money." ,"Info Box" , JOptionPane.INFORMATION_MESSAGE); 
         }
     }
     public static void purchaseAddTransitions(targetedItem item)
     {
-        Connection conn = null;
-        Statement stmt = null;
-        try {
-            try {
-               Class.forName("com.mysql.jdbc.Driver");
-            } catch (Exception e) {
-               System.out.println(e);
-            }
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
-            System.out.println("Connection is created successfully:");
-            stmt = (Statement) conn.createStatement();
-            String query1 = "delete from  goals " +
-            "where id=" + Profile.getUser().getId() + "and itemID =" + item.getId();
-            stmt.executeUpdate(query1);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+        
+    }
+    public static ArrayList<targetedItem> getTargets()
+    {
+        return goalsItems;
     }
     public static void purchase(targetedItem item)
     {
@@ -197,7 +184,6 @@ public class Goals{
         {
             JOptionPane.showMessageDialog(null,item.getWebsite(), "Website: " , JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("Wrong password");
-
         } 
         //when user want to purchase a product it will lead to the website of the product it will cut the money
         // from the account and it will remove the item from the goals and it will say user to set new goals since user will buy the product from her bank account it will not spend money in
@@ -222,7 +208,7 @@ public class Goals{
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM goals";
+            String sql = "SELECT * FROM goals where userID=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -247,6 +233,12 @@ public class Goals{
         {
             System.out.println(e);
         }
+        if(y.size() == 0)//just to not make gpals array null
+        {
+            targetedItem i = new targetedItem(k.get(11), 0);
+            y.add(10, i);
+        }
+        goalsItems = y;
         return y;
     }
 

@@ -93,7 +93,7 @@ public class jFrame2 extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        ArrayList<targetedItem> targets = Goals.getItemsArrayList();
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -142,8 +142,8 @@ public class jFrame2 extends javax.swing.JFrame {
         ıtemPriceT7.setText("" + ShoppingList.getSearched().get(3).getPrice());
 
         jLabel14.setText("price:");
-        ItemName5.setText(ShoppingList.getSearched().get(0).getName());//first
-        ItemName6.setText(ShoppingList.getSearched().get(0).getName());
+        ItemName5.setText(ShoppingList.getSearched().get(1).getName());//first
+        ItemName6.setText(ShoppingList.getSearched().get(2).getName());
         ItemName7.setText(ShoppingList.getSearched().get(0).getName());
         ıtemPriceT5.setText(""+ ShoppingList.getSearched().get(0).getPrice());
         ıtemPriceT6.setText(""+ ShoppingList.getSearched().get(2).getPrice());
@@ -155,6 +155,7 @@ public class jFrame2 extends javax.swing.JFrame {
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+                ShoppingList.addToGoal(ShoppingList.getSearched().get(0));
             }
         });
 
@@ -172,7 +173,8 @@ public class jFrame2 extends javax.swing.JFrame {
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
-               
+                ShoppingList.addToGoal(ShoppingList.getSearched().get(1));
+                NewJFrame.target = Goals.getItemsArrayList();   
             }
         });
 
@@ -189,7 +191,8 @@ public class jFrame2 extends javax.swing.JFrame {
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton3ActionPerformed(evt);
-                
+                ShoppingList.addToGoal(ShoppingList.getSearched().get(2));
+                NewJFrame.target = Goals.getItemsArrayList();   
             }
         });
 
@@ -208,6 +211,8 @@ public class jFrame2 extends javax.swing.JFrame {
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton4ActionPerformed(evt);
+                ShoppingList.addToGoal(ShoppingList.getSearched().get(3));
+                NewJFrame.target = Goals.getItemsArrayList();   
             }
         });
 
@@ -236,7 +241,8 @@ public class jFrame2 extends javax.swing.JFrame {
         removethirdgoal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removethirdgoalActionPerformed(evt);
-                Goals.remove(targets.get(2).getID());
+                Goals.remove(targets.get(3).getID());
+                targets = Goals.getItemsArrayList();
                     ıtemPriceT3.setText("null");
                     ItemName3.setText("there is no item");
                     progress3.setMaximum(100);
@@ -251,13 +257,14 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removesecondGoalActionPerformed(evt);
                 Goals.remove(targets.get(1).getID());
-                if(targets.size() > 1)
+                targets = Goals.getItemsArrayList();
+                if(targets.size() > 2)
             {
-                TItemPrice2.setText("" + targets.get(1).getPrice());
-                ItemName2.setText(targets.get(1).getName());
-                progress2.setMaximum((int)targets.get(1).getPrice());
-                progress2.setValue((int) targets.get(1).getCurrentMoney());
-                goal2.setIcon(new javax.swing.ImageIcon(targets.get(1).getImage()));
+                TItemPrice2.setText("" + targets.get(2).getPrice());
+                ItemName2.setText(targets.get(2).getName());
+                progress2.setMaximum((int)targets.get(2).getPrice());
+                progress2.setValue((int) targets.get(2).getCurrentMoney());
+                goal2.setIcon(new javax.swing.ImageIcon(targets.get(2).getImage()));
                 ıtemPriceT3.setText("null");
                 ItemName3.setText("there is no item");
                 progress3.setMaximum(100);
@@ -305,8 +312,8 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney1ActionPerformed(evt);
                 double amount = Double.parseDouble(amount1.getText());
-                Goals.moneyGoes(targets.get(0), amount);
-                progress1.setValue((int)(targets.get(0).getCurrentMoney() + amount));
+                Goals.moneyGoes(targets.get(1), amount);
+                progress1.setValue((int)(targets.get(1).getCurrentMoney() + amount));
             }
         });
 
@@ -315,8 +322,8 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney3ActionPerformed(evt);
                 double amount = Double.parseDouble(amount3.getText());
-                Goals.moneyGoes(targets.get(2), amount);
-                progress3.setValue((int)(targets.get(2).getCurrentMoney() + amount));
+                Goals.moneyGoes(targets.get(3), amount);
+                progress3.setValue((int)(targets.get(3).getCurrentMoney() + amount));
             }
         });
 
@@ -325,8 +332,8 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoney2ActionPerformed(evt);
                 double amount = Double.parseDouble(amount2.getText());
-                Goals.moneyGoes(targets.get(1), amount);
-                progress2.setValue((int)(targets.get(1).getCurrentMoney() + amount));
+                Goals.moneyGoes(targets.get(2), amount);
+                progress2.setValue((int)(targets.get(2).getCurrentMoney() + amount));
             }
         });
 
@@ -353,7 +360,7 @@ public class jFrame2 extends javax.swing.JFrame {
         website1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website1ActionPerformed(evt);
-                Goals.purchase(targets.get(0));
+                Goals.purchase(targets.get(1));
             }
         });
 
@@ -361,7 +368,7 @@ public class jFrame2 extends javax.swing.JFrame {
         website2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website2ActionPerformed(evt);
-                Goals.purchase(targets.get(1));
+                Goals.purchase(targets.get(2));
             }
         });
 
@@ -369,12 +376,12 @@ public class jFrame2 extends javax.swing.JFrame {
         jLabel2.setText("CURRENT GOALS");
 
         itemName1.setText("there is no item.");
-        if(targets.size() > 0)
+        if(targets.size() > 1)
         {
-            TItem1Price.setText("" + targets.get(0).getPrice());
-            itemName1.setText(targets.get(0).getName());
-            progress1.setMaximum((int)targets.get(0).getPrice());
-            progress1.setValue((int) targets.get(0).getCurrentMoney());
+            TItem1Price.setText("" + targets.get(1).getPrice());
+            itemName1.setText(targets.get(1).getName());
+            progress1.setMaximum((int)targets.get(1).getPrice());
+            progress1.setValue((int) targets.get(1).getCurrentMoney());
         }
 
         progress1.setBackground(java.awt.Color.blue);
@@ -394,37 +401,46 @@ public class jFrame2 extends javax.swing.JFrame {
         website3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website3ActionPerformed(evt);
-                Goals.purchase(targets.get(2));
+                Goals.purchase(targets.get(3));
             }
         });
 
         jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\3669231_cart_shopping_ic_icon.png")); // NOI18N
+        if(targets.size() > 1)
+        {
+            progress1.setMaximum((int)targets.get(1).getPrice());
+        }
+        if(targets.size() > 2)
+        progress2.setMaximum((int)targets.get(2).getPrice());
 
+        if(targets.size() > 3)
+        progress3.setMaximum((int)targets.get(3).getPrice());
         removeFirstGoal.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564505_close_delete_exit_remove_icon.png")); // NOI18N
         removeFirstGoal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeFirstGoalActionPerformed(evt);
-                Goals.remove(targets.get(0).getID());
-                if(targets.size() > 0)
+                Goals.remove(targets.get(1).getID());
+                targets = Goals.getItemsArrayList();
+                if(targets.size() > 1)
                 {
-                    TItem1Price.setText("" + targets.get(0).getPrice());
-                    itemName1.setText(targets.get(0).getName());
-                    progress1.setMaximum((int)targets.get(0).getPrice());
-                    progress1.setValue((int) targets.get(0).getCurrentMoney());
-                    goal1.setIcon(new javax.swing.ImageIcon(targets.get(0).getImage()));
+                    TItem1Price.setText("" + targets.get(1).getPrice());
+                    itemName1.setText(targets.get(1).getName());
+                    progress1.setMaximum((int)targets.get(1).getPrice());
+                    progress1.setValue((int) targets.get(1).getCurrentMoney());
+                    goal1.setIcon(new javax.swing.ImageIcon(targets.get(1).getImage()));
                     TItemPrice2.setText("null");
                     ItemName2.setText("there is no item");
                     progress2.setMaximum(100);
                     progress2.setValue(0);
                     goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
                 }
-                if(targets.size() > 1)
+                if(targets.size() > 2)
                 {
-                    TItemPrice2.setText("" + targets.get(1).getPrice());
-                    ItemName2.setText(targets.get(1).getName());
-                    progress2.setMaximum((int)targets.get(1).getPrice());
-                    progress2.setValue((int) targets.get(1).getCurrentMoney());
-                    goal2.setIcon(new javax.swing.ImageIcon(targets.get(1).getImage()));
+                    TItemPrice2.setText("" + targets.get(2).getPrice());
+                    ItemName2.setText(targets.get(2).getName());
+                    progress2.setMaximum((int)targets.get(2).getPrice());
+                    progress2.setValue((int) targets.get(2).getCurrentMoney());
+                    goal2.setIcon(new javax.swing.ImageIcon(targets.get(2).getImage()));
                     ıtemPriceT3.setText("null");
                     ItemName3.setText("there is no item");
                     progress3.setMaximum(100);
@@ -440,7 +456,12 @@ public class jFrame2 extends javax.swing.JFrame {
                 }
             }
         });
-
+        if(targets.size() > 1)
+        goal1.setIcon(new javax.swing.ImageIcon(targets.get(1).getImage()));
+        if(targets.size() > 2)
+        goal2.setIcon(new javax.swing.ImageIcon(targets.get(2).getImage()));
+        if(targets.size() > 3)
+        goal3.setIcon(new javax.swing.ImageIcon(targets.get(3).getImage()));
         jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\3669231_cart_shopping_ic_icon.png")); // NOI18N
 
         jLabel23.setBackground(new java.awt.Color(204, 204, 204));
@@ -456,12 +477,12 @@ public class jFrame2 extends javax.swing.JFrame {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
-        if(targets.size() > 1)
+        if(targets.size() > 2)
         {
-            TItemPrice2.setText("" + targets.get(1).getPrice());
-            ItemName2.setText(targets.get(1).getName());
-            progress2.setMaximum((int)targets.get(1).getPrice());
-            progress2.setValue((int) targets.get(1).getCurrentMoney());
+            TItemPrice2.setText("" + targets.get(2).getPrice());
+            ItemName2.setText(targets.get(2).getName());
+            progress2.setMaximum((int)targets.get(2).getPrice());
+            progress2.setValue((int) targets.get(2).getCurrentMoney());
         }
        
        
@@ -810,7 +831,8 @@ public class jFrame2 extends javax.swing.JFrame {
     }                                           
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {     
-        ShoppingList.addToGoal(ShoppingList.getSearched().get(0));                                          
+        ShoppingList.addToGoal(ShoppingList.getSearched().get(0));  
+        NewJFrame.target = Goals.getItemsArrayList();                                        
         NewJFrame k = new NewJFrame();
         k.show();
         dispose();// TODO add your handling code here:
@@ -832,7 +854,7 @@ public class jFrame2 extends javax.swing.JFrame {
     }                                        
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                               
- NewJFrame k = new NewJFrame();
+      NewJFrame k = new NewJFrame();
       k.show();
       dispose();        // TODO add your handling code here:
     }                                              
@@ -1006,5 +1028,6 @@ public class jFrame2 extends javax.swing.JFrame {
     private javax.swing.JLabel ıtemPriceT5;
     private javax.swing.JLabel ıtemPriceT6;
     private javax.swing.JLabel ıtemPriceT7;
+    ArrayList<targetedItem> targets = Goals.getItemsArrayList();
     // End of variables declaration                   
 }
