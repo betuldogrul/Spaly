@@ -264,7 +264,9 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        MenuJFrame menu = new MenuJFrame();
+        menu.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -333,6 +335,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel limit2;
     private javax.swing.JLabel limit3;
     private javax.swing.JLabel limit4;
-    // End of variables declaration                   
+    // End of variables declaration 
+                      
 }
 
