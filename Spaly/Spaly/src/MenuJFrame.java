@@ -1,5 +1,5 @@
 
-
+import java.awt.*;
 import javax.swing.JFrame;
 
 /**
@@ -16,6 +16,7 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     public MenuJFrame() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        this.getContentPane().setBackground(Color.WHITE);
     }
     
     public void setObject(Object bean) {

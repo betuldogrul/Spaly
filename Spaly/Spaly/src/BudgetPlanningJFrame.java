@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.awt.*;
 
 /**
  *
@@ -12,6 +13,7 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     public BudgetPlanningJFrame() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.getContentPane().setBackground(Color.WHITE);
         limitation = new Delimitation();
     }
 
@@ -419,6 +421,7 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private Delimitation limitation;
-    // End of variables declaration                   
+    private Delimitation limitation; 
 }
+    // End of variables declaration                   
+
