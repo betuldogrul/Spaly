@@ -9,9 +9,11 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     /**
      * Creates new form BudgetPlanningJFrame
      */
-    public BudgetPlanningJFrame() {
+    public BudgetPlanningJFrame(User u) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        limitation = new Delimitation(u);
+        this.u = u;
     }
 
     /**
@@ -23,7 +25,6 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -51,7 +52,6 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
-        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,14 +210,15 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel15)
-                        .addComponent(jLabel14)
-                        .addComponent(jLabel13)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(55, 55, 55)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(63, 63, 63)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addContainerGap())
@@ -251,19 +252,30 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Spaly/WhatsApp Image 2022-05-09 at 22.39.40.jpeg"))); // NOI18N
+        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.39.40.jpeg"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png"))); // NOI18N
+        //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 21.05.49 (1).jpeg"))); // NOI18N
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg"))); // NOI18N
-        jLabel16.setText("jLabel14");
+        //jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 22.38.53.jpeg"))); // NOI18N
+        //jLabel16.setText("jLabel14");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png"))); // NOI18N
+        //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ilkprogram/WhatsApp Image 2022-05-09 at 21.05.48.jpeg"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,11 +299,11 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
-                        .addGap(43, 43, 43)))
+                        .addGap(37, 37, 37)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -300,10 +312,10 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4))
+                        .addComponent(jButton4)
+                        .addComponent(jButton2))
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -317,11 +329,13 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+        int limit = Integer.valueOf(jTextField2.getText());
+        limitation.setLimit(limit);
     }                                           
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+        String warning = jTextField3.getText();
+        limitation.setWarning(warning);
     }                                           
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -331,6 +345,18 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        
+        MenuJFrame jf = new MenuJFrame();
+        jf.show();
+        
+        dispose();
+    }           
+    
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        limitation.setBudgetPlanningWay((String)jComboBox1.getSelectedItem());
+    } 
 
     /**
      * @param args the command line arguments
@@ -362,7 +388,7 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BudgetPlanningJFrame().setVisible(true);
+                new BudgetPlanningJFrame(u).setVisible(true);
             }
         });
     }
@@ -392,8 +418,9 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private Delimitation limitation;
+    private static User u;
     // End of variables declaration                   
 }
