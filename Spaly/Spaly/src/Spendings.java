@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class Spendings { // this calss is to hold the every spending in a month within an ararylist 
+public class Spendings { // this class is to hold the every spending in a month within an arraylist 
 
     private ArrayList<Spending> spendings;
 
@@ -27,11 +27,11 @@ public class Spendings { // this calss is to hold the every spending in a month 
             rs = p.executeQuery();
 
             while (rs.next()) {
-                int day = rs.getInt("day");
-                int month = rs.getInt("month");
-                int year = rs.getInt("year");
-                int hour = rs.getInt("hour");
-                int minute = rs.getInt("minute");
+                int day = rs.getInt("dayy");
+                int month = rs.getInt("monthh");
+                int year = rs.getInt("yearr");
+                int hour = rs.getInt("hourr");
+                int minute = rs.getInt("minutee");
                 double expenditure = rs.getInt("spending");
                 String company = rs.getString("company");
                 String category = rs.getString("category");
@@ -40,6 +40,30 @@ public class Spendings { // this calss is to hold the every spending in a month 
                 spendings.add(spending);
             }
             p.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void addSpending(Spending spending)
+    {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "INSERT INTO cardstatement VALUES (" + spending.getDay() + "," + spending.getMonth() + "," + spending.getYear() + "," + spending.getHour() + 
+                            spending.getMinute() + "," + spending.getSpending() +  "," + spending.getCompany() +  "," + spending.getCategory();
+            p = conn.prepareStatement(sql);
+            p.executeUpdate();
             conn.close();
         } catch (Exception e) {
             System.out.println(e);

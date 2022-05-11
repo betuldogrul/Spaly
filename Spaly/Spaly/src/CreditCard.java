@@ -1,3 +1,5 @@
+import java.sql.*;
+
 public class CreditCard extends CardStatement
 {
     private int creditcard_id;
@@ -5,16 +7,49 @@ public class CreditCard extends CardStatement
     private double upperLimit;
     private double totalSpentMoney;
     private String cardBank;
-    private int user;
+    private int userid;
 
     public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
     {
+        super(userID);
         this.creditcard_id = creditcard_id;
         this.cardNumber = number;
         this.upperLimit = upperLimit;
         this.totalSpentMoney = totalMoney;
         this.cardBank = cardBank;
-        this.user = userID;
+        this.userid = userID;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "INSERT INTO creditcard VALUES (? , ? , ?, ? ,? ) ";
+            p = conn.prepareStatement(sql);
+            p.setInt(1, creditcard_id);
+            p.setDouble(2, number);
+            p.setDouble(3, upperLimit);
+            p.setDouble(4, totalMoney);
+            p.setString(5, cardBank);
+            p.setInt(6, userID);
+            p.executeUpdate();
+            conn.close();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println(e);
+        }
+    }
+
+    public int getCreditCardId()
+    {
+        return this.creditcard_id;
     }
 
     public double getCardNumber()
@@ -37,15 +72,62 @@ public class CreditCard extends CardStatement
         return this.cardBank;
     }
 
+    public int getUserIDOfTheCard()
+    {
+        return this.userid;
+    }
+
     public double addMoneyToCard(double amount)
     {
         totalSpentMoney = totalSpentMoney + amount;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "UPDATE creditcard SET totalSpentMoney =  " + totalSpentMoney + "WHERE user_id = " + this.userid;
+            p = conn.prepareStatement(sql);
+            p.executeUpdate();
+            conn.close();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println(e);
+        }
         return totalSpentMoney;
     }
 
     public double removeMoneyFromCard(double amount)
     {
         totalSpentMoney = totalSpentMoney - amount;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "UPDATE creditcard SET totalSpentMoney =  " + totalSpentMoney + "WHERE user_id = " + this.userid;
+            p = conn.prepareStatement(sql);
+            p.executeUpdate();
+            conn.close();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println(e);
+        }
         return totalSpentMoney;
     }
 

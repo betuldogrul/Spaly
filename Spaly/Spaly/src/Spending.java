@@ -1,4 +1,4 @@
-public class Spending { // this calss is to hold the data about the cardstatement table, 
+public class Spending { // this class is to hold the data about the cardstatement table, 
     //which stores data about the exact date, time, spending of an item in a certain category with the specified creditcard.
 
     private int day;
