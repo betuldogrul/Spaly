@@ -3,15 +3,15 @@ import java.sql.*;
 public class CreditCard extends CardStatement
 {
     private int creditcard_id;
-    private double cardNumber;
+    private String cardNumber;
     private double upperLimit;
     private double totalSpentMoney;
     private String cardBank;
     private int userid;
 
-    public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
+    public CreditCard(int creditcard_id, String number, double upperLimit, double totalMoney, String cardBank, int userID)
     {
-        super(userID);
+        super();
         this.creditcard_id = creditcard_id;
         this.cardNumber = number;
         this.upperLimit = upperLimit;
@@ -33,7 +33,7 @@ public class CreditCard extends CardStatement
             String sql = "INSERT INTO creditcard VALUES (? , ? , ?, ? ,? ) ";
             p = conn.prepareStatement(sql);
             p.setInt(1, creditcard_id);
-            p.setDouble(2, number);
+            p.setString(2, number);
             p.setDouble(3, upperLimit);
             p.setDouble(4, totalMoney);
             p.setString(5, cardBank);
@@ -52,7 +52,7 @@ public class CreditCard extends CardStatement
         return this.creditcard_id;
     }
 
-    public double getCardNumber()
+    public String getCardNumber()
     {
         return cardNumber;
     }

@@ -9,12 +9,16 @@ import java.util.ArrayList;
  */
 public class CardStatement // a class to hold all credit cards which belongs to one user 
 {
-    private double totalSpending;
-    private ArrayList<CreditCard> cards;
+    private static double totalSpending;
+    private static ArrayList<CreditCard> cards =  new ArrayList<>();;
 
-    public CardStatement(int userId)
+    public CardStatement()
     {
-        cards = new ArrayList<>();
+        cards = getAllCreditCards();
+    }
+
+    public static ArrayList<CreditCard> getAllCreditCards()
+    {
         try{
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
@@ -27,13 +31,13 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM cardstatement WHERE user_id = " + userId;
+            String sql = "SELECT * FROM credit_card WHERE user_id = " + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
             while (rs.next()) {
                 int creditcard_id = rs.getInt("creditcard_id");
-                Double card_number = rs.getDouble("card_number");
+                String card_number = rs.getString("card_number");
                 String card_bank = rs.getString("card_bank");
                 int card_limit = rs.getInt("card_limit");
                 int totalSpentMoney = rs.getInt("totalSpentMoney");
@@ -50,7 +54,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT SUM(spending) FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + userId + ")";
+            String sql = "SELECT SUM(spending) FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + Profile.getUser().getId() + ")";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -64,6 +68,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         } catch (Exception e) {
             System.out.println(e);
         }
+        return cards;
     }
 
     public double getTotalSpending()
@@ -71,9 +76,9 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         return this.totalSpending;
     }
 
-    public ArrayList<CreditCard> getCards()
+    public static ArrayList<CreditCard> getCards()
     {
-        return this.cards;
+        return cards;
     }
 
     public void addCreditCard(CreditCard c)

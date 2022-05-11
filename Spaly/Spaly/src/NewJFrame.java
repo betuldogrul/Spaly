@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.awt.*;
 
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+     //   this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
