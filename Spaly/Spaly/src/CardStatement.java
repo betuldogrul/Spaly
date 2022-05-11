@@ -148,6 +148,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
     public void addCreditCard(CreditCard c)
     {
+        CreditCard.numberOfCards++;
         cards.add(c);
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -171,5 +172,42 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public static CreditCard getSpecifiedCreditCard(String card_number)
+    {
+        CreditCard c = null;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM credit_card WHERE cardnumber = " + card_number + "LIMIT 1";
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+            while(rs.next())
+            {
+                int creditcard_id = rs.getInt("creditcard_id");
+                String number = rs.getString("cardnumber");
+                String cardBank = rs.getString("card_bank");
+                int cardLimit = rs.getInt("card_limit");
+                int cardTotalMoney = rs.getInt("card_totalMoney");
+                int user_id = rs.getInt("user_id");
+                c = new CreditCard(creditcard_id, number, cardLimit, cardTotalMoney, cardBank, user_id);
+            }
+            p.close();
+            conn.close();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return c;
     }
 }

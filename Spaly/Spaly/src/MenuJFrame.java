@@ -68,6 +68,11 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("SHOPPING LIST");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("BUDGET PLANNING");
@@ -176,6 +181,13 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>                        
 
+    protected void jButton2ActionPerformed(ActionEvent evt) {
+        NewJFrame jf =  new NewJFrame();
+        jf.show();
+
+        dispose();
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
@@ -199,7 +211,7 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     }      
 
     private void jButton6ActionPerformed(ActionEvent evt) {
-        AnalysesJFrame jf = new AnalysesJFrame()
+        AnalysesJFrame jf = new AnalysesJFrame();
         jf.show();
 
         dispose();

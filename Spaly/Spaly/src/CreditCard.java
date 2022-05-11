@@ -8,6 +8,7 @@ public class CreditCard extends CardStatement
     private double totalSpentMoney;
     private String cardBank;
     private int userid;
+    public static int numberOfCards = 0;
 
     public CreditCard(int creditcard_id, String number, double upperLimit, double totalMoney, String cardBank, int userID)
     {
@@ -18,6 +19,7 @@ public class CreditCard extends CardStatement
         this.totalSpentMoney = totalMoney;
         this.cardBank = cardBank;
         this.userid = userID;
+        numberOfCards++;
         try{
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {

@@ -40,7 +40,6 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private void initComponents() {
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -240,19 +239,10 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         });
         jLayeredPane2.add(jButton2);
         jButton2.setBounds(270, 20, 54, 60);
-
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton5.setText("MENU");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton5ActionPerformed(evt);
-                }
-            });
-        jLayeredPane2.add(jButton5);
-        jButton5.setBounds(670, 30, 98, 38);
         
         }
-         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) { 
+            JOptionPane.showInputDialog(null,"Enter the card number that you want to add: ");                                        
             if (cardCount <= 4) 
             {jScrollPane1 = new javax.swing.JScrollPane();
             jEditorPane1 = new javax.swing.JEditorPane();
@@ -417,24 +407,13 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         }                                        
 
         private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {                                     
-                // TODO add your handling code here:
+            // TODO add your handling code here:
+            CreditCard c = CreditCard.getSpecifiedCreditCard(jLabel4.getText());
         }                                    
 
         private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
             // TODO add your handling code here:
-        }                                        
-
-        private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            // TODO add your handling code here:
-        }                                        
-
-        private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {                                     
-            // TODO add your handling code here:
-        }                                    
-
-        private void jLabel3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-            // TODO add your handling code here:
-        }                                           
+        }                                                                                                                       
 
         private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
@@ -450,7 +429,6 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
