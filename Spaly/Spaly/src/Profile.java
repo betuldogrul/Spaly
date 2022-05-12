@@ -67,6 +67,9 @@ public class Profile{
         {
             System.out.println(e);
         }
+        Item item = ShoppingList.createAllItems().get(0);
+        isUserVaid(userName, userPassword);
+        ShoppingList.addToGoal(item);
     }
 
     public static ArrayList<User> getAllUsers()
