@@ -29,7 +29,7 @@ public class Delimitation
 
     public static void setLimit(Object object)
     {
-        this.limit = object;
+        limit = (double) object;
     }
 
     public void setWarning(String warning)

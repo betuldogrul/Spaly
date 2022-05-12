@@ -96,7 +96,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             jLabel1.setText("Remaining Money");
 
             jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel3.setText(String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
+            jLabel3.setText("10.000");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
 
             javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
             jPanel6.setLayout(jPanel6Layout);
@@ -164,14 +164,14 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             });
 
             jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel2.setText(cards.get(cardCount).getCardBank());
+            jLabel2.setText("X Bank");//cards.get(cardCount).getCardBank());
             
 
             jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel7.setText(Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
+            jLabel7.setText("User Name");//Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel4.setText(String.valueOf(cards.get(cardCount).getCardNumber()));
+            jLabel4.setText("XXXX XXXX XXXX XXXX");//String.valueOf(cards.get(cardCount).getCardNumber()));
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
