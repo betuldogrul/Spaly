@@ -204,8 +204,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
 
             getContentPane().add(jLayeredPane2, java.awt.BorderLayout.CENTER);
             cardCount++;
-            cardPanels.add(jPanel1);
-            labelCardNumber.add(jLabel4);
+            /* cardPanels.add(jPanel1);
+            labelCardNumber.add(jLabel4); */
         }// </editor-fold>     
 
         jButton1.setText("Add New Card");
@@ -268,7 +268,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         }
 
         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            if (cardCount <= 4) 
+            if (cardCount <= 3) 
             {jScrollPane1 = new javax.swing.JScrollPane();
             jEditorPane1 = new javax.swing.JEditorPane();
             jPanel3 = new javax.swing.JPanel();
@@ -315,7 +315,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             jLabel1.setText("Remaining Money");
 
             jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel3.setText("sdjkncksjn");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
+            jLabel3.setText("10.000");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
 
             javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
             jPanel6.setLayout(jPanel6Layout);
@@ -487,6 +487,6 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private static int dy = 0;
     private final int X = 30;
     private final int Y = 100;
-    ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
+    //ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
     // End of variables declaration                   
 }
