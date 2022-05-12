@@ -69,12 +69,12 @@ public class userEnter extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
                 if(Profile.isUserVaid(userName.getText(), userPassword.getText()) != null)
                 {
-                    /* NewJFrame k = new NewJFrame();
+                    NewJFrame k = new NewJFrame();
                     k.show();
-                    dispose(); */
-                    BudgetPlanningJFrame k = new BudgetPlanningJFrame();
+                    dispose();
+                    /* BudgetPlanningJFrame k = new BudgetPlanningJFrame();
                     k.show();
-                    dispose(); 
+                    dispose();  */
                 }
             }
         });
