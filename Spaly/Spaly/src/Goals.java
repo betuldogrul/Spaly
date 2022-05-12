@@ -18,7 +18,16 @@ public class Goals{
     public Goals()
     {
     }
-
+    public static double moneyInGoals()
+    {
+        ArrayList<targetedItem> y = getItemsArrayList();
+        double sum = 0;
+        for(int i = 0; i < y.size(); i++)
+        {
+            sum = sum + y.get(i).getCurrentMoney();
+        }
+        return sum;
+    }
     public static void remove(int ID)
     {
             try {
