@@ -174,7 +174,7 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(1));
-                NewJFrame.target = Goals.getItemsArrayList();   
+                targets = Goals.getItemsArrayList();   
             }
         });
 
@@ -192,7 +192,7 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton3ActionPerformed(evt);
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(2));
-                NewJFrame.target = Goals.getItemsArrayList();   
+                targets = Goals.getItemsArrayList();   
             }
         });
 
@@ -212,7 +212,7 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton4ActionPerformed(evt);
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(3));
-                NewJFrame.target = Goals.getItemsArrayList();   
+                targets = Goals.getItemsArrayList();   
             }
         });
 
@@ -832,7 +832,7 @@ public class jFrame2 extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {     
         ShoppingList.addToGoal(ShoppingList.getSearched().get(0));  
-        NewJFrame.target = Goals.getItemsArrayList();                                        
+        targets = Goals.getItemsArrayList();                                        
         NewJFrame k = new NewJFrame();
         k.show();
         dispose();// TODO add your handling code here:
@@ -865,8 +865,8 @@ public class jFrame2 extends javax.swing.JFrame {
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         NewJFrame k = new NewJFrame();
-      k.show();
-      dispose();        // TODO add your handling code here:
+        k.show();
+        dispose();        // TODO add your handling code here:
     }                                              
 
     private void website7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
