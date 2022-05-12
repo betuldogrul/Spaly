@@ -10,8 +10,9 @@ public class Spending { // this class is to hold the data about the cardstatemen
     private String company;
     private String category;
     private int card_id;
+    private int user_id;
     
-    public Spending(int day, int month, int year, int hour, int minute, double spending, String company, String category, int card_id)
+    public Spending(int day, int month, int year, int hour, int minute, double spending, String company, String category, int card_id, int user_id)
     {
         this.day = day;
         this.month = month;
@@ -22,6 +23,12 @@ public class Spending { // this class is to hold the data about the cardstatemen
         this.company = company;
         this.category = category;
         this.card_id = card_id;
+        this.user_id = user_id;
+    }
+
+    public int getUserId()
+    {
+        return this.user_id;
     }
 
     public int getDay() {

@@ -21,7 +21,7 @@ public class CreditCard extends CardStatement
         this.userid = userID;
         numberOfCards++;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class CreditCard extends CardStatement
     {
         totalSpentMoney = totalSpentMoney + amount;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -94,7 +94,7 @@ public class CreditCard extends CardStatement
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "UPDATE creditcard SET totalSpentMoney=" + totalSpentMoney + " WHERE user_id=" + this.userid;
+            String sql = "UPDATE creditcard SET totalSpentMoney= '" + totalSpentMoney + "' WHERE user_id= '" + this.userid + "'";
             p = conn.prepareStatement(sql);
             p.executeUpdate();
             conn.close();
@@ -106,11 +106,11 @@ public class CreditCard extends CardStatement
         return totalSpentMoney;
     }
 
-    public double removeMoneyFromCard(double amount)
+    public double removeMoneyFromCard(double amount) //checked
     {
         totalSpentMoney = totalSpentMoney - amount;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -121,7 +121,7 @@ public class CreditCard extends CardStatement
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "UPDATE creditcard SET totalSpentMoney=" + totalSpentMoney + " WHERE user_id=" + this.userid;
+            String sql = "UPDATE creditcard SET totalSpentMoney= " + totalSpentMoney + " WHERE user_id= "  + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             p.executeUpdate();
             conn.close();

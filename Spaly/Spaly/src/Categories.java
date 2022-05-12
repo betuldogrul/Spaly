@@ -15,7 +15,7 @@ public class Categories //the class to hold the arraylist of the categories in t
         totalMoneySpent = 0;
         this.card = card;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class Categories //the class to hold the arraylist of the categories in t
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM cardstatement";
+            String sql = "SELECT * FROM category";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
