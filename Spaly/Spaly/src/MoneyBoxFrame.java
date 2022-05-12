@@ -12,7 +12,6 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
      */
     public MoneyBoxFrame() {
         MoneyBox m = new MoneyBox();
-        System.out.println("moneybox oluşturdu, sorun moneybox classında");
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -58,7 +57,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         setTitle("Money Box");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(242, 210, 255));
+        jPanel1.setBackground(new java.awt.Color(150,210,255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel1.setText("Daily Savings:");
@@ -102,7 +101,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(242, 210, 255));
+        jPanel3.setBackground(new java.awt.Color(230,125,25));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel3.setText("Total Savings:");
@@ -126,7 +125,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\piggyBank.jpeg")); // NOI18N
 
-        jPanel6.setBackground(new java.awt.Color(242, 210, 255));
+        jPanel6.setBackground(new java.awt.Color(153,255,153));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel6.setText("Money on Goals:");
@@ -152,7 +151,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
 
-        jPanel4.setBackground(new java.awt.Color(242, 210, 255));
+        jPanel4.setBackground(new java.awt.Color(153,153,255));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel5.setText("Target:");
@@ -217,7 +216,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel7.setBackground(new java.awt.Color(137, 58, 211));
+        jPanel7.setBackground(new java.awt.Color(255,255,153));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel9.setText(String.valueOf(MoneyBox.getMonthlySaving()));
@@ -239,7 +238,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel8.setBackground(new java.awt.Color(137, 58, 211));
+        jPanel8.setBackground(new java.awt.Color(255,102,102));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel10.setText(String.valueOf(MoneyBox.getTotalSaving()));
@@ -261,10 +260,10 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel9.setBackground(new java.awt.Color(137, 58, 211));
+        jPanel9.setBackground(new java.awt.Color(204,0,0));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel11.setText("label11");
+        jLabel11.setText(String.valueOf(Goals.moneyInGoals()));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -293,10 +292,10 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
             .addGap(0, 62, Short.MAX_VALUE)
         );
 
-        jPanel11.setBackground(new java.awt.Color(137, 58, 211));
+        jPanel11.setBackground(new java.awt.Color(255,204,102));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel12.setText("label12");
+        jLabel12.setText(String.valueOf(Goals.getAllUserWant()));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
