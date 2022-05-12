@@ -101,9 +101,12 @@ public class jFrame2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\8324275_ui_essential_app_magnifier_search_icon.png")); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+                ProfileFrame k = new ProfileFrame(); 
+                k.show();
+                dispose();
             }
         });
 
@@ -404,6 +407,22 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website3ActionPerformed(evt);
                 Goals.purchase(targets.get(3));
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                MenuJFrame k = new MenuJFrame();
+                k.show();
+                k.dispose();
+            }
+        });
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                ProfileFrame k = new ProfileFrame();
+                k.show();
+                k.dispose();
             }
         });
 
@@ -863,7 +882,15 @@ public class jFrame2 extends javax.swing.JFrame {
 
     private void website6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                        
+    }   
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)     
+    {
+
+    }    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt)     
+    {
+
+    }                              
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                               
  NewJFrame k = new NewJFrame();
