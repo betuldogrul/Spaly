@@ -20,21 +20,23 @@ public class Analyze {
     public Analyze(Profile p){
         userID=p.getUser().getId();
     }
-    public double getTotalExpenditures(){return totalExpenditures;}
+    public static double getTotalExpenditures(){return totalExpenditures;}
     public double getIncome(){return income;}
     public double getItemPrice(){return itemPrice;}
     public double getSavings(){return savings;}
+
     public static double totalExpenditures(){
         totalExpenditures=0;
         ArrayList<Spend> spend= getValuesFromDatabase(5, c);
         ArrayList<ArrayList<Double>> allExpenditures=differ(spend);
         for(int i=0;i<allExpenditures.size();i++){
-            for(int j=0;j<spend.size();j++){
+            for(int j=0;j<allExpenditures.get(i).size();j++){
                 totalExpenditures+=allExpenditures.get(i).get(j);
             }
         }
         return totalExpenditures;
     }
+
     public static double ratioOfSpendingToTotalLimit(){
         return totalExpenditures/categories.totalLimitCalculator()*100;
     }
