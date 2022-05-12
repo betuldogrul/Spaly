@@ -12,7 +12,6 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
      */
     public MoneyBoxFrame() {
         MoneyBox m = new MoneyBox();
-        System.out.println("moneybox oluşturdu, sorun moneybox classında");
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -264,7 +263,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel11.setText("label11");
+        jLabel11.setText(String.valueOf(Goals.moneyInGoals()));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -296,7 +295,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(137, 58, 211));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel12.setText("label12");
+        jLabel12.setText(String.valueOf(Goals.getAllUserWant()));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
