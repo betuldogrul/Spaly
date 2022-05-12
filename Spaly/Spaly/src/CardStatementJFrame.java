@@ -21,12 +21,12 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.getContentPane().setBackground(Color.WHITE);
-        /* cardStatement = new CardStatement();
+         cardStatement = new CardStatement();
         cardCount = 0;
         cards = new ArrayList<>();
-        for (int i = 0; i < CardStatement.getCards().size(); i++) {
-            cards.add(CardStatement.getCards().get(i));
-        } */ 
+        for (int i = 0; i < CardStatement.getCardsOfUser().size(); i++) {
+            cards.add(CardStatement.getCardsOfUser().get(i));
+        } 
     }
     
     public void setObject(Object bean) {
@@ -96,7 +96,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             jLabel1.setText("Remaining Money");
 
             jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel3.setText("10,000");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
+            jLabel3.setText(String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
+            
 
             javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
             jPanel6.setLayout(jPanel6Layout);
@@ -164,14 +165,14 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             });
 
             jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel2.setText("X Bank");//cards.get(cardCount).getCardBank());
+            jLabel2.setText(cards.get(cardCount).getCardBank());
             
 
             jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel7.setText("User Name"); //Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
+            jLabel7.setText(Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel4.setText("XXXX XXXX XXXX XXXX");//String.valueOf(cards.get(cardCount).getCardNumber()));
+            jLabel4.setText(String.valueOf(cards.get(cardCount).getCardNumber()));
             cardCount++;
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -216,7 +217,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         jLayeredPane2.add(jButton1);
         jButton1.setBounds(X, Y + dy, 110, 22);
         
-        //jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
         jLayeredPane2.add(jButton3);
         jButton3.setBounds(850, 20, 54, 54);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +226,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             }
         });
 
-        //jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -234,12 +235,12 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         jLayeredPane2.add(jButton4);
         jButton4.setBounds(780, 20, 54, 54);
 
-        //jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
         jLabel14.setText("jLabel14");
         jLayeredPane2.add(jLabel14);
         jLabel14.setBounds(30, 20, 230, 60); 
 
-        //jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
