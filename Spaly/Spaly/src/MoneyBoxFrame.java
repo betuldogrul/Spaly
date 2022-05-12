@@ -123,7 +123,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\piggyBank.jpeg")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\OneDrive\\Masaüstü\\csProject\\Spaly\\Spaly\\Spaly\\src\\WhatsApp Image 2022-05-12 at 00.42.39.jpeg")); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(153,255,153));
 

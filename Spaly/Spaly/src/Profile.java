@@ -176,4 +176,8 @@ public class Profile{
         }
         return username;
     }
+    
+    public static void setUserName(String text) {
+        user.setUserName(text);
+    }
 }

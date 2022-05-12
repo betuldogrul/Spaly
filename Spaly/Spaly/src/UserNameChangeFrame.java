@@ -77,7 +77,7 @@ public class UserNameChangeFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void newUserNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-        // TODO add your handling code here:
+        Profile.setUserName(newUserNameTextField.getText());
     }                                                    
 
     /**

@@ -64,7 +64,7 @@ public class RemoveBankCard extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        CreditCard.removeCard(cardNumberTextField.getText());
     }                                        
 
     /**

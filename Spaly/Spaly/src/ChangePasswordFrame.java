@@ -118,7 +118,9 @@ public class ChangePasswordFrame extends javax.swing.JFrame {
     }                                                    
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        if(Profile.getUser().getPassword().equals(oldPasswordTextField.getText())){
+            Profile.getUser().changePasword(newPasswordTextField.getText());
+        }
     }                                        
 
     private void okButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                          
