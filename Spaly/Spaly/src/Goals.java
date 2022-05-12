@@ -144,6 +144,16 @@ public class Goals{
         }
         return sum;
     }
+    public static double getAllUserWant()
+    {
+        ArrayList<targetedItem> y = getItemsArrayList();
+        double sum = 0;
+        for(int i = 0; i < y.size(); i++)
+        {
+            sum = sum + y.get(i).getPrice();
+        }
+        return sum;
+    }
     public static void useMoneyFromProduct(targetedItem item, double money)
     {
         //when user needs to spend money from their desired product

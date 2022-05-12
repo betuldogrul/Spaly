@@ -21,6 +21,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
     public static ArrayList<CreditCard> getAllCreditCards() // checked 
     {
+        ArrayList<CreditCard> y = new ArrayList<>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
@@ -33,7 +34,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM credit_card WHERE user_id= " + Profile.getUser().getId();
+            String sql = "SELECT * FROM credit_card WHERE user_id=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -46,14 +47,14 @@ public class CardStatement // a class to hold all credit cards which belongs to 
                 int user_id = rs.getInt("user_id");
                 //public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
                 CreditCard card = new CreditCard(creditcard_id, card_number, card_limit, totalSpentMoney, card_bank, user_id);
-                cards.add(card);
+                y.add(card);
             }
             p.close();
             conn.close();
             } catch (Exception e) {
                 System.out.println(e);
             }
-            return cards;
+            return y;
     }
 
     public static void updateTotalSpending() //checked 

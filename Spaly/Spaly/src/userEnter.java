@@ -69,8 +69,8 @@ public class userEnter extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
                 if(Profile.isUserVaid(userName.getText(), userPassword.getText()) != null)
                 {
-                    NewJFrame k = new NewJFrame();
-                    k.show();
+                    MenuJFrame k = new MenuJFrame();
+                    k.setVisible(true);;
                     dispose();
                     /* BudgetPlanningJFrame k = new BudgetPlanningJFrame();
                     k.show();

@@ -78,9 +78,9 @@ public class User {
         }
     }
 
-    public static void setIncome(int income)
+    public static void setIncome(int incomee)
     {
-        income = income;
+        income = incomee;
         Connection conn = null;
         Statement stmt = null;
         try {

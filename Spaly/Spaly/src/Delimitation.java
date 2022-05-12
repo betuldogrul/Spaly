@@ -27,9 +27,9 @@ public class Delimitation
         return this.warning;
     }
 
-    public void setLimit(int limit)
+    public static void setLimit(Object object)
     {
-        this.limit = limit;
+        this.limit = object;
     }
 
     public void setWarning(String warning)
@@ -37,7 +37,7 @@ public class Delimitation
         this.warning = warning;
     }
 
-    public void setBudgetPlanningWay(String way)
+    public static void setBudgetPlanningWay(String way)
     {
         /* budgetPlanning = way;
         if(way.equals("Daily"))

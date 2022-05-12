@@ -357,7 +357,9 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
     }                                        
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        settings s = new settings();
+        s.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
