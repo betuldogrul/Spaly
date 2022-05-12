@@ -75,7 +75,6 @@ public class Goals{
         JOptionPane.showMessageDialog(null,"Item successfully deleted from goals!" ,"Info Box" , JOptionPane.INFORMATION_MESSAGE); 
     }
 
-    
     public static void moneyGoes(targetedItem item, double money)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 

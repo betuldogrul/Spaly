@@ -266,6 +266,7 @@ public class NewJFrame extends javax.swing.JFrame {
         ıtemPriceT3.setText("null");
 
         website1.setLabel("Website");
+        target = Goals.getItemsArrayList();
         if(target.size() > 1)
         {
             TItem1Price.setText(""+ target.get(1).getPrice());
