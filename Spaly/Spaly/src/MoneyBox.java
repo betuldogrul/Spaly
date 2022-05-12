@@ -9,13 +9,11 @@ import java.util.Calendar;
 public class MoneyBox{
 
     //VARIABLES
-    public Calendar endDate;
     private static int numberOfDays; //Update when there is a change in budget planing way
     public static int dailySpendingLimit; //Update according to budget planning way
     public static double dailySaving; //Update daily bases
     public static double monthlySaving; //Update monthly bases
     public static double totalSaving; //Update daily bases
-    private User u;
 
 
     //CONSTRUCTORS
@@ -25,9 +23,6 @@ public class MoneyBox{
     //METHODS
 
     //Getters
-    public Calendar getEndDate(){
-        return endDate;
-    }
 
     public static int getNumberOfDays(){
         return numberOfDays;
@@ -51,41 +46,17 @@ public class MoneyBox{
 
 
     //Setters
-    private void setEndDate(){
-
-        int year = startDate.get(Calendar.YEAR);
-        int month = startDate.get(Calendar.MONTH);
-        int date = startDate.get(Calendar.DATE);//Date is set so that there wouldn't be errors sourced by this.
-
-        if(Delimitation.getBudgetPlanningWay().equals("Daily")){
-            date = startDate.get(Calendar.DATE) + 1;
-        }
-
-        else if(Delimitation.getBudgetPlanningWay().equals("Weekly")){
-            date = startDate.get(Calendar.DATE) + 7;
-        }
-
-        else if(Delimitation.getBudgetPlanningWay().equals("Monthly")){
-            date = startDate.get(Calendar.DATE) + 30;
-        }
-
-        else{
-            System.out.println("There is something wrong with the budgetPlanningWay");
-        }
-
-        endDate.set(year, month, date, 0, 0);
-    }
 
     public void setNumberOfDays(){
-        if(Delimitation.getBudgetPlanningWay().equals("Daily")){
+        if(Delimitation.getBudgetPlanningWay().equalsIgnoreCase("Daily")){
             numberOfDays = 1;
         }
 
-        else if(Delimitation.getBudgetPlanningWay().equals("Weekly")){
+        else if(Delimitation.getBudgetPlanningWay().equalsIgnoreCase("Weekly")){
             numberOfDays = 7;
         }
 
-        else if(Delimitation.getBudgetPlanningWay().equals("Monthly")){
+        else if(Delimitation.getBudgetPlanningWay().equalsIgnoreCase("Monthly")){
             numberOfDays = 30;
         }
 
@@ -99,7 +70,7 @@ public class MoneyBox{
     }
 
     private void setDailySaving(){
-        dailySaving = dailySpendingLimit - CardStatement.getDailySpending(Calendar.getInstance().getTime());//There is no variable as spendigs however we need that
+        dailySaving = dailySpendingLimit - CardStatement.getDailySpending(Calendar.getInstance().getTime());
     }
 
     private void setMonthlySaving(){
@@ -114,41 +85,15 @@ public class MoneyBox{
 
     public void updateMoneyBox(){
 
-        Calendar currentDate = Calendar.getInstance();
-        Calendar today;
-
         if(Delimitation.budgetPlanningWayChanged){
             setNumberOfDays();
             Delimitation.budgetPlanningWayChanged = false;
         }
 
-        if(currentDate.after(endDate)){
-            setDailySpendingLimit();
-            changeStartDate((Date) endDate.getTime());
-            setEndDate();
-        }
-    }
-
-    private void changeStartDate(Date startDate){//Changes startDate in sql
-        Connection conn = null;
-        Statement stmt = null;
-        try {
-           try {
-              Class.forName("com.mysql.jdbc.Driver");
-           } catch (Exception e) {
-              System.out.println(e);
-           }
-           conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
-           System.out.println("Connection is created successfully:");
-           stmt = (Statement) conn.createStatement();
-           String query1 = "update moneyBox set startDate='" + startDate + "' where userID =" + u.getId();
-           ((java.sql.Statement) stmt).executeUpdate(query1);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-    
+        setDailySpendingLimit();
+        setDailySaving();
+        setMonthlySaving();
+        setTotalSaving();
     }
     
 }
