@@ -78,7 +78,7 @@ public class User {
         }
     }
 
-    public static void setIncome(double income)
+    public static void setIncome(int income)
     {
         income = income;
         Connection conn = null;
@@ -128,7 +128,7 @@ public class User {
         this.pic = pic;
     }
 
-    public static double getUserIncome()
+    public static int getUserIncome()
     {
         return income;
     }
