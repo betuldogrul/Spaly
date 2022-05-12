@@ -94,7 +94,7 @@ public class CreditCard extends CardStatement
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "UPDATE creditcard SET totalSpentMoney= '" + totalSpentMoney + "' WHERE user_id= '" + this.userid + "'";
+            String sql = "UPDATE creditcard SET totalSpentMoney= '" + totalSpentMoney + "' WHERE user_id= " + this.userid ;
             p = conn.prepareStatement(sql);
             p.executeUpdate();
             conn.close();
@@ -121,7 +121,7 @@ public class CreditCard extends CardStatement
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "UPDATE creditcard SET totalSpentMoney= " + totalSpentMoney + " WHERE user_id= "  + Profile.getUser().getId();
+            String sql = "UPDATE creditcard SET totalSpentMoney= " + totalSpentMoney + " WHERE user_id= "  + this.userid;
             p = conn.prepareStatement(sql);
             p.executeUpdate();
             conn.close();
