@@ -100,7 +100,8 @@ public class NewJFrame extends javax.swing.JFrame {
                         ItemName2.setText("there is no item");
                         TItemPrice2.setText("null");
                         progress2.setMaximum(100);
-                        progress2.setValue(0);    
+                        progress2.setValue(0);   
+                        goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); 
                         }
                         if(target.size() > 2)
                         {
@@ -115,7 +116,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             progress3.setMaximum(100);
                             goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
                         }
-                        else
+                        if(target.size() == 1)
                         {
                             itemName1.setText("there is no item");
                             TItem1Price.setText("null");
@@ -128,29 +129,31 @@ public class NewJFrame extends javax.swing.JFrame {
         removesecondGoal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeSecondGoal(evt);
-                Goals.remove(target.get(2).getID());
+                Goals.remove(target.get(1).getID());
                 target = Goals.getItemsArrayList();
                 if(target.size() > 2)
-                {
-                    ItemName2.setText(target.get(2).getName());
-                    TItemPrice2.setText(""+target.get(2).getPrice());
-                    progress2.setValue((int)target.get(2).getCurrentMoney());
-                    goal2.setIcon(new javax.swing.ImageIcon(target.get(2).getImage()));
-                    progress2.setMaximum((int) target.get(2).getPrice());
-                    ItemName3.setText("there is no item.");
-                    ıtemPriceT3.setText("null");
-                    progress3.setValue(0);
-                    progress3.setMaximum(100);
-                    goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
-                }
+            {
+                TItemPrice2.setText("" + target.get(2).getPrice());
+                ItemName2.setText(target.get(2).getName());
+                progress2.setMaximum((int)target.get(2).getPrice());
+                progress2.setValue((int) target.get(2).getCurrentMoney());
+                goal2.setIcon(new javax.swing.ImageIcon(target.get(2).getImage()));
+                ıtemPriceT3.setText("null");
+                ItemName3.setText("there is no item");
+                progress3.setMaximum(100);
+                progress3.setValue(0);
+                goal3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
+                
+            }
                 else
                 {
-                    ItemName2.setText("there is no item.");
                     TItemPrice2.setText("null");
-                    progress2.setValue(0);
+                    ItemName2.setText("there is no item");
                     progress2.setMaximum(100);
+                    progress2.setValue(0);
                     goal2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png"));
                 }
+            
             }
         });
         removethirdgoal.addActionListener(new java.awt.event.ActionListener() {
