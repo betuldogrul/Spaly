@@ -43,7 +43,7 @@ public class ProfileFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Downloads\\SeekPng.com_profile-icon-png_9665493 (1).png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
 
         changeUserNameButton.setBackground(new java.awt.Color(220, 250, 100));
         changeUserNameButton.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
@@ -104,8 +104,8 @@ public class ProfileFrame extends javax.swing.JFrame {
                 deactivateAccountButtonActionPerformed(evt);
             }
         });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
+       // 
+        jLabel1.setIcon(new javax.swing.ImageIcon( "C:\\Users\\melis\\OneDrive\\Masaüstü\\projec\\WhatsApp Image 2022-05-12 at 03.18.17.jpeg")); // NOI18N
 
         SettingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         SettingsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +128,7 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
 
-        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\OneDrive\\Masaüstü\\projec\\WhatsApp Image 2022-05-12 at 03.18.17.jpeg")); // NOI18N
+        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);

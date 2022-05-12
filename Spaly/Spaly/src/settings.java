@@ -70,23 +70,23 @@ public class settings extends javax.swing.JFrame {
 
         limitSetButton.setText("set");
 
-        spaly.setIcon(new javax.swing.ImageIcon("C:\\Users\\BETÜL\\Documents\\NetBeansProjects\\ilkprogram\\src\\ilkprogram\\WhatsApp Image 2022-05-09 at 22.38.53.jpeg")); // NOI18N
+        spaly.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
 
-        home.setIcon(new javax.swing.ImageIcon("C:\\Users\\BETÜL\\Documents\\NetBeansProjects\\ilkprogram\\src\\ilkprogram\\WhatsApp Image 2022-05-09 at 21.05.48.jpeg")); // NOI18N
+        home.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeActionPerformed(evt);
             }
         });
 
-        settings.setIcon(new javax.swing.ImageIcon("C:\\Users\\BETÜL\\Documents\\NetBeansProjects\\ilkprogram\\src\\ilkprogram\\WhatsApp Image 2022-05-09 at 21.05.49 (2).jpeg")); // NOI18N
+        settings.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingsActionPerformed(evt);
             }
         });
 
-        profile.setIcon(new javax.swing.ImageIcon("C:\\Users\\BETÜL\\Documents\\NetBeansProjects\\ilkprogram\\src\\ilkprogram\\WhatsApp Image 2022-05-09 at 21.05.49 (1).jpeg")); // NOI18N
+        profile.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
         profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileActionPerformed(evt);
