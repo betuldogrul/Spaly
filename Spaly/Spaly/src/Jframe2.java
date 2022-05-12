@@ -417,6 +417,14 @@ public class jFrame2 extends javax.swing.JFrame {
                 k.dispose();
             }
         });
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                ProfileFrame k = new ProfileFrame();
+                k.show();
+                k.dispose();
+            }
+        });
 
         jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\3669231_cart_shopping_ic_icon.png")); // NOI18N
         if(targets.size() > 1)
