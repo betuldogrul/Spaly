@@ -430,7 +430,14 @@ public class NewJFrame extends javax.swing.JFrame {
             });
         }
       
-
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+                ProfileFrame m = new ProfileFrame();
+                m.show();
+                dispose();
+            }
+        });
         addmoney3.setText("Add money");
         if(target.size() > 3)
         {
@@ -519,6 +526,22 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+                settings k = new settings();
+                k.show();
+                dispose();
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                MenuJFrame k = new MenuJFrame();
+                k.show();
+                dispose();
+            }
+        });
         if(target.size() > 1)
         {
             progress1.setMaximum((int)target.get(1).getPrice());
@@ -743,6 +766,9 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>    
                         
 
+    protected void jButton4ActionPerformed(ActionEvent evt) {
+    }
+
     protected void removeThirdGoal(ActionEvent evt) {
     }
 
@@ -767,7 +793,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
-
+  
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    } 
     private void website3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
