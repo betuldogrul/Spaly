@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -46,7 +48,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         jButton1 = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
 
-        for(int i = 0; i < 3; i++)  // 3 yerine cards.size()
+        for(int i = 0; i < 2; i++)  // 3 yerine cards.size()
         {
             jScrollPane1 = new javax.swing.JScrollPane();
             jEditorPane1 = new javax.swing.JEditorPane();
@@ -77,14 +79,14 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
             jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel10.setText("Mostly Spended On");
+            jLabel10.setText("Daily Spendings Graph");
             jPanel4.add(jLabel10);
 
             jPanel5.setBackground(new java.awt.Color(151, 195, 201));
             jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
             jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel9.setText("Current Spendings");
+            jLabel9.setText("Monthly Spendings Graph");
             jPanel5.add(jLabel9);
 
             jPanel6.setBackground(new java.awt.Color(151, 195, 201));
@@ -94,7 +96,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             jLabel1.setText("Remaining Money");
 
             jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            jLabel3.setText("sdkjcndkbcd");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
+            jLabel3.setText("10,000");//String.valueOf(cards.get(cardCount).getUpperLimit()- cards.get(cardCount).getTotalSpentMoney()));
 
             javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
             jPanel6.setLayout(jPanel6Layout);
@@ -162,14 +164,14 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             });
 
             jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel2.setText("skjfnsk");//cards.get(cardCount).getCardBank());
+            jLabel2.setText("X Bank");//cards.get(cardCount).getCardBank());
             
 
             jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel7.setText("dskjcnjksd"); //Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
+            jLabel7.setText("User Name"); //Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel4.setText("ksdcdklsc");//String.valueOf(cards.get(cardCount).getCardNumber()));
+            jLabel4.setText("XXXX XXXX XXXX XXXX");//String.valueOf(cards.get(cardCount).getCardNumber()));
             cardCount++;
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -217,6 +219,11 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         //jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
         jLayeredPane2.add(jButton3);
         jButton3.setBounds(850, 20, 54, 54);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         //jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +259,14 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         jButton5.setBounds(670, 30, 98, 38);
         
         }
-         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        private void jButton3ActionPerformed(ActionEvent evt) {
+            ProfileFrame pf = new ProfileFrame();
+            pf.show();
+            dy = 0;
+            dispose();
+        }
+
+        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
             if (cardCount <= 4) 
             {jScrollPane1 = new javax.swing.JScrollPane();
             jEditorPane1 = new javax.swing.JEditorPane();

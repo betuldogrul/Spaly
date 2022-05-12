@@ -27,8 +27,12 @@ public class Category extends Categories // only one card, only one category
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "INSERT INTO category VALUES(" + card.getCreditCardId() + ", " + name + "," + currentSpendings + "," + limit;
+            String sql = "INSERT INTO category (creditcard_id, category_name, currentspendings, category_limit) VALUES (?, ?, ?, ?)";
             p = conn.prepareStatement(sql);
+            p.setInt(1, card.getCreditCardId());
+            p.setString(2, name);
+            p.setDouble(3, currentSpendings);
+            p.setDouble(4, limit);
             p.executeUpdate();
             conn.close();
         }
