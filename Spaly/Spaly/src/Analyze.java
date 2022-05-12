@@ -46,7 +46,7 @@ public class Analyze {
         return itemPrice-savings;
     }
     //Draws the chart of Daily Spending of the User According to categories of his/her spending
-    public static void drawBarChartofDailySpendingAccordingtoCategories(int userID, CreditCard c){
+    public static void drawBarChartofDailySpendingAccordingtoCategories(CreditCard c){
         
     }
     public static ArrayList<ArrayList<Double>> differ(ArrayList<Spend> spend){
@@ -150,10 +150,9 @@ public class Analyze {
         }
         return k;
     }
-    
     public static double  getMonthSpend(int k) 
     {
-        ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
+        ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
         
         double sum = 0;
         for(int i = 0 ; i < cards.size(); i++)
