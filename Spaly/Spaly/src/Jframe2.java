@@ -155,6 +155,7 @@ public class jFrame2 extends javax.swing.JFrame {
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+                NewJFrame.target = Goals.getItemsArrayList(); 
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(0));
             }
         });
@@ -163,6 +164,7 @@ public class jFrame2 extends javax.swing.JFrame {
         website4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 website4ActionPerformed(evt);
+                NewJFrame.target = Goals.getItemsArrayList(); 
                 ShoppingList.giveWebsiteInfo(ShoppingList.getSearched().get(0));
             }
         });
@@ -175,6 +177,7 @@ public class jFrame2 extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(1));
                 targets = Goals.getItemsArrayList();   
+                NewJFrame.target = Goals.getItemsArrayList(); 
             }
         });
 
@@ -212,7 +215,8 @@ public class jFrame2 extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton4ActionPerformed(evt);
                 ShoppingList.addToGoal(ShoppingList.getSearched().get(3));
-                targets = Goals.getItemsArrayList();   
+                targets = Goals.getItemsArrayList(); 
+                NewJFrame.target = Goals.getItemsArrayList();   
             }
         });
 
@@ -854,7 +858,8 @@ public class jFrame2 extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {     
         ShoppingList.addToGoal(ShoppingList.getSearched().get(0));  
-        targets = Goals.getItemsArrayList();                                        
+        targets = Goals.getItemsArrayList();  
+        NewJFrame.target = Goals.getItemsArrayList();                                       
         NewJFrame k = new NewJFrame();
         k.show();
         dispose();// TODO add your handling code here:
