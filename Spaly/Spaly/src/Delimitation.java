@@ -1,5 +1,3 @@
-
-
 public class Delimitation 
 {
     private static String warning;
@@ -29,9 +27,9 @@ public class Delimitation
         return this.warning;
     }
 
-    public void setLimit(int limit)
+    public static void setLimit(Object object)
     {
-        this.limit = limit;
+        limit = (double) object;
     }
 
     public void setWarning(String warning)
@@ -39,17 +37,17 @@ public class Delimitation
         this.warning = warning;
     }
 
-    public void setBudgetPlanningWay(String way)
+    public static void setBudgetPlanningWay(String way)
     {
         /* budgetPlanning = way;
         if(way.equals("Daily"))
         {
-            value.drawBarChartofDailySpendingAccordingtoCategories(p.getUser().getId());
+            value.drawBarChartofDailySpendingAccordingtoCategories();
         }
         else if(way.equals("Monthly"))
         {
-           value.drawPieChartofMonthlySpendingAccordingtoCategories(p.getUser().getId());
-           value.drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(p.getUser().getId());
+           value.drawPieChartofMonthlySpendingAccordingtoCategories();
+           value.drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards();
         } */
         budgetPlanning = way;
     }

@@ -21,7 +21,7 @@ public class CreditCard extends CardStatement
         this.userid = userID;
         numberOfCards++;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class CreditCard extends CardStatement
     {
         totalSpentMoney = totalSpentMoney + amount;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -110,7 +110,7 @@ public class CreditCard extends CardStatement
     {
         totalSpentMoney = totalSpentMoney - amount;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -131,6 +131,34 @@ public class CreditCard extends CardStatement
             System.out.println(e);
         }
         return totalSpentMoney;
+    }
+
+    public static void removeCard(String bankNumber)
+    {
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "DELETE FROM users WHERE cardnumber =" + bankNumber;
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+            p.close();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
     //A method to interact with the database
