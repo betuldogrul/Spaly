@@ -11,6 +11,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
      * Creates new form MoneyBoxFrame
      */
     public MoneyBoxFrame() {
+        MoneyBox m = new MoneyBox();
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
