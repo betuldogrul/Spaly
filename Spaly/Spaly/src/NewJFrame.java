@@ -178,6 +178,22 @@ public class NewJFrame extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+                settings k = new settings();
+                k.show();
+                dispose();
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                MenuJFrame k = new MenuJFrame();
+                k.show();
+                dispose();
+            }
+        });
 
         jButton7.setText("jButton6");
 
@@ -464,10 +480,12 @@ public class NewJFrame extends javax.swing.JFrame {
        
 
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\8324275_ui_essential_app_magnifier_search_icon.png")); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-
+                jButton11ActionPerformed(evt);
+                ProfileFrame m = new ProfileFrame();
+                m.show();
+                dispose();
             }
         });
 
@@ -816,7 +834,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                        
+    }     
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }      
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                     
 
     /**
      * @param args the command line arguments
