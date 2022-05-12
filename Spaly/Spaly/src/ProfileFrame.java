@@ -219,19 +219,23 @@ public class ProfileFrame extends javax.swing.JFrame {
     }
 
     private void changeUserNameButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-        // TODO add your handling code here:
+        UserNameChangeFrame un = new UserNameChangeFrame();
+        un.setVisible(true);
     }                                                    
 
     private void ChangePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-        // TODO add your handling code here:
+        ChangePasswordFrame p = new ChangePasswordFrame();
+        p.setVisible(true);
     }                                                    
 
     private void addBankCardButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
+        CardStatementJFrame c = new CardStatementJFrame();
+        c.setVisible(true);
     }                                                 
 
     private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+        RemoveBankCard r = new RemoveBankCard();
+        r.setVisible(true);
     }                                                
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -239,11 +243,16 @@ public class ProfileFrame extends javax.swing.JFrame {
     }                                        
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
+        userEnter u = new userEnter();
+        u.setVisible(true);
+        dispose();
     }                                            
 
     private void deactivateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                        
-        // TODO add your handling code here:
+        Profile.removeUser(Profile.getUser());
+        userEnter u = new userEnter();
+        u.setVisible(true);
+        dispose();
     }                                                       
 
     private void addPictureActionPerformed(java.awt.event.ActionEvent evt) {                                           
