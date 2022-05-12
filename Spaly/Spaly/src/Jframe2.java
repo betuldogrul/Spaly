@@ -475,7 +475,22 @@ public class jFrame2 extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+                ProfileFrame k = new ProfileFrame(); 
+                k.show();
+                dispose();
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                MenuJFrame k = new MenuJFrame();
+                k.show();
+                k.dispose();
+            }
+        });
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
         if(targets.size() > 2)
         {
@@ -825,7 +840,14 @@ public class jFrame2 extends javax.swing.JFrame {
         jf2.show();
         dispose();
     }                                        
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)     
+    {
 
+    }    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt)     
+    {
+
+    }  
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
@@ -1028,6 +1050,6 @@ public class jFrame2 extends javax.swing.JFrame {
     private javax.swing.JLabel ıtemPriceT5;
     private javax.swing.JLabel ıtemPriceT6;
     private javax.swing.JLabel ıtemPriceT7;
-    ArrayList<targetedItem> targets = Goals.getItemsArrayList();
+    static ArrayList<targetedItem> targets = Goals.getItemsArrayList();
     // End of variables declaration                   
 }
