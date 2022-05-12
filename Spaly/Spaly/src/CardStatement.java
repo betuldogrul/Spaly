@@ -23,7 +23,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
     {
         ArrayList<CreditCard> y = new ArrayList<>();
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -60,7 +60,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
     public static void updateTotalSpending() //checked 
     {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }
@@ -92,7 +92,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             public static double getMonthlySpending() // checked 
             {
                 try{
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }
@@ -127,7 +127,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
         double dailySpending = 0;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -159,7 +159,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         {
         ArrayList<CreditCard> cards = new ArrayList<CreditCard>();
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -197,7 +197,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
     {
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -231,7 +231,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             {
                 CreditCard c = null;
                 try{
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }
