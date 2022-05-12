@@ -226,8 +226,7 @@ public class ProfileFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                                    
 
-    private void addBankCardButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
+    private void addBankCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
     }                                                 
 
     private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
