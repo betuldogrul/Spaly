@@ -1,13 +1,6 @@
-import java.util.ArrayList;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  *
- * @author melisa
+ * @author BETÜL
  */
 public class settings extends javax.swing.JFrame {
 
@@ -33,9 +26,6 @@ public class settings extends javax.swing.JFrame {
         monthly = new javax.swing.JButton();
         limit = new javax.swing.JComboBox<>();
         limitSet = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        percentage = new javax.swing.JTextField();
-        percentagebutton = new javax.swing.JButton();
         limitSetButton = new javax.swing.JButton();
         spaly = new javax.swing.JLabel();
         home = new javax.swing.JButton();
@@ -69,7 +59,7 @@ public class settings extends javax.swing.JFrame {
             }
         });
 
-        limit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transportation", "Food", "Clothing", "Other" }));
+        limit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         limit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limitActionPerformed(evt);
@@ -77,32 +67,6 @@ public class settings extends javax.swing.JFrame {
         });
 
         limitSet.setText("limit");
-        ArrayList<targetedItem> k = Goals.getItemsArrayList();
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "there is no item."}));
-        if(k.size() > 1)
-        {
-
-            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { k.get(1).getName()}));
-        }
-        if(k.size() > 2)
-        {
-
-            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { k.get(1).getName(), k.get(2).getName()}));
-        }
-        if(k.size() > 3)
-        {
-
-            jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { k.get(1).getName(), k.get(2).getName(), k.get(3).getName()}));
-        }
-        percentage.setText("percentage %");
-
-        percentagebutton.setText("set");
-        percentagebutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                percentagebuttonActionPerformed(evt);
-                jComboBox2.getSelectedItem();
-            }
-        });
 
         limitSetButton.setText("set");
 
@@ -142,7 +106,6 @@ public class settings extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(limit, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(daily)
@@ -150,13 +113,10 @@ public class settings extends javax.swing.JFrame {
                                         .addComponent(weekly)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(monthly, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(limitSet)
-                                    .addComponent(percentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(monthly, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                    .addComponent(limitSet))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(percentagebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(limitSetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(limitSetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(424, 424, 424))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(spaly, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,13 +151,7 @@ public class settings extends javax.swing.JFrame {
                     .addComponent(limit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limitSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limitSetButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(percentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(percentagebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,10 +172,6 @@ public class settings extends javax.swing.JFrame {
     private void monthlyActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
     }                                       
-
-    private void percentagebuttonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
-    }                                                
 
     private void profileActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
@@ -273,18 +223,14 @@ public class settings extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton daily;
     private javax.swing.JButton home;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> limit;
     private javax.swing.JTextField limitSet;
     private javax.swing.JButton limitSetButton;
     private javax.swing.JButton monthly;
-    private javax.swing.JTextField percentage;
-    private javax.swing.JButton percentagebutton;
     private javax.swing.JButton profile;
     private javax.swing.JButton settings;
     private javax.swing.JLabel spaly;
     private javax.swing.JButton weekly;
     // End of variables declaration                   
 }
-

@@ -181,7 +181,7 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>                        
 
-    protected void jButton2ActionPerformed(ActionEvent evt) {
+    private void jButton2ActionPerformed(ActionEvent evt) {
         NewJFrame jf =  new NewJFrame();
         jf.show();
 
@@ -189,11 +189,15 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        ProfileFrame pf = new ProfileFrame();
+        pf.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        settings s = new settings();
+        s.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -210,14 +214,14 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
         dispose();
     }      
 
-    private void jButton6ActionPerformed(ActionEvent evt) {
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         AnalysesJFrame jf = new AnalysesJFrame();
         jf.show();
 
         dispose();
     }
     
-    private void jButton7ActionPerformed(ActionEvent evt) {
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         MoneyBoxFrame mb = new MoneyBoxFrame();
         mb.show();
 

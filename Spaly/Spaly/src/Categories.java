@@ -26,13 +26,14 @@ public class Categories //the class to hold the arraylist of the categories in t
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM category";
+            String sql = "SELECT * FROM category WHERE creditcard_id = " + card.getCreditCardId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
             while (rs.next()) {
+                int creditcard_id = rs.getInt("creditcard_id");
                 String category_name = rs.getString("category_name");
-                double currentSpendings = rs.getDouble("current_spendings");
+                double currentSpendings = rs.getDouble("currentspendings");
                 double category_limit = rs.getDouble("category_limit");
                 Category category = new Category(category_name, currentSpendings, category_limit, card);
                 categories.add(category);

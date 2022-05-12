@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JFrame;
 
 /**
@@ -115,6 +117,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         });
 
         homeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\homeicon.jpeg")); // NOI18N
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\profileicon.jpeg")); // NOI18N
 
@@ -204,6 +211,12 @@ public class ProfileFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        MenuJFrame pf = new MenuJFrame();
+        pf.setVisible(true);
+        dispose();
+    }
 
     private void changeUserNameButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:

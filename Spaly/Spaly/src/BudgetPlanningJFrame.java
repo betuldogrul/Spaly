@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -261,6 +262,11 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
         jLabel16.setText("jLabel14");
@@ -328,6 +334,13 @@ public class BudgetPlanningJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        ProfileFrame pf = new ProfileFrame();
+        pf.show();
+
+        dispose();
+    }
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         int limit = Integer.valueOf(jTextField2.getText());
