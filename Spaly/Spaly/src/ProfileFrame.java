@@ -108,6 +108,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\Spaly yazısı.jpeg")); // NOI18N
 
         SettingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\settingsicon.jpeg")); // NOI18N
+        SettingsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SettingsButtonActionPerformed(evt);
+            }
+        });
 
         addPicture.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Downloads\\addButton.jpeg")); // NOI18N
         addPicture.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +129,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         });
 
         profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\profileicon.jpeg")); // NOI18N
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(220, 250, 100));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
@@ -211,6 +221,18 @@ public class ProfileFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+
+    private void SettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        settings s = new settings();
+        s.setVisible(true);
+        dispose();
+    }
+
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        ProfileFrame pf = new ProfileFrame();
+        pf.setVisible(true);
+        dispose();
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
         MenuJFrame pf = new MenuJFrame();
