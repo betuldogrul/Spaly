@@ -266,6 +266,7 @@ public class NewJFrame extends javax.swing.JFrame {
         ıtemPriceT3.setText("null");
 
         website1.setLabel("Website");
+        target = Goals.getItemsArrayList();
         if(target.size() > 1)
         {
             TItem1Price.setText(""+ target.get(1).getPrice());
@@ -481,6 +482,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
 
+
         jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
 
         goal1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
@@ -495,6 +497,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+                MenuJFrame k = new MenuJFrame();
+                k.show();
+                dispose();
             }
         });
         if(target.size() > 1)
