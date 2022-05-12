@@ -138,16 +138,16 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         });
 
         limit2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit2.setText(Analyze.getMonthSpend(1)+"$");
+        limit2.setText("20$");
 
         limit3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit3.setText(Analyze.getMonthSpend(2)+"$");
+        limit3.setText("70$");
 
         limit4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit4.setText(Analyze.getMonthSpend(3)+"$");
+        limit4.setText("50$");
 
         limit1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit1.setText(Analyze.getMonthSpend(0)+"$");
+        limit1.setText("60$");
 
         percentage1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         percentage1.setText("%75");
@@ -163,16 +163,16 @@ public class AnalysesJFrame extends javax.swing.JFrame {
 
         current1.setBackground(new java.awt.Color(0, 153, 255));
         current1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current1.setText("60$");
+        current1.setText("80$");
 
         current2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current2.setText("20$");
+        current2.setText("50$");
 
         current3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current3.setText("70$");
+        current3.setText("100$");
 
         current4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current4.setText("50$");
+        current4.setText("170$");
         pieChartDrawer.setText("PieChartDrawer");
         pieChartDrawer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
