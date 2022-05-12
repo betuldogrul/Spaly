@@ -11,7 +11,7 @@ public class Spendings { // this class is to hold the every spending in a month 
     public Spendings() { // consctructor , adds every data to the arraylist
         spendings = new ArrayList<Spending>();
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -27,16 +27,17 @@ public class Spendings { // this class is to hold the every spending in a month 
             rs = p.executeQuery();
 
             while (rs.next()) {
-                int day = rs.getInt("dayy");
-                int month = rs.getInt("monthh");
-                int year = rs.getInt("yearr");
-                int hour = rs.getInt("hourr");
-                int minute = rs.getInt("minutee");
+                int day = rs.getInt("day");
+                int month = rs.getInt("month");
+                int year = rs.getInt("year");
+                int hour = rs.getInt("hour");
+                int minute = rs.getInt("minute");
                 double expenditure = rs.getInt("spending");
                 String company = rs.getString("company");
                 String category = rs.getString("category");
                 int card_id = rs.getInt("creditcard_id");
-                Spending spending =  new Spending(day, month, year, hour, minute, expenditure, company, category, card_id);
+                int user_id = rs.getInt("userID");
+                Spending spending =  new Spending(day, month, year, hour, minute, expenditure, company, category, card_id, user_id);
                 spendings.add(spending);
             }
             p.close();

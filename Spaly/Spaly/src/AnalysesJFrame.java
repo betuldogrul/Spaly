@@ -4,9 +4,19 @@
  */
 
 
+import java.awt.Font;
+import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JFrame;
 import org.jfree.ui.RefineryUtilities;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.ui.ApplicationFrame;
 /**
  *
  * @author tekin
@@ -160,6 +170,15 @@ public class AnalysesJFrame extends javax.swing.JFrame {
 
         current4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         current4.setText("0$");
+      
+        PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
+        demo.pack();
+        RefineryUtilities.centerFrameOnScreen(demo);
+        demo.setVisible(true);
+        pieChart.add(demo);
+
+        totalExpenditure.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        totalExpenditure.setText("Total Expenditure:"+ Analyze.totalExpenditures());
         javax.swing.GroupLayout ChartLayout = new javax.swing.GroupLayout(pieChart);
         pieChart.setLayout(pieChartLayout);
         pieChartLayout.setHorizontalGroup(
@@ -170,14 +189,6 @@ public class AnalysesJFrame extends javax.swing.JFrame {
             pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 363, Short.MAX_VALUE)
         );
-        PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
-        demo.pack();
-        RefineryUtilities.centerFrameOnScreen(demo);
-        demo.setVisible(true);
-        pieChart.add(demo);
-
-        totalExpenditure.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        totalExpenditure.setText("Total Expenditure:"+Analyze.totalExpenditure());
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,4 +408,5 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     // End of variables declaration 
                       
 }
+
 
