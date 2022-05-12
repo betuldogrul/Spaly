@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,7 +15,8 @@ import javax.swing.JOptionPane;
 public class CardStatementJFrame extends javax.swing.JFrame implements java.beans.Customizer {
     
     private Object bean;
-
+    private ArrayList<JPanel> cardPanels;
+    private ArrayList<JLabel> labelCardNumber;
     /**
      * Creates new customizer CardStatementJFRame
      */
@@ -206,6 +209,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
 
             getContentPane().add(jLayeredPane2, java.awt.BorderLayout.CENTER);
             cardCount++;
+            cardPanels.add(jPanel1);
+            labelCardNumber.add(jLabel4);
         }// </editor-fold>     
 
         jButton1.setText("Add New Card");
@@ -432,7 +437,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         }                                        
 
         private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {                                     
-                // TODO add your handling code here:
+
         }                                    
 
         private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -441,15 +446,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
 
         private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
             // TODO add your handling code here:
-        }                                        
-
-        private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {                                     
-            // TODO add your handling code here:
-        }                                    
-
-        private void jLabel3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-            // TODO add your handling code here:
-        }                                           
+        }                                                                            
+                                          
 
         private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
