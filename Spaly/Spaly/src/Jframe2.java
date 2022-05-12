@@ -857,12 +857,12 @@ public class jFrame2 extends javax.swing.JFrame {
     }                                           
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {     
-        ShoppingList.addToGoal(ShoppingList.getSearched().get(0));  
+       /*  ShoppingList.addToGoal(ShoppingList.getSearched().get(0));  
         targets = Goals.getItemsArrayList();  
         NewJFrame.target = Goals.getItemsArrayList();                                       
         NewJFrame k = new NewJFrame();
         k.show();
-        dispose();// TODO add your handling code here:
+        dispose();// TODO add your handling code here: */
     }                                              
 
     private void website4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
