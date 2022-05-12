@@ -3,6 +3,10 @@
         "lib/**/*.jar",
         "c:\\Users\\melis\\Downloads\\mysql-connector-java-8.0.29.jar",
         "c:\\Users\\melis\\Downloads\\protobuf-java-3.19.4.jar",
-        "c:\\Users\\BETÜL\\Desktop\\mysql-connector-java-8.0.29.jar"
+        "c:\\Users\\BETÜL\\Desktop\\mysql-connector-java-8.0.29.jar",
+        "c:\\Users\\melis\\Downloads\\jfreechart.jar",
+        "c:\\Users\\melis\\Downloads\\jfreechart-1.0.19.jar",
+        "c:\\Users\\melis\\Downloads\\jcommon-1.0.23.jar",
+        "c:\\Users\\melis\\Downloads\\jfreechart-1.0.19-swt.jar"
     ]
 }

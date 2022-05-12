@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Analyze {
-    private double income;
-    private double itemPrice;
-    private double totalExpenditures;
-    private double savings;
+    private static double income;
+    private static double itemPrice;
+    private static double totalExpenditures;
+    private static CreditCard c;
+    private static double savings;
     private Category category;
-    private Categories categories;
+    private static Categories categories;
     private Profile p;
     private int userID;
-    private Spend spend;
+    private ArrayList<Spend> spend;
     public Analyze(Profile p){
         userID=p.getUser().getId();
     }
@@ -23,22 +24,29 @@ public class Analyze {
     public double getIncome(){return income;}
     public double getItemPrice(){return itemPrice;}
     public double getSavings(){return savings;}
-    public double totalExpenditures(){
-        //get values from Database
+    public static double totalExpenditures(){
+        totalExpenditures=0;
+        ArrayList<Spend> spend= getValuesFromDatabase(5, c);
+        ArrayList<ArrayList<Double>> allExpenditures=differ(spend);
+        for(int i=0;i<allExpenditures.size();i++){
+            for(int j=0;j<spend.size();j++){
+                totalExpenditures+=allExpenditures.get(i).get(j);
+            }
+        }
         return totalExpenditures;
     }
-    public double ratioOfSpendingToTotalLimit(){
+    public static double ratioOfSpendingToTotalLimit(){
         return totalExpenditures/categories.totalLimitCalculator()*100;
     }
     //Calculates the ratio of incomes to expenditures 
-    public double ratioOfMoney(){
+    public static double ratioOfMoney(){
         return income/totalExpenditures;
     }
-    public double remaining(){
+    public static double remaining(){
         return itemPrice-savings;
     }
     //Draws the chart of Daily Spending of the User According to categories of his/her spending
-    public void drawBarChartofDailySpendingAccordingtoCategories(int userID, CreditCard c){
+    public static void drawBarChartofDailySpendingAccordingtoCategories(CreditCard c){
         
     }
     public static ArrayList<ArrayList<Double>> differ(ArrayList<Spend> spend){
@@ -142,5 +150,24 @@ public class Analyze {
         }
         return k;
     }
-    //Draws the chart of Monthly Spending of the User from All Bank Card Info
+    public static double  getMonthSpend(int k) 
+    {
+        ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
+        
+        double sum = 0;
+        for(int i = 0 ; i < cards.size(); i++)
+        {
+            ArrayList<Double> s = differ(getValuesFromDatabase(5, cards.get(i))).get(k);
+            for(int y = 0; y < s.size(); y++ )
+            {
+                sum = sum + s.get(y);
+            }
+            
+        }
+        return sum;
+    }	
+     //Draws the chart of Monthly Spending of the User from All Bank Card Info
+    public static void drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(){
+       
+    }
 }

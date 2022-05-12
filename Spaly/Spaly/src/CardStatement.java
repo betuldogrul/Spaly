@@ -33,7 +33,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM credit_card WHERE user_id = " + Profile.getUser().getId();
+            String sql = "SELECT * FROM credit_card WHERE user_id=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -105,7 +105,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         return totalSpending;
     }
 
-    public double getDailySpending(Date day)
+    public static double getDailySpending(Date day)
     {
         Calendar c = Calendar.getInstance();
         c.setTime(day);
@@ -123,7 +123,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id = " + 
+            String sql = "SELECT * FROM cardstatement WHERE creditcard_id IN (SELECT creditcard_id FROM credit_card WHERE user_id =" + 
                                 Profile.getUser().getId() + ") AND day = " + c.get(Calendar.DATE);
 
             p = conn.prepareStatement(sql);
@@ -141,14 +141,9 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         return dailySpending;
     }
 
-    public static ArrayList<CreditCard> getCards()
+    public static ArrayList<CreditCard> getCardsOfUser()
     {
-        return cards;
-    }
-
-    public void addCreditCard(CreditCard c)
-    {
-        cards.add(c);
+        ArrayList<CreditCard> cards = new ArrayList<CreditCard>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
@@ -161,15 +156,97 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         ResultSet rs = null;
         try{
             Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "INSERT INTO credit_card VALUES (" + c.getCreditCardId() + "," + c.getCardNumber() + "," +
-                             c.getCardBank() + "," + c.getUpperLimit() + "," + c.getTotalSpentMoney() + "," + c.getUserIDOfTheCard();
+            String sql = "SELECT * FROM credit_card where user_id=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
+
+            while (rs.next()) {
+                int creditcard_id = rs.getInt("creditcard_id");
+                String card_number = rs.getString("cardnumber");
+                String card_bank = rs.getString("card_bank");
+                int card_limit = rs.getInt("card_limit");
+                int user_id = rs.getInt("user_id");
+                //public CreditCard(int creditcard_id, double number, double upperLimit, double totalMoney, String cardBank, int userID)
+                CreditCard card = new CreditCard(creditcard_id, card_number, card_limit,0, card_bank, user_id);
+                cards.add(card);
+            }
+            
+            p.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return cards;
+    }
+
+    public void addCreditCard(CreditCard c)
+    {
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "INSERT INTO credit_card (creditcard_id, cardnumber, card_bank, card_limit, card_totalMoney, user_id) VALUES (?, ?, ?, ?, ?, ?)";//taking item to database
+            p = conn.prepareStatement(sql);
+            p.setInt(1, c.getCreditCardId());
+            p.setString(2, c.getCardNumber());
+            p.setString(3, c.getCardBank());
+            p.setDouble(4, c.getUpperLimit());
+            p.setDouble(5, c.getTotalSpentMoney());
+            p.setInt(6, Profile.getUser().getId());
+            p.executeUpdate();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        cards.add(c);
+    }
+
+    public static CreditCard getSpecifiedCreditCard(String card_number)
+    {
+        CreditCard c = null;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM credit_card WHERE cardnumber = " + card_number + "LIMIT 1";
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+            while(rs.next())
+            {
+                int creditcard_id = rs.getInt("creditcard_id");
+                String number = rs.getString("cardnumber");
+                String cardBank = rs.getString("card_bank");
+                int cardLimit = rs.getInt("card_limit");
+                int cardTotalMoney = rs.getInt("card_totalMoney");
+                int user_id = rs.getInt("user_id");
+                c = new CreditCard(creditcard_id, number, cardLimit, cardTotalMoney, cardBank, user_id);
+            }
             p.close();
             conn.close();
         }
         catch (Exception e) {
             System.out.println(e);
         }
+        return c;
     }
 }

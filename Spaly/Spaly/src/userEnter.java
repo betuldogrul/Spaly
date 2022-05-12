@@ -1,13 +1,9 @@
-import java.awt.Color;
-
-import javax.swing.JOptionPane;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
- /**
+/**
  *
  * @author melis
  */
@@ -18,7 +14,6 @@ public class userEnter extends javax.swing.JFrame {
      */
     public userEnter() {
         initComponents();
-        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
@@ -74,18 +69,32 @@ public class userEnter extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
                 if(Profile.isUserVaid(userName.getText(), userPassword.getText()) != null)
                 {
-                    /* NewJFrame k = new NewJFrame();
+                    NewJFrame k = new NewJFrame();
                     k.show();
-                    dispose(); */
-                    BudgetPlanningJFrame k = new BudgetPlanningJFrame();
+                    dispose();
+                    /* BudgetPlanningJFrame k = new BudgetPlanningJFrame();
                     k.show();
-                    dispose(); 
+                    dispose();  */
                 }
             }
         });
+
         jButton5.setText("SIGN UP");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+                SignUp k = new SignUp();
+                k.show();
+                dispose();
+            }
+        });
 
         jButton6.setText("FORGOT PASSWORD");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +158,14 @@ public class userEnter extends javax.swing.JFrame {
     }                                        
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
 

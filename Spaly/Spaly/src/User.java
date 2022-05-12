@@ -16,9 +16,9 @@ public class User {
     private static int income;
 
 
-    public User(int id, int income, String userName, String userSurname, String userUserName, String password, String userMail)
+    public User(int id, int incomee, String userName, String userSurname, String userUserName, String password, String userMail)
     {
-        this.income = income;
+        setIncome(incomee);
         this.userId = id;
         this.e_mail = userMail;
         this.userUserName = userUserName;
@@ -46,7 +46,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userSurname='" + surname + "' where userID =" + this.getId();
+           String query1 = "update users set userSurname='" + surname + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -69,7 +69,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userUserName='" + userName + "' where userID =" + this.getId();
+           String query1 = "update users set userUserName='" + userName + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -78,9 +78,9 @@ public class User {
         }
     }
 
-    public void setIncome(int income)
+    public static void setIncome(int income)
     {
-        this.income = income;
+        income = income;
         Connection conn = null;
         Statement stmt = null;
         try {
@@ -92,7 +92,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userIncome='" + income + "' where userID =" + this.getId();
+           String query1 = "update users set userIncome='" + income + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -118,7 +118,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userPage='" + pic + "' where userID =" + this.getId();
+           String query1 = "update users set userPage='" + pic + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -151,7 +151,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userPassword='" + password + "' where userID =" + this.getId();//"update TABLENAME set TABLELABEL='" +parameter + "'where userID = 1"
+           String query1 = "update users set userPassword='" + password + "' where userID =" + Profile.getUser().getId();//"update TABLENAME set TABLELABEL='" +parameter + "'where userID = 1"
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -174,7 +174,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userPassword='" + password + "' where userID =" + this.getId();
+           String query1 = "update users set userPassword='" + password + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)
@@ -197,7 +197,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userMail='" + email + "' where userID =" + this.getId();
+           String query1 = "update users set userMail='" + email + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)

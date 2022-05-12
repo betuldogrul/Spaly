@@ -1,4 +1,7 @@
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -9,9 +12,9 @@ public class MoneyBox{
     public Calendar endDate;
     private static int numberOfDays; //Update when there is a change in budget planing way
     public static int dailySpendingLimit; //Update according to budget planning way
-    public static int dailySaving; //Update daily bases
-    public static int monthlySaving; //Update monthly bases
-    public static int totalSaving; //Update daily bases
+    public static double dailySaving; //Update daily bases
+    public static double monthlySaving; //Update monthly bases
+    public static double totalSaving; //Update daily bases
     private User u;
 
 
@@ -34,15 +37,15 @@ public class MoneyBox{
         return dailySpendingLimit;
     }
 
-    public static int getDailySaving(){
+    public static double getDailySaving(){
         return dailySaving;
     }
 
-    public static int getMonthlySaving(){
+    public static double getMonthlySaving(){
         return monthlySaving;
     }
 
-    public static int getTotalSaving(){
+    public static double getTotalSaving(){
         return totalSaving;
     }
 
@@ -54,15 +57,15 @@ public class MoneyBox{
         int month = startDate.get(Calendar.MONTH);
         int date = startDate.get(Calendar.DATE);//Date is set so that there wouldn't be errors sourced by this.
 
-        if(budgetPlanningWay.equals("Daily")){
+        if(Delimitation.getBudgetPlanningWay().equals("Daily")){
             date = startDate.get(Calendar.DATE) + 1;
         }
 
-        else if(budgetPlanningWay.equals("Weekly")){
+        else if(Delimitation.getBudgetPlanningWay().equals("Weekly")){
             date = startDate.get(Calendar.DATE) + 7;
         }
 
-        else if(budgetPlanningWay.equals("Monthly")){
+        else if(Delimitation.getBudgetPlanningWay().equals("Monthly")){
             date = startDate.get(Calendar.DATE) + 30;
         }
 
@@ -74,15 +77,15 @@ public class MoneyBox{
     }
 
     public void setNumberOfDays(){
-        if(budgetPlanningWay.equals("Daily")){
+        if(Delimitation.getBudgetPlanningWay().equals("Daily")){
             numberOfDays = 1;
         }
 
-        else if(budgetPlanningWay.equals("Weekly")){
+        else if(Delimitation.getBudgetPlanningWay().equals("Weekly")){
             numberOfDays = 7;
         }
 
-        else if(budgetPlanningWay.equals("Monthly")){
+        else if(Delimitation.getBudgetPlanningWay().equals("Monthly")){
             numberOfDays = 30;
         }
 
@@ -96,11 +99,11 @@ public class MoneyBox{
     }
 
     private void setDailySaving(){
-        dailySaving = dailySpendingLimit - getDailySpending();//There is no variable as spendigs however we need that
+        dailySaving = dailySpendingLimit - CardStatement.getDailySpending(Calendar.getInstance().getTime());//There is no variable as spendigs however we need that
     }
 
     private void setMonthlySaving(){
-        monthlySaving = (dailySpendingLimit * 30) - getMonthlySpending();
+        monthlySaving = (dailySpendingLimit * 30) - CardStatement.getMonthlySpending();
     }
 
     private void setTotalSaving(){
@@ -114,21 +117,15 @@ public class MoneyBox{
         Calendar currentDate = Calendar.getInstance();
         Calendar today;
 
-        if(budgetPlanningWayChanged){
+        if(Delimitation.budgetPlanningWayChanged){
             setNumberOfDays();
-            budgetPlanningWayChanged = false;
+            Delimitation.budgetPlanningWayChanged = false;
         }
 
         if(currentDate.after(endDate)){
             setDailySpendingLimit();
             changeStartDate((Date) endDate.getTime());
             setEndDate();
-        }
-
-        if(getToday().before(currentDate)){//If the day is passed
-            setTotalSaving();
-            setMonthlySaving();
-            dailySaving = 0;
         }
     }
 
