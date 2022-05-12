@@ -50,7 +50,7 @@ public class Spendings { // this class is to hold the every spending in a month 
     public void addSpending(Spending spending)
     {
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }

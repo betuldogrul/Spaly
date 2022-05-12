@@ -158,31 +158,37 @@ public class settings extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void weeklyActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
+        Delimitation.setBudgetPlanningWay("Weekly");
     }                                      
 
     private void limitActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+        Delimitation.setLimit(limit.getSelectedItem());
     }                                     
 
     private void dailyActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+        Delimitation.setBudgetPlanningWay("Daily");
     }                                     
 
     private void monthlyActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        Delimitation.setBudgetPlanningWay("Monthly");
     }                                       
 
     private void profileActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        ProfileFrame pf = new ProfileFrame();
+        pf.setVisible(true);
+        dispose();
     }                                       
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        settings s = new settings();
+        s.setVisible(true);
+        dispose();
     }                                        
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
+        MenuJFrame mj = new MenuJFrame();
+        mj.setVisible(true);
+        dispose();
     }                                    
 
     /**
