@@ -1,5 +1,3 @@
-
-
 public class Delimitation 
 {
     private static String warning;
@@ -44,12 +42,12 @@ public class Delimitation
         /* budgetPlanning = way;
         if(way.equals("Daily"))
         {
-            value.drawBarChartofDailySpendingAccordingtoCategories(p.getUser().getId());
+            value.drawBarChartofDailySpendingAccordingtoCategories();
         }
         else if(way.equals("Monthly"))
         {
-           value.drawPieChartofMonthlySpendingAccordingtoCategories(p.getUser().getId());
-           value.drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards(p.getUser().getId());
+           value.drawPieChartofMonthlySpendingAccordingtoCategories();
+           value.drawPieChartofMonthlySpendingAccordingtoCategoriesFromAllBankCards();
         } */
         budgetPlanning = way;
     }

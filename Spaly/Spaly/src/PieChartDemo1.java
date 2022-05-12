@@ -34,10 +34,10 @@ public class PieChartDemo1 extends ApplicationFrame {
      */
     private static PieDataset createDataset() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Transportation", new Double(43.2));
+        dataset.setValue("Transportation", new Double(30.0));
         dataset.setValue("Food", new Double(10.0));
-        dataset.setValue("Clothing", new Double(27.5));
-        dataset.setValue("Other", new Double(17.5));
+        dataset.setValue("Clothing", new Double(35.0));
+        dataset.setValue("Other", new Double(25.0));
         return dataset;        
     }
     

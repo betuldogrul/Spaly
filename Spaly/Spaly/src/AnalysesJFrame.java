@@ -10,13 +10,13 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import org.jfree.ui.RefineryUtilities;
 
-import org.jfree.chart.ChartFactory;
+/*import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.ApplicationFrame; */
 /**
  *
  * @author tekin
@@ -30,6 +30,8 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        /*super(title);
+        setContentPane(createDemoPanel());*/
     }
 
     /**
@@ -63,6 +65,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         current3 = new javax.swing.JLabel();
         current4 = new javax.swing.JLabel();
         pieChart = new javax.swing.JPanel();
+        pieChartDrawer = new javax.swing.JButton();
         totalExpenditure = new javax.swing.JLabel();
         limit = new javax.swing.JLabel();
         percentage1 = new javax.swing.JLabel();
@@ -135,16 +138,16 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         });
 
         limit2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit2.setText("50$");
+        limit2.setText(Analyze.getMonthSpend(1)+"$");
 
         limit3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit3.setText("100$");
+        limit3.setText(Analyze.getMonthSpend(2)+"$");
 
         limit4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit4.setText("170$");
+        limit4.setText(Analyze.getMonthSpend(3)+"$");
 
         limit1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        limit1.setText("80$");
+        limit1.setText(Analyze.getMonthSpend(0)+"$");
 
         percentage1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         percentage1.setText("%75");
@@ -160,35 +163,92 @@ public class AnalysesJFrame extends javax.swing.JFrame {
 
         current1.setBackground(new java.awt.Color(0, 153, 255));
         current1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current1.setText("0$");
+        current1.setText("60$");
 
         current2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current2.setText("0$");
+        current2.setText("20$");
 
         current3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current3.setText("0$");
+        current3.setText("70$");
 
         current4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        current4.setText("0$");
-      
-        PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
+        current4.setText("50$");
+        pieChartDrawer.setText("PieChartDrawer");
+        pieChartDrawer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pieChartDrawerActionPerformed(evt);
+            }
+        });
+        /* PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
         demo.pack();
         RefineryUtilities.centerFrameOnScreen(demo);
         demo.setVisible(true);
-        pieChart.add(demo);
+        pieChart.add(demo); */
 
         totalExpenditure.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        totalExpenditure.setText("Total Expenditure:"+ Analyze.totalExpenditures());/* 
-        javax.swing.GroupLayout ChartLayout = new javax.swing.GroupLayout(pieChart);
+       // totalExpenditure.setText("Total Expenditure:"+ Analyze.totalExpenditures());/* 
+       javax.swing.GroupLayout pieChartLayout = new javax.swing.GroupLayout(pieChart);
         pieChart.setLayout(pieChartLayout);
         pieChartLayout.setHorizontalGroup(
             pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(pieChartLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(pieChartDrawer, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         pieChartLayout.setVerticalGroup(
             pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 363, Short.MAX_VALUE)
-        ); */
+            .addGroup(pieChartLayout.createSequentialGroup()
+                .addComponent(pieChartDrawer, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 325, Short.MAX_VALUE))
+        );
+
+        /*
+        private static PieDataset createDataset() {
+            DefaultPieDataset dataset = new DefaultPieDataset();
+            dataset.setValue("Transportation", new Double(30.0));
+            dataset.setValue("Food", new Double(10.0));
+            dataset.setValue("Clothing", new Double(35.0));
+            dataset.setValue("Other", new Double(25.0));
+            return dataset;        
+        }
+        */
+        /**
+         * Creates a chart.
+         * 
+         * @param dataset  the dataset.
+         * 
+         * @return A chart.
+         */
+        /*private static JFreeChart createChart(PieDataset dataset) {
+            
+            JFreeChart chart = ChartFactory.createPieChart(
+                "Monthly Spending PieChart",  // chart title
+                dataset,             // data
+                true,               // include legend
+                true,
+                false
+            );
+    
+            PiePlot plot = (PiePlot) chart.getPlot();
+            plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+            plot.setNoDataMessage("No data available");
+            plot.setCircular(false);
+            plot.setLabelGap(0.02);
+            return chart;
+            
+        }*/
+        
+        /**
+         * Creates a panel for the demo (used by SuperDemo.java).
+         * 
+         * @return A panel.
+         */
+        /*public static JPanel createDemoPanel() {
+            JFreeChart chart = createChart(createDataset());
+            return new ChartPanel(chart);
+        }
+        */
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -340,6 +400,12 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         menu.setVisible(true);
         dispose();
     }
+    private void pieChartDrawerActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
+        demo.pack();
+        RefineryUtilities.centerFrameOnScreen(demo);
+        demo.setVisible(true);
+    }      
     /**
      * @param args the command line arguments
      */
@@ -405,6 +471,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel percentage2;
     private javax.swing.JLabel percentage3;
     private javax.swing.JLabel percentage4;
+    private javax.swing.JButton pieChartDrawer;
     // End of variables declaration 
                       
 }
