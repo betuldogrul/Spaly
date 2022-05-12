@@ -436,11 +436,15 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         }                                    
 
         private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            // TODO add your handling code here:
-        }                                        
+            settings s = new settings();
+            s.setVisible(true);
+            dispose();
+        }                                     
 
         private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            // TODO add your handling code here:
+            ProfileFrame fr = new ProfileFrame();
+            fr.setVisible(true);
+            dispose();
         }                                                                            
                                           
 
