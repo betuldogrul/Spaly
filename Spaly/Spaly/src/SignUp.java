@@ -53,7 +53,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel4.setText("ENTER YOUR SURNAME:");
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("CHOOSE AN USERNAME:");
+        jLabel2.setText("CHOOSE A USERNAME:");
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel5.setText("CHOOSE A PASSWORD:");
