@@ -17,9 +17,14 @@ public class Analyze {
     private Profile p;
     private int userID;
     private ArrayList<Spend> spend;
-    public Analyze(Profile p){
+    ArrayList<ArrayList<Double>> allExpenditures;
+    public Analyze(Profile p,CreditCard c){
         userID=p.getUser().getId();
+        this.c=c;
+        spend=getValuesFromDatabase(5, c);
+        allExpenditures=differ(spend);
     }
+    public ArrayList<ArrayList<Double>> getAllSpending(){return allExpenditures;}
     public double getTotalExpenditures(){return totalExpenditures;}
     public double getIncome(){return income;}
     public double getItemPrice(){return itemPrice;}
