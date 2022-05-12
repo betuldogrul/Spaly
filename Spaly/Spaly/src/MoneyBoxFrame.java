@@ -57,7 +57,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
         setTitle("Money Box");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(242, 210, 255));
+        jPanel1.setBackground(new java.awt.Color(150,210,255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel1.setText("Daily Savings:");
