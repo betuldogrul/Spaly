@@ -182,7 +182,7 @@ public class MenuJFrame extends javax.swing.JFrame implements java.beans.Customi
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(ActionEvent evt) {
-        NewJFrame jf =  new NewJFrame();
+        aa jf =  new aa();
         jf.show();
 
         dispose();
