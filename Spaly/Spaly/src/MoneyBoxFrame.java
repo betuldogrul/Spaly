@@ -12,6 +12,7 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
      */
     public MoneyBoxFrame() {
         MoneyBox m = new MoneyBox();
+        System.out.println("moneybox oluşturdu, sorun moneybox classında");
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -406,11 +407,15 @@ public class MoneyBoxFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        ProfileFrame pf = new ProfileFrame();
+        pf.setVisible(true);
+        dispose();
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        settings s = new settings();
+        s.setVisible(true);
+        dispose();
     }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
