@@ -178,7 +178,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         pieChart.add(demo);
 
         totalExpenditure.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        totalExpenditure.setText("Total Expenditure:"+ Analyze.totalExpenditures());
+        totalExpenditure.setText("Total Expenditure:"+ Analyze.totalExpenditures());/* 
         javax.swing.GroupLayout ChartLayout = new javax.swing.GroupLayout(pieChart);
         pieChart.setLayout(pieChartLayout);
         pieChartLayout.setHorizontalGroup(
@@ -188,7 +188,7 @@ public class AnalysesJFrame extends javax.swing.JFrame {
         pieChartLayout.setVerticalGroup(
             pieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 363, Short.MAX_VALUE)
-        );
+        ); */
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
