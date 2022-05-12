@@ -18,6 +18,7 @@ public class MoneyBox{
 
     //CONSTRUCTORS
     public MoneyBox(){
+        Delimitation d = new Delimitation();
         updateMoneyBox();
     }
 
