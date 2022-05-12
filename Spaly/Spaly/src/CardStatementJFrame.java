@@ -391,7 +391,6 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel4.setText("card number");//String.valueOf(cards.get(cardCount).getCardNumber()));
-            cardCount++;
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
