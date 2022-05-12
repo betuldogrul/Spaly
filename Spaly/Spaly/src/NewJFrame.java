@@ -95,6 +95,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         itemName1.setText(target.get(1).getName());
                         TItem1Price.setText("" + target.get(1).getPrice());
                         progress1.setValue((int) target.get(1).getCurrentMoney());
+                        progress1.setMaximum((int)target.get(1).getPrice());
                         goal1.setIcon(new javax.swing.ImageIcon(target.get(1).getImage()));
                         ItemName2.setText("there is no item");
                         TItemPrice2.setText("null");
@@ -483,6 +484,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
 
 
+
         jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\5402435_account_profile_user_avatar_man_icon.png")); // NOI18N
 
         goal1.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\rsz_solid_whitesvg.png")); // NOI18N
@@ -499,13 +501,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
+        //jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
-                MenuJFrame k = new MenuJFrame();
-                k.show();
-                dispose();
+              
             }
         });
         if(target.size() > 1)
@@ -520,7 +520,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         }
-
+        jButton4.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+                jButton4ActionPerformed(evt);
+            }
+        });
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\3669231_cart_shopping_ic_icon.png")); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\3669231_cart_shopping_ic_icon.png")); // NOI18N
@@ -545,14 +549,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 dispose();
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-                MenuJFrame k = new MenuJFrame();
-                k.show();
-                dispose();
-            }
-        });
+        
         if(target.size() > 1)
         {
             progress1.setMaximum((int)target.get(1).getPrice());
@@ -777,9 +774,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>    
                         
 
-    protected void jButton4ActionPerformed(ActionEvent evt) {
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        MenuJFrame menu = new MenuJFrame();
+        menu.setVisible(true);
+        dispose();
     }
-
     protected void removeThirdGoal(ActionEvent evt) {
     }
 

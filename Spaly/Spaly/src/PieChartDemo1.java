@@ -91,4 +91,7 @@ public class PieChartDemo1 extends ApplicationFrame {
 
     }
 
+    public void setPreferredSize(int i, int j) {
+    }
+
 }

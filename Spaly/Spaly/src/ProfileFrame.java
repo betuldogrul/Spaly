@@ -105,30 +105,30 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\Spaly yazısı.jpeg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\WhatsApp Image 2022-05-06 at 22.21.05.jpeg")); // NOI18N
 
-        SettingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\settingsicon.jpeg")); // NOI18N
+        SettingsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\1564529_mechanism_options_settings_configuration_setting_icon.png")); // NOI18N
         SettingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SettingsButtonActionPerformed(evt);
             }
         });
 
-        addPicture.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Downloads\\addButton.jpeg")); // NOI18N
+        addPicture.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\OneDrive\\Masaüstü\\projec\\WhatsApp Image 2022-05-12 at 03.18.24.jpeg")); // NOI18N
         addPicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPictureActionPerformed(evt);
             }
         });
 
-        homeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\homeicon.jpeg")); // NOI18N
+        homeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\Downloads\\anime\\326656_home_icon.png")); // NOI18N
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
             }
         });
 
-        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\Desktop\\profileicon.jpeg")); // NOI18N
+        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\melis\\OneDrive\\Masaüstü\\projec\\WhatsApp Image 2022-05-12 at 03.18.17.jpeg")); // NOI18N
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);

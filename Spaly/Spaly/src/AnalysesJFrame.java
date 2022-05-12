@@ -6,6 +6,8 @@
 
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.plaf.DimensionUIResource;
+
 import java.awt.Color;
 import javax.swing.JFrame;
 import org.jfree.ui.RefineryUtilities;
@@ -402,9 +404,8 @@ public class AnalysesJFrame extends javax.swing.JFrame {
     }
     private void pieChartDrawerActionPerformed(java.awt.event.ActionEvent evt) {                                               
         PieChartDemo1 demo = new PieChartDemo1("Monthly Spending PieChart");
-        demo.pack();
-        RefineryUtilities.centerFrameOnScreen(demo);
-        demo.setVisible(true);
+        demo.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        demo.show();
     }      
     /**
      * @param args the command line arguments
