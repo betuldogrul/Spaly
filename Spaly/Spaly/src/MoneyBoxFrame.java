@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author DELL
+ * @author Dilara
  */
 public class MoneyBoxFrame extends javax.swing.JFrame {
 

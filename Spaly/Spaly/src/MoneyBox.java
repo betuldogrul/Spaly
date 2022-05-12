@@ -18,6 +18,8 @@ public class MoneyBox{
 
     //CONSTRUCTORS
     public MoneyBox(){
+        MoneyBoxFrame m = new MoneyBoxFrame();
+        updateMoneyBox();
     }
 
     //METHODS
