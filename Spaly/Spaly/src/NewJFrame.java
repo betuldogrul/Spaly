@@ -908,6 +908,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private boolean deletedFirst;
     private boolean deletedSecond;
     static ArrayList<targetedItem> target = Goals.getItemsArrayList();
+    
   
     // End of variables declaration 
     public void setFirstrue(boolean first)
