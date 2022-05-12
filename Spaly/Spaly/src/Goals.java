@@ -99,7 +99,7 @@ public class Goals{
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
         Connection conn = null;
         Statement stmt = null;
-        String DATABASE_URL = "jdbc:mysql://localhost/hr";
+        String DATABASE_URL = "jdbc:mysql://localhost/melisa";
         double add = item.getCurrentMoney() + money *(percent/ 100);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -107,7 +107,7 @@ public class Goals{
                Class.forName("com.mysql.jdbc.Driver");
                connection = DriverManager.getConnection(DATABASE_URL, "root", "74252002");
                PreparedStatement ps = conn.prepareStatement(
-                "UPDATE goals SET itemMoney = ? WHERE userID = ? AND itemID = ?");
+                "UPDATE goals SET itemMoney =? WHERE userID =? AND itemID =?");
           
               // set the preparedstatement parameters
               ps.setDouble(1,add);

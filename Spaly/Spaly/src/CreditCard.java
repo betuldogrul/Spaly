@@ -21,7 +21,7 @@ public class CreditCard extends CardStatement
         this.userid = userID;
         numberOfCards++;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class CreditCard extends CardStatement
     {
         totalSpentMoney = totalSpentMoney + amount;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -110,7 +110,7 @@ public class CreditCard extends CardStatement
     {
         totalSpentMoney = totalSpentMoney - amount;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }

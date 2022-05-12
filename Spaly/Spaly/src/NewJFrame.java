@@ -817,8 +817,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }                                         
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {   
-        ShoppingList y = new ShoppingList();
-       ShoppingList.createAllItems();
+       ShoppingList.differKind(ShoppingList.createAllItems());
        ArrayList<Item> k = ShoppingList.search(jTextField1.getText());
        if(k != null)
        {
