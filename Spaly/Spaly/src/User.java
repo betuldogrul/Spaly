@@ -39,14 +39,14 @@ public class User {
         Statement stmt = null;
         try {
            try {
-              Class.forName("com.mysql.jdbc.Driver");
+              Class.forName("com.mysql.cj.jdbc.Driver");
            } catch (Exception e) {
               System.out.println(e);
            }
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userSurname='" + surname + "' where userID =" + Profile.getUser().getId();
+           String query1 = "update users set userSurname='" + surname + "' where userID =" + 1;
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)

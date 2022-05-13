@@ -9,7 +9,8 @@ import java.util.Calendar;
 public class main {
     public static void main(String[] args) {
         System.out.println(Calendar.getInstance().getTime());
-
+        User u = new User(1,3000, "v", "userSurname", "userUserName", "password"," userMail");
+        u.setSurname("dog");
         
 
      /*    try {

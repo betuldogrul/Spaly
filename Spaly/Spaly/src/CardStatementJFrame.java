@@ -494,7 +494,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private static int dy = 0;
     private final int X = 30;
     private final int Y = 100;
-    ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
+  //  ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
    
 
     // End of variables declaration                   
