@@ -1,17 +1,20 @@
 
 
+
 import java.util.Currency;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class targetedItem extends Item implements Percentage {
 
+public class TargetedItem extends Item implements Percentage {
     private double currentSaving;
     private boolean isTheProductInGoal;
     private Item item;
+
    
-    public targetedItem(Item item, double currentSaving) {
+   
+    public TargetedItem(Item item, double currentSaving) {
         super(item.getId(), item.getName(), item.getPrice(), item.getImage(), item.getWebsite());
         this.item = item;
         this.currentSaving = currentSaving;

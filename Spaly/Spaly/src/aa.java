@@ -907,7 +907,7 @@ public class aa extends javax.swing.JFrame {
     private javax.swing.JLabel ıtemPriceT3;
     private boolean deletedFirst;
     private boolean deletedSecond;
-    static ArrayList<targetedItem> target = Goals.getItemsArrayList();
+    static ArrayList<TargetedItem> target = Goals.getItemsArrayList();
   
     // End of variables declaration 
     public void setFirstrue(boolean first)

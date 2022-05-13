@@ -16,7 +16,7 @@ public class Category extends Categories // only one card, only one category
         this.card = card;
         this.limit=limit;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }

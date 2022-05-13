@@ -15,7 +15,7 @@ public class Categories //the class to hold the arraylist of the categories in t
         totalMoneySpent = 0;
         this.card = card;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }

@@ -20,6 +20,11 @@ public class CreditCard extends CardStatement
         this.cardBank = cardBank;
         this.userid = userID;
         numberOfCards++;
+    }
+    
+    public static void create(int creditcard_id, String number, double upperLimit, double totalMoney, String cardBank, int userID)
+    {
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {

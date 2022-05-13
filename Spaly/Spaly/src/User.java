@@ -80,7 +80,6 @@ public class User {
 
     public static void setIncome(int incomee)
     {
-        income = incomee;
         Connection conn = null;
         Statement stmt = null;
         try {
@@ -92,7 +91,7 @@ public class User {
            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/melisa", "root", "74252002");
            System.out.println("Connection is created successfully:");
            stmt = (Statement) conn.createStatement();
-           String query1 = "update users set userIncome='" + income + "' where userID =" + Profile.getUser().getId();
+           String query1 = "update users set userIncome='" + incomee + "' where userID =" + Profile.getUser().getId();
            ((java.sql.Statement) stmt).executeUpdate(query1);
         }
         catch(Exception e)

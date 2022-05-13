@@ -11,7 +11,7 @@ public class Spendings { // this class is to hold the every spending in a month 
     public Spendings() { // consctructor , adds every data to the arraylist
         spendings = new ArrayList<Spending>();
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -50,7 +50,7 @@ public class Spendings { // this class is to hold the every spending in a month 
     public void addSpending(Spending spending)
     {
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }

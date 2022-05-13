@@ -68,8 +68,8 @@ public class MoneyBox{
         }
     }
 
-    private void setDailySpendingLimit(){
-        dailySpendingLimit = User.getUserIncome()/numberOfDays;
+    private static void setDailySpendingLimit(){
+        dailySpendingLimit = User.getUserIncome() / numberOfDays;
     }
 
     private void setDailySaving(){
@@ -81,7 +81,7 @@ public class MoneyBox{
     }
 
     private void setTotalSaving(){
-        totalSaving += dailySaving; 
+        totalSaving += dailySaving + monthlySaving; 
     }
 
     //Other Methods

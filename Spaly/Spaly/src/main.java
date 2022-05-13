@@ -4,10 +4,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class main {
     public static void main(String[] args) {
-        try {
+        System.out.println(Calendar.getInstance().getTime());
+
+        
+
+     /*    try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -25,12 +30,12 @@ public class main {
         } 
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new userEnter().setVisible(true);
             }
-        });
+        }); */
     }
     /* public static void registerUser(String name, String surname, String userName, String userPassword, String mail, int income)
     {

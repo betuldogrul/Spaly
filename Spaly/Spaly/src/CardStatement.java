@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,6 +22,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
     public static ArrayList<CreditCard> getAllCreditCards() // checked 
     {
+        Connection conn = null;
         ArrayList<CreditCard> y = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -33,8 +35,8 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         PreparedStatement p = null;
         ResultSet rs = null;
         try{
-            Connection conn = DriverManager.getConnection(DbUrl, username, password);
-            String sql = "SELECT * FROM credit_card WHERE user_id=" + Profile.getUser().getId();
+            conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM credit_card WHERE user_id=" + 1;
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -54,10 +56,13 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             } catch (Exception e) {
                 System.out.println(e);
             }
+            finally {
+                if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+            }
             return y;
     }
 
-    public static void updateTotalSpending() //checked 
+     public static void updateTotalSpending() //checked //tüm kart tüm spending
     {
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -77,7 +82,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         
                     while(rs.next())
                     {
-                        totalSpending = rs.getInt("SUM(spending)");
+                        totalSpending = -rs.getInt("SUM(spending)");
                     }
         
                     p.close();
@@ -86,10 +91,8 @@ public class CardStatement // a class to hold all credit cards which belongs to 
                     System.out.println(e);
                 }
                 getMonthlySpending();
-            }
-        
-                
-            public static double getMonthlySpending() // checked 
+    }      
+             public static double getMonthlySpending() // checked //1 ay içerisinde
             {
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
@@ -109,7 +112,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
         
                     while(rs.next())
                     {
-                        totalSpending = rs.getInt("SUM(spending)");
+                        totalSpending = -rs.getInt("SUM(spending)");
                     }
         
                     p.close();
@@ -119,8 +122,8 @@ public class CardStatement // a class to hold all credit cards which belongs to 
                 }
                 return totalSpending;
             }
-
-    public static double getDailySpending(Date day) //checked
+ 
+   public static double getDailySpending(Date day) //checked //bir gün orj
     {
         Calendar c = Calendar.getInstance();
         c.setTime(day);
@@ -145,7 +148,7 @@ public class CardStatement // a class to hold all credit cards which belongs to 
 
             while(rs.next())
             {
-                dailySpending = dailySpending + rs.getInt("spending");
+                dailySpending = dailySpending + ( - 1) * rs.getInt("spending");
             }
             p.close();
             conn.close();
@@ -153,9 +156,57 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             System.out.println(e);
         }
         return dailySpending;
-    }
+    }  
+/*  public static double getDailySpending(Date day) //checked
+    {
+        Calendar c = Calendar.getInstance();
+        c.setTime(day);
 
-    public static ArrayList<CreditCard> getCardsOfUser() //checked
+        double dailySpending = 0;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        final String DbUrl = "jdbc:mysql://localhost:3306/melisa";
+        final String username = "root";
+        final String password = "74252002";
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try{
+            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            String sql = "SELECT * FROM cardstatement WHERE user_id = " + Profile.getUser().getId() +  ") AND day =" + c.get(Calendar.DATE);
+
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+
+            while(rs.next())
+            {
+                int k = rs.getInt("day");
+                int month = rs.getInt("month");
+                int year = rs.getInt("year");
+                int minute = rs.getInt("minute");
+                double spending = rs.getDouble("spending");
+                String category = rs.getString("category");
+                int hours = rs.getInt("hour");
+                Spend y = new Spend(k, month, year, spending, category);
+                y.setHour(hours);
+                y.setMinte(minute);
+                Calendar yDate = Calendar.getInstance();
+                yDate.set(year, month, k,hours,minute);
+                if(yDate.before(day))
+                dailySpending = dailySpending + y.getSpending();
+            }
+            p.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return dailySpending;
+    }  
+ */
+/* 
+     public static ArrayList<CreditCard> getCardsOfUser() //checked
         {
         ArrayList<CreditCard> cards = new ArrayList<CreditCard>();
         try{
@@ -191,9 +242,9 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             System.out.println(e);
         }
         return cards;
-    }
-
-    public void addCreditCard(CreditCard c) //checked 
+    } 
+ */
+     public void addCreditCard(CreditCard c) //checked 
     {
         try {
             
@@ -225,9 +276,9 @@ public class CardStatement // a class to hold all credit cards which belongs to 
             System.out.println(e);
         }
         cards.add(c);
-    }
+    } 
 
-    public static CreditCard getSpecifiedCreditCard(String card_number) //checked
+  public static CreditCard getSpecifiedCreditCard(String card_number) //checked
             {
                 CreditCard c = null;
                 try{
@@ -262,5 +313,5 @@ public class CardStatement // a class to hold all credit cards which belongs to 
                     System.out.println(e);
                 }
                 return c;
-            }
+            } 
 }

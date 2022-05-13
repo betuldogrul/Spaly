@@ -17,6 +17,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private Object bean;
     private ArrayList<JPanel> cardPanels;
     private ArrayList<JLabel> labelCardNumber;
+
     /**
      * Creates new customizer CardStatementJFRame
      */
@@ -26,6 +27,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         this.getContentPane().setBackground(Color.WHITE);
         cardPanels = new ArrayList<JPanel>();
         labelCardNumber = new ArrayList<JLabel>();
+        cardCount = 0;
+        
         
     }
     
@@ -47,7 +50,6 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
-
         for(int i = 0; i < 2; i++)  // 3 yerine cards.size()
         {
             jScrollPane1 = new javax.swing.JScrollPane();
@@ -164,14 +166,15 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
             });
 
             jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel2.setText("X Bank");//cards.get(cardCount).getCardBank());
+            jLabel2.setText("X BANK");//cards.get(cardCount).getCardBank());
             
 
             jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel7.setText("User Name");//Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
+            jLabel7.setText("Betul");//Profile.getUserNameFromId(cards.get(cardCount).getUserIDOfTheCard()));
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            jLabel4.setText("XXXX XXXX XXXX XXXX");//String.valueOf(cards.get(cardCount).getCardNumber()));
+            
+            jLabel4.setText("6789 6789 679 6789 ");//String.valueOf(cards.get(cardCount).getCardNumber()));
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -391,6 +394,7 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
 
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel4.setText("card number");//String.valueOf(cards.get(cardCount).getCardNumber()));
+            cardCount++;
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -490,6 +494,8 @@ public class CardStatementJFrame extends javax.swing.JFrame implements java.bean
     private static int dy = 0;
     private final int X = 30;
     private final int Y = 100;
-    //ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
+    ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
+   
+
     // End of variables declaration                   
 }

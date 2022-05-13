@@ -13,14 +13,14 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 public class Goals{
-    private static ArrayList<targetedItem> goalsItems = null;//aggragation
+    private static ArrayList<TargetedItem> goalsItems = null;//aggragation
     private User profile;
     public Goals()
     {
     }
     public static double moneyInGoals()
     {
-        ArrayList<targetedItem> y = getItemsArrayList();
+        ArrayList<TargetedItem> y = getItemsArrayList();
         double sum = 0;
         for(int i = 0; i < y.size(); i++)
         {
@@ -30,7 +30,7 @@ public class Goals{
     }
     public static double getAllUserWant()
     {
-        ArrayList<targetedItem> y = getItemsArrayList();
+        ArrayList<TargetedItem> y = getItemsArrayList();
         double sum = 0;
         for(int i = 0; i < y.size(); i++)
         {
@@ -40,6 +40,7 @@ public class Goals{
     }
     public static void remove(int ID)
     {
+        Connection conn = null;
             try {
             
                 Class.forName("com.mysql.jdbc.Driver");
@@ -53,7 +54,8 @@ public class Goals{
             PreparedStatement p = null;
             ResultSet rs = null;
             try{
-                Connection conn = DriverManager.getConnection(DbUrl, username, password);
+                
+                conn = DriverManager.getConnection(DbUrl, username, password);
                 String sql = "DELETE FROM goals WHERE userID=" + Profile.getUser().getId() + " and itemID="+ ID;
                 p = conn.prepareStatement(sql);
                 p.executeUpdate();
@@ -63,6 +65,9 @@ public class Goals{
             catch(Exception e)
             {
                 System.out.println(e);
+            }
+            finally {
+                if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
             }
             for(int i = 0; i < goalsItems.size(); i++)
             {
@@ -75,7 +80,7 @@ public class Goals{
         JOptionPane.showMessageDialog(null,"Item successfully deleted from goals!" ,"Info Box" , JOptionPane.INFORMATION_MESSAGE); 
     }
 
-    public static void moneyGoes(targetedItem item, double money)
+    public static void moneyGoes(TargetedItem item, double money)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
@@ -102,16 +107,20 @@ public class Goals{
            stmt = (Statement) conn.createStatement();
            String query1 = "update goals set itemMoney='" + add + "' where userID =" + Profile.getUser().getId()+ " and itemID="+ item.getID();
            ((java.sql.Statement) stmt).executeUpdate(query1);
+
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
+        finally {
+            if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+        }
         item.setCurrentMoney(item.getCurrentMoney() + money);
         
     }
 
-    public static void moneyGoesAsPercent(targetedItem item, double money, int percent)
+    public static void moneyGoesAsPercent(TargetedItem item, double money, int percent)
     {
         //this method will take money that user enter manually and add into the account and it should be connected with saving class 
         //since when we put this money into my item it should show in also saving that i have this much money on my items.
@@ -153,7 +162,7 @@ public class Goals{
         item.setCurrentMoney(item.getCurrentMoney() + money * percent);
     }
 
-    public static void useMoneyFromProduct(targetedItem item, double money)
+    public static void useMoneyFromProduct(TargetedItem item, double money)
     {
         //when user needs to spend money from their desired product
         //this method should be connected with spends and savings//update them
@@ -171,15 +180,15 @@ public class Goals{
         JOptionPane.showMessageDialog(null,"Item doen't have enough money." ,"Info Box" , JOptionPane.INFORMATION_MESSAGE); 
         }
     }
-    public static void purchaseAddTransitions(targetedItem item)
+    public static void purchaseAddTransitions(TargetedItem item)
     {
         
     }
-    public static ArrayList<targetedItem> getTargets()
+    public static ArrayList<TargetedItem> getTargets()
     {
         return goalsItems;
     }
-    public static void purchase(targetedItem item)
+    public static void purchase(TargetedItem item)
     {
         if(item.canBuy())//if the user has enough money 
         {
@@ -208,10 +217,11 @@ public class Goals{
         // here when s/he purchase it will come from the card info
     }
 
-    public static ArrayList<targetedItem> getItemsArrayList()//look lter
-    {
+    public static ArrayList<TargetedItem> getItemsArrayList()//look lter
+    {   
+        Connection conn = null;
         ArrayList<Item> k= ShoppingList.createAllItems();
-        ArrayList<targetedItem> y = new ArrayList<targetedItem>();
+        ArrayList<TargetedItem> y = new ArrayList<TargetedItem>();
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
@@ -225,7 +235,7 @@ public class Goals{
         PreparedStatement p = null;
         ResultSet rs = null;
         try{
-            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            conn = DriverManager.getConnection(DbUrl, username, password);
             String sql = "SELECT * FROM goals where userID=" + Profile.getUser().getId();
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
@@ -238,7 +248,7 @@ public class Goals{
                     if(k.get(i).getId() == id)
                     {
                         Item item = k.get(i);
-                        targetedItem target = new targetedItem(item, total);
+                        TargetedItem target = new TargetedItem(item, total);
                         y.add(target);
                     }
                 }   
@@ -251,9 +261,12 @@ public class Goals{
         {
             System.out.println(e);
         }
+        finally {
+            if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+        }
         if(y.size() == 0)//just to not make gpals array null
         {
-            targetedItem i = new targetedItem(k.get(11), 0);
+            TargetedItem i = new TargetedItem(k.get(11), 0);
             y.add(10, i);
         }
         goalsItems = y;

@@ -48,6 +48,7 @@ public class ShoppingList {
     public  static ArrayList<Item> createAllItems()//this means inside arraylist same item for different prices outside different items
     {
         Item item = null;
+        Connection conn = null;
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
@@ -62,7 +63,7 @@ public class ShoppingList {
         ResultSet rs = null;
         ArrayList<Item> allItem = new ArrayList<Item>();
         try{
-            Connection conn = DriverManager.getConnection(DbUrl, username, password);
+            conn = DriverManager.getConnection(DbUrl, username, password);
             String sql = "SELECT * FROM shoping";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
@@ -83,6 +84,9 @@ public class ShoppingList {
         {
             System.out.println(e);
         }
+        finally {
+            if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+        }
         return allItem;
     }
     public static void giveWebsiteInfo(Item item)
@@ -92,6 +96,7 @@ public class ShoppingList {
     public static void addToGoal(Item item) {
       
         //this item will come in goal
+        Connection conn = null;
         if (Goals.getItemsArrayList().size() <= 4) {
             try {
             
@@ -106,7 +111,7 @@ public class ShoppingList {
             PreparedStatement p = null;
             ResultSet rs = null;
             try{
-                Connection conn = DriverManager.getConnection(DbUrl, username, password);
+                conn = DriverManager.getConnection(DbUrl, username, password);
                 String sql = "INSERT INTO goals VALUES (?, ?, ?)";//taking item to database
                 p = conn.prepareStatement(sql);
                 p.setInt(1, Profile.getUser().getId());
@@ -119,7 +124,10 @@ public class ShoppingList {
             {
                 System.out.println(e);
             }
-            targetedItem tItem = new targetedItem(item, 0);
+            finally {
+                if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+            }
+            TargetedItem tItem = new TargetedItem(item, 0);
             createAllItems().add(tItem);
             System.out.println("Product succesfully added:");
         }       

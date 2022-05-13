@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.awt.Color;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +15,8 @@ public class jFrame2 extends javax.swing.JFrame {
      */
     public jFrame2() {
         initComponents();
+  
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
@@ -1065,6 +1067,6 @@ public class jFrame2 extends javax.swing.JFrame {
     private javax.swing.JLabel ıtemPriceT5;
     private javax.swing.JLabel ıtemPriceT6;
     private javax.swing.JLabel ıtemPriceT7;
-    static ArrayList<targetedItem> targets = Goals.getItemsArrayList();
+    static ArrayList<TargetedItem> targets = Goals.getItemsArrayList();
     // End of variables declaration                   
 }

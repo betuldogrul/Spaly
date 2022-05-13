@@ -1,10 +1,14 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class Analyze {
     private static double income;
@@ -56,7 +60,7 @@ public class Analyze {
     public static void drawBarChartofDailySpendingAccordingtoCategories(CreditCard c){
         
     }
-    public static ArrayList<ArrayList<Double>> differ(ArrayList<Spend> spend){
+    public static ArrayList<ArrayList<Double>> differ(ArrayList<Spend> spend){//this method turns monthly spending of user's one card inside arraylist for same catogory outside is general
         ArrayList<Double> k=new ArrayList<>();
         ArrayList<ArrayList<Double>> y=new ArrayList<>();
         k.add(spend.get(0).getSpending());
@@ -106,7 +110,7 @@ public class Analyze {
         y.add(k);
         return y;
     }
-    public static ArrayList<Spend> getValuesFromDatabase(int monthh, CreditCard c){
+    public static ArrayList<Spend> getValuesFromDatabase(int monthh, CreditCard c){// thid methods calculate 
         ArrayList<Spend> k= new ArrayList<>();
         Spend spend;
         try {
@@ -157,10 +161,9 @@ public class Analyze {
         }
         return k;
     }
-    public static double  getMonthSpend(int k) 
+    public static double  getMonthSpend(int k) // this method is calculating sum of a credit card spend in a month
     {
-        ArrayList<CreditCard> cards = CardStatement.getCardsOfUser();
-        
+        ArrayList<CreditCard> cards = CardStatement.getAllCreditCards();
         double sum = 0;
         for(int i = 0 ; i < cards.size(); i++)
         {

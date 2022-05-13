@@ -1,7 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.awt.Color;
 
-import javax.swing.JOptionPane;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +20,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
@@ -949,7 +951,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel ıtemPriceT3;
     private boolean deletedFirst;
     private boolean deletedSecond;
-    static ArrayList<targetedItem> target = Goals.getItemsArrayList();
+    static ArrayList<TargetedItem> target = Goals.getItemsArrayList();
     
   
     // End of variables declaration 
