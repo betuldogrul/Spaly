@@ -12,9 +12,7 @@ public class TargetedItem extends Item implements Percentage {
     private boolean isTheProductInGoal;
     private Item item;
 
-   
-   
-    public TargetedItem(Item item, double currentSaving) {
+    public TargetedItem(Item item, double currentSaving) {//constructor
         super(item.getId(), item.getName(), item.getPrice(), item.getImage(), item.getWebsite());
         this.item = item;
         this.currentSaving = currentSaving;
@@ -29,10 +27,12 @@ public class TargetedItem extends Item implements Percentage {
         }
         return false;
     }
+
     public int getID()
     {
         return item.getId();
     }
+
     public String getImage()
     {
         return item.getImage();
