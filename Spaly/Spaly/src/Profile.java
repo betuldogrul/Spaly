@@ -178,6 +178,6 @@ public class Profile{
     }
     
     public static void setUserName(String text) {
-        user.setUserName(text);
+        Profile.getUser().setUserName(text);
     }
 }
